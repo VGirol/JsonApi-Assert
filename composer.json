@@ -33,11 +33,10 @@
         "post-update-cmd": [
             "@setup"
         ],
-        "test": "./vendor/bin/phpunit tests ",
-        "coverage": "./vendor/bin/phpunit tests --coverage-xml=build/coverage/coverage-xml --log-junit=build/coverage/phpunit.junit.xml",
+        "test": "./vendor/bin/phpunit tests",
         "infection": "./vendor/bin/infection --coverage=build/coverage --threads=$(nproc) --configuration=infection.json.dist",
         "travis": [
-            "@coverage",
+            "@test",
             "@infection"
         ],
         "build": [
