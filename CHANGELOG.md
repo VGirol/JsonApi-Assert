@@ -19,3 +19,7 @@ All notable changes to `jsonapi-assert` will be documented in this file.
 ## 1.1.0 - 2019-07-20
 
 - Added Factory classes for tests
+
+## 1.2.0 - 2019-08-17
+
+- Moved Factory classes into another package : VGirol/JsonApi-Faker

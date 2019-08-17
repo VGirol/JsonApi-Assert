@@ -881,10 +881,6 @@ It will do the following checks :
 - asserts that the "type" member is a string.
 - asserts that the "type" member has a valid value ([assertIsValidMemberName](#assertIsValidMemberName)).
 
-## Factories
-
-_no description available_
-
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
