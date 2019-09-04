@@ -125,7 +125,7 @@ trait AssertStructure
      */
     public static function assertIsValidPrimaryData($json, bool $strict): void
     {
-        if (\is_null($json)) {
+        if ($json === null) {
             $json = [];
         }
 

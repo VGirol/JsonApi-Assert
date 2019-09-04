@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
@@ -49,7 +50,7 @@ trait AssertLinksObject
     public static function assertIsValidLinkObject($json, bool $strict): void
     {
         if (!\is_array($json)) {
-            if (\is_null($json)) {
+            if ($json === null) {
                 $json = '';
             }
             PHPUnit::assertIsString(

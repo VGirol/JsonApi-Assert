@@ -45,11 +45,11 @@ class LinkEqualsConstraint extends Constraint
      */
     protected function matches($other): bool
     {
-        if (is_null($this->expected)) {
-            return \is_null($other);
+        if ($this->expected === null) {
+            return ($other === null);
         }
 
-        if (is_null($other)) {
+        if ($other === null) {
             return false;
         }
 

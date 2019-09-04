@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
@@ -22,7 +23,7 @@ trait AssertResourceLinkage
      */
     public static function assertIsValidResourceLinkage($json, bool $strict): void
     {
-        if (\is_null($json)) {
+        if ($json === null) {
             $json = [];
         }
 

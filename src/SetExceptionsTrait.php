@@ -49,7 +49,7 @@ trait SetExceptionsTrait
     protected function setFailureException($message = null)
     {
         $this->expectException(ExpectationFailedException::class);
-        if (!is_null($message)) {
+        if ($message !== null) {
             $this->expectExceptionMessage($message);
         }
     }
@@ -63,7 +63,7 @@ trait SetExceptionsTrait
     protected function setFailureExceptionRegex($message = null)
     {
         $this->expectException(ExpectationFailedException::class);
-        if (!is_null($message)) {
+        if ($message !== null) {
             $this->expectExceptionMessageRegExp($message);
         }
     }
@@ -83,7 +83,7 @@ trait SetExceptionsTrait
             \sprintf(
                 '/' . \preg_quote(InvalidArgumentException::MESSAGE) . '/',
                 $arg,
-                is_null($value) ?
+                ($value === null) ?
                     '[\s\S]*' : ' \(' . \gettype($value) . '#' . \preg_quote(\var_export($value, true)) . '\)',
                 '.*',
                 '.*',

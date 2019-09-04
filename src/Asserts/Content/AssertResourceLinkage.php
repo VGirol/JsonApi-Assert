@@ -50,7 +50,7 @@ trait AssertResourceLinkage
     {
         static::assertIsValidResourceLinkage($json, $strict);
 
-        if (is_null($expected)) {
+        if ($expected === null) {
             PHPUnit::assertNull($json);
 
             return;
