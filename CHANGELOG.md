@@ -2,15 +2,21 @@
 
 All notable changes to `jsonapi-assert` will be documented in this file.
 
+Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+
 ## 1.0.0 - 2019-03-31
 
 - Initial release
 
 ## 1.0.1 - 2019-04-04
 
+### Added
+
 - Updated many unit test thanks to mutation testing
 
 ## 1.0.2 - 2019-04-08
+
+### Added
 
 - Linted many files
 - Refactored some unit tests
@@ -18,8 +24,12 @@ All notable changes to `jsonapi-assert` will be documented in this file.
 
 ## 1.1.0 - 2019-07-20
 
+### Added
+
 - Added Factory classes for tests
 
 ## 1.2.0 - 2019-08-17
+
+### Removed
 
 - Moved Factory classes into another package : VGirol/JsonApi-Faker

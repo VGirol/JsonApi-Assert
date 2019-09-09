@@ -1,9 +1,23 @@
 {
     "name": "vgirol/jsonapi-assert",
-    "description": "This package provides a set of assertions to test documents using the JSON:API specification.",
     "type": "library",
+    "description": "This package provides a set of assertions to test documents using the JSON:API specification.",
+    "keywords": [
+        "vgirol",
+        "jsonapi-assert",
+        "unit tests",
+        "JSON:API",
+        "assertions"
+    ],
     "homepage": "http://github.com/VGirol/JsonApi-Assert",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Girol",
+            "email": "vincent@girol.fr",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "phpunit/phpunit": "^8.0"
@@ -11,12 +25,6 @@
     "require-dev": {
         "infection/infection": "^0.13"
     },
-    "authors": [
-        {
-            "name": "Vincent Girol",
-            "email": "vincent@girol.fr"
-        }
-    ],
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
@@ -34,7 +42,7 @@
             "@setup"
         ],
         "test": "./vendor/bin/phpunit tests",
-        "infection": "./vendor/bin/infection --coverage=build/coverage --threads=$(nproc) --configuration=infection.json.dist",
+        "infection": "./vendor/bin/infection --coverage=build/coverage --threads=$(nproc) --configuration=infection.json",
         "travis": [
             "@test",
             "@infection"
@@ -47,5 +55,8 @@
         "branch-alias": {
             "dev-master": "1.2-dev"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
