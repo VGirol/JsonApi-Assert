@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
@@ -14,8 +15,9 @@ trait AssertArrays
     /**
      * Asserts that an array is an array of objects.
      *
-     * @param array     $json
-     * @param string    $message   An optional message to explain why the test failed
+     * @param array  $json
+     * @param string $message An optional message to explain why the test failed
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -32,8 +34,9 @@ trait AssertArrays
     /**
      * Asserts that an array is not an array of objects.
      *
-     * @param array     $json
-     * @param string    $message   An optional message to explain why the test failed
+     * @param array  $json
+     * @param string $message An optional message to explain why the test failed
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -51,6 +54,7 @@ trait AssertArrays
      * Checks if the given array is an array of objects.
      *
      * @param array $arr
+     *
      * @return boolean
      */
     protected static function isArrayOfObjects(array $arr): bool
@@ -66,6 +70,7 @@ trait AssertArrays
      * Checks if the given array is an associative array.
      *
      * @param array $arr
+     *
      * @return boolean
      */
     private static function arrayIsAssociative(array $arr): bool

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - VGirol\JsonApiAssert\Assert</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#VGirol_JsonApiAssert">VGirol\JsonApiAssert</a>
+          </li>
+          <li class="separator">Assert</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Assert.php.xhtml#line9">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>VGirol\JsonApiAssert\</small>Assert</h1>
+        <h4>This class provide a set of assertions to test documents using the JSON:API specification.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Assert
+            {<br/><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\HasJsonApiAssert">HasJsonApiAssert</span></li><li>protected static void <a title="VGirol\JsonApiAssert\HasJsonApiAssert" href="../traits/VGirol_JsonApiAssert_HasJsonApiAssert/invalidArgument.xhtml">invalidArgument</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays">AssertArrays</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays/assertIsArrayOfObjects.xhtml">assertIsArrayOfObjects</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays/assertIsNotArrayOfObjects.xhtml">assertIsNotArrayOfObjects</a>()
+                        </li><li>protected static boolean <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays/isArrayOfObjects.xhtml">isArrayOfObjects</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject">AssertAttributesObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject/assertIsValidAttributesObject.xhtml">assertIsValidAttributesObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject/assertFieldHasNoForbiddenMemberName.xhtml">assertFieldHasNoForbiddenMemberName</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject/assertIsNotForbiddenMemberName.xhtml">assertIsNotForbiddenMemberName</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject">AssertErrorsObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorsObject.xhtml">assertIsValidErrorsObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorObject.xhtml">assertIsValidErrorObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorLinksObject.xhtml">assertIsValidErrorLinksObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorSourceObject.xhtml">assertIsValidErrorSourceObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertJsonapiObject">AssertJsonapiObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertJsonapiObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertJsonapiObject/assertIsValidJsonapiObject.xhtml">assertIsValidJsonapiObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject">AssertLinksObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertLinksObject/assertIsValidLinksObject.xhtml">assertIsValidLinksObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertLinksObject/assertIsValidLinkObject.xhtml">assertIsValidLinkObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertMemberName">AssertMemberName</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMemberName" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMemberName/assertIsValidMemberName.xhtml">assertIsValidMemberName</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers">AssertMembers</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasMember.xhtml">assertHasMember</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasMembers.xhtml">assertHasMembers</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasOnlyMembers.xhtml">assertHasOnlyMembers</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertNotHasMember.xhtml">assertNotHasMember</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertNotHasMembers.xhtml">assertNotHasMembers</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasData.xhtml">assertHasData</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasAttributes.xhtml">assertHasAttributes</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasLinks.xhtml">assertHasLinks</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasMeta.xhtml">assertHasMeta</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasIncluded.xhtml">assertHasIncluded</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasRelationships.xhtml">assertHasRelationships</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasErrors.xhtml">assertHasErrors</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasJsonapi.xhtml">assertHasJsonapi</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertContainsAtLeastOneMember.xhtml">assertContainsAtLeastOneMember</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertContainsOnlyAllowedMembers.xhtml">assertContainsOnlyAllowedMembers</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertMetaObject">AssertMetaObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMetaObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMetaObject/assertIsValidMetaObject.xhtml">assertIsValidMetaObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject">AssertRelationshipsObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject/assertIsValidRelationshipsObject.xhtml">assertIsValidRelationshipsObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject/assertIsValidRelationshipObject.xhtml">assertIsValidRelationshipObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject/assertIsValidRelationshipLinksObject.xhtml">assertIsValidRelationshipLinksObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage">AssertResourceLinkage</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceLinkage/assertIsValidResourceLinkage.xhtml">assertIsValidResourceLinkage</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceLinkage/assertIsValidResourceIdentifierObject.xhtml">assertIsValidResourceIdentifierObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject">AssertResourceObject</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsValidResourceObjectCollection.xhtml">assertIsValidResourceObjectCollection</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsValidResourceObject.xhtml">assertIsValidResourceObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertResourceObjectHasValidTopLevelStructure.xhtml">assertResourceObjectHasValidTopLevelStructure</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertResourceIdMember.xhtml">assertResourceIdMember</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertResourceTypeMember.xhtml">assertResourceTypeMember</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsValidResourceLinksObject.xhtml">assertIsValidResourceLinksObject</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertHasValidFields.xhtml">assertHasValidFields</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsNotForbiddenResourceFieldName.xhtml">assertIsNotForbiddenResourceFieldName</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure">AssertStructure</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertHasValidStructure.xhtml">assertHasValidStructure</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertHasValidTopLevelMembers.xhtml">assertHasValidTopLevelMembers</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertIsValidTopLevelLinksMember.xhtml">assertIsValidTopLevelLinksMember</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertIsValidPrimaryData.xhtml">assertIsValidPrimaryData</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertIsValidIncludedCollection.xhtml">assertIsValidIncludedCollection</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks">AssertLinks</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks/assertLinksObjectEquals.xhtml">assertLinksObjectEquals</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks/assertLinksObjectContains.xhtml">assertLinksObjectContains</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks/assertLinkObjectEquals.xhtml">assertLinkObjectEquals</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertJsonapi">AssertJsonapi</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertJsonapi" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertJsonapi/assertJsonapiObjectEquals.xhtml">assertJsonapiObjectEquals</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination">AssertPagination</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertHasPaginationLinks.xhtml">assertHasPaginationLinks</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertHasNoPaginationLinks.xhtml">assertHasNoPaginationLinks</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertPaginationLinksEquals.xhtml">assertPaginationLinksEquals</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertHasNoPaginationMeta.xhtml">assertHasNoPaginationMeta</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertResource">AssertResource</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource/assertResourceObjectEquals.xhtml">assertResourceObjectEquals</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource/assertResourceCollectionEquals.xhtml">assertResourceCollectionEquals</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource/assertResourceCollectionContains.xhtml">assertResourceCollectionContains</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage">AssertResourceLinkage</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage/assertResourceIdentifierEquals.xhtml">assertResourceIdentifierEquals</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage/assertResourceIdentifierCollectionEquals.xhtml">assertResourceIdentifierCollectionEquals</a>()
+                        </li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage/assertResourceLinkageEquals.xhtml">assertResourceLinkageEquals</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertErrors">AssertErrors</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertErrors" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertErrors/assertErrorsContains.xhtml">assertErrorsContains</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="VGirol\JsonApiAssert\Asserts\Content\AssertInclude">AssertInclude</span></li><li>public static void <a title="VGirol\JsonApiAssert\Asserts\Content\AssertInclude" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertInclude/assertIncludeObjectContains.xhtml">assertIncludeObjectContains</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="VGirol\JsonApiAssert\HasJsonApiAssert" href="../traits/VGirol_JsonApiAssert_HasJsonApiAssert.xhtml">VGirol\JsonApiAssert\HasJsonApiAssert</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">0%</td>
+            <td class="nummeric">0 / 0</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">0%</td>
+            <td class="nummeric"> / </td>
+          </tr>
+        </table>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\HasJsonApiAssert" href="../traits/VGirol_JsonApiAssert_HasJsonApiAssert.xhtml">VGirol\JsonApiAssert\HasJsonApiAssert</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="invalidArgument"><a title="VGirol\JsonApiAssert\HasJsonApiAssert" href="../traits/VGirol_JsonApiAssert_HasJsonApiAssert/invalidArgument.xhtml">invalidArgument()</a>
+                — Throws an InvalidArgumentException because of an invalid argument passed to a method.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertArrays</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="isArrayOfObjects"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays/isArrayOfObjects.xhtml">isArrayOfObjects()</a>
+                — Checks if the given array is an array of objects.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsArrayOfObjects"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays/assertIsArrayOfObjects.xhtml">assertIsArrayOfObjects()</a>
+                — Asserts that an array is an array of objects.</li>
+            <li id="assertIsNotArrayOfObjects"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertArrays" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertArrays/assertIsNotArrayOfObjects.xhtml">assertIsNotArrayOfObjects()</a>
+                — Asserts that an array is not an array of objects.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertFieldHasNoForbiddenMemberName"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject/assertFieldHasNoForbiddenMemberName.xhtml">assertFieldHasNoForbiddenMemberName()</a>
+                — Asserts that a field object (i.e., a resource object’s attributes or one of its relationships) has no forbidden member name.</li>
+            <li id="assertIsNotForbiddenMemberName"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject/assertIsNotForbiddenMemberName.xhtml">assertIsNotForbiddenMemberName()</a>
+                — Asserts that a member name is not forbidden.</li>
+            <li id="assertIsValidAttributesObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertAttributesObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertAttributesObject/assertIsValidAttributesObject.xhtml">assertIsValidAttributesObject()</a>
+                — Asserts that a json fragment is a valid attributes object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidErrorLinksObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorLinksObject.xhtml">assertIsValidErrorLinksObject()</a>
+                — Asserts that a json fragment is a valid error links object.</li>
+            <li id="assertIsValidErrorObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorObject.xhtml">assertIsValidErrorObject()</a>
+                — Asserts that a json fragment is a valid error object.</li>
+            <li id="assertIsValidErrorSourceObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorSourceObject.xhtml">assertIsValidErrorSourceObject()</a>
+                — Asserts that a json fragment is a valid error source object.</li>
+            <li id="assertIsValidErrorsObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertErrorsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertErrorsObject/assertIsValidErrorsObject.xhtml">assertIsValidErrorsObject()</a>
+                — Asserts that a json fragment is a valid errors object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertJsonapiObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertJsonapiObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertJsonapiObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidJsonapiObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertJsonapiObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertJsonapiObject/assertIsValidJsonapiObject.xhtml">assertIsValidJsonapiObject()</a>
+                — Asserts that a json fragment is a valid jsonapi object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertLinksObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidLinkObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertLinksObject/assertIsValidLinkObject.xhtml">assertIsValidLinkObject()</a>
+                — Asserts that a json fragment is a valid link object.</li>
+            <li id="assertIsValidLinksObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertLinksObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertLinksObject/assertIsValidLinksObject.xhtml">assertIsValidLinksObject()</a>
+                — Asserts that a json fragment is a valid links object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMemberName" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMemberName.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertMemberName</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidMemberName"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMemberName" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMemberName/assertIsValidMemberName.xhtml">assertIsValidMemberName()</a>
+                — Asserts that a member name is valid.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertMembers</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertContainsAtLeastOneMember"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertContainsAtLeastOneMember.xhtml">assertContainsAtLeastOneMember()</a>
+                — Asserts that a json object contains at least one member from the list provided.</li>
+            <li id="assertContainsOnlyAllowedMembers"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertContainsOnlyAllowedMembers.xhtml">assertContainsOnlyAllowedMembers()</a>
+                — Asserts that a json object contains only members from the provided list.</li>
+            <li id="assertHasAttributes"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasAttributes.xhtml">assertHasAttributes()</a>
+                — Asserts that a json object has an "attributes" member.</li>
+            <li id="assertHasData"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasData.xhtml">assertHasData()</a>
+                — Asserts that a json object has a "data" member.</li>
+            <li id="assertHasErrors"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasErrors.xhtml">assertHasErrors()</a>
+                — Asserts that a json object has an "errors" member.</li>
+            <li id="assertHasIncluded"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasIncluded.xhtml">assertHasIncluded()</a>
+                — Asserts that a json object has an "included" member.</li>
+            <li id="assertHasJsonapi"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasJsonapi.xhtml">assertHasJsonapi()</a>
+                — Asserts that a json object has a "jsonapi" member.</li>
+            <li id="assertHasLinks"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasLinks.xhtml">assertHasLinks()</a>
+                — Asserts that a json object has a "links" member.</li>
+            <li id="assertHasMember"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasMember.xhtml">assertHasMember()</a>
+                — Asserts that a json object has an expected member.</li>
+            <li id="assertHasMembers"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasMembers.xhtml">assertHasMembers()</a>
+                — Asserts that a json object has expected members.</li>
+            <li id="assertHasMeta"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasMeta.xhtml">assertHasMeta()</a>
+                — Asserts that a json object has a "meta" member.</li>
+            <li id="assertHasOnlyMembers"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasOnlyMembers.xhtml">assertHasOnlyMembers()</a>
+                — Asserts that a json object has only expected members.</li>
+            <li id="assertHasRelationships"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertHasRelationships.xhtml">assertHasRelationships()</a>
+                — Asserts that a json object has a "relationships" member.</li>
+            <li id="assertNotHasMember"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertNotHasMember.xhtml">assertNotHasMember()</a>
+                — Asserts that a json object not has an unexpected member.</li>
+            <li id="assertNotHasMembers"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMembers" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMembers/assertNotHasMembers.xhtml">assertNotHasMembers()</a>
+                — Asserts that a json object not has unexpected members.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMetaObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMetaObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertMetaObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidMetaObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertMetaObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertMetaObject/assertIsValidMetaObject.xhtml">assertIsValidMetaObject()</a>
+                — Asserts that a json fragment is a valid meta object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidRelationshipLinksObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject/assertIsValidRelationshipLinksObject.xhtml">assertIsValidRelationshipLinksObject()</a>
+                — Asserts that a json fragment is a valid link object extracted from a relationship object.</li>
+            <li id="assertIsValidRelationshipObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject/assertIsValidRelationshipObject.xhtml">assertIsValidRelationshipObject()</a>
+                — Asserts that a json fragment is a valid relationship object.</li>
+            <li id="assertIsValidRelationshipsObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertRelationshipsObject/assertIsValidRelationshipsObject.xhtml">assertIsValidRelationshipsObject()</a>
+                — Asserts that a json fragment is a valid relationships object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceLinkage.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIsValidResourceIdentifierObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceLinkage/assertIsValidResourceIdentifierObject.xhtml">assertIsValidResourceIdentifierObject()</a>
+                — Asserts that a json fragment is a valid resource identifier object.</li>
+            <li id="assertIsValidResourceLinkage"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceLinkage/assertIsValidResourceLinkage.xhtml">assertIsValidResourceLinkage()</a>
+                — Asserts that a json fragment is a valid resource linkage object.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertHasValidFields"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertHasValidFields.xhtml">assertHasValidFields()</a>
+                — Asserts that a resource object has valid fields (i.e., a resource object’s attributes and its relationships).</li>
+            <li id="assertIsNotForbiddenResourceFieldName"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsNotForbiddenResourceFieldName.xhtml">assertIsNotForbiddenResourceFieldName()</a>
+                — Asserts that a resource field name is not a forbidden name (like "type" or "id").</li>
+            <li id="assertIsValidResourceLinksObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsValidResourceLinksObject.xhtml">assertIsValidResourceLinksObject()</a>
+                — Asserts that a json fragment is a valid resource links object.</li>
+            <li id="assertIsValidResourceObject"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsValidResourceObject.xhtml">assertIsValidResourceObject()</a>
+                — Asserts that a json fragment is a valid resource.</li>
+            <li id="assertIsValidResourceObjectCollection"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertIsValidResourceObjectCollection.xhtml">assertIsValidResourceObjectCollection()</a>
+                — Asserts that a json fragment is a valid collection of resource objects.</li>
+            <li id="assertResourceIdMember"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertResourceIdMember.xhtml">assertResourceIdMember()</a>
+                — Asserts that a resource id member is valid.</li>
+            <li id="assertResourceObjectHasValidTopLevelStructure"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertResourceObjectHasValidTopLevelStructure.xhtml">assertResourceObjectHasValidTopLevelStructure()</a>
+                — Asserts that a resource object has a valid top-level structure.</li>
+            <li id="assertResourceTypeMember"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertResourceObject/assertResourceTypeMember.xhtml">assertResourceTypeMember()</a>
+                — Asserts that a resource type member is valid.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure.xhtml">VGirol\JsonApiAssert\Asserts\Structure\AssertStructure</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertHasValidStructure"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertHasValidStructure.xhtml">assertHasValidStructure()</a>
+                — Asserts that a json document has valid structure.</li>
+            <li id="assertHasValidTopLevelMembers"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertHasValidTopLevelMembers.xhtml">assertHasValidTopLevelMembers()</a>
+                — Asserts that a json document has valid top-level structure.</li>
+            <li id="assertIsValidIncludedCollection"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertIsValidIncludedCollection.xhtml">assertIsValidIncludedCollection()</a>
+                — Asserts that a collection of included resources is valid.</li>
+            <li id="assertIsValidPrimaryData"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertIsValidPrimaryData.xhtml">assertIsValidPrimaryData()</a>
+                — Asserts a json fragment is a valid primary data object.</li>
+            <li id="assertIsValidTopLevelLinksMember"><a title="VGirol\JsonApiAssert\Asserts\Structure\AssertStructure" href="../traits/VGirol_JsonApiAssert_Asserts_Structure_AssertStructure/assertIsValidTopLevelLinksMember.xhtml">assertIsValidTopLevelLinksMember()</a>
+                — Asserts that a json fragment is a valid top-level links member.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertLinks</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertLinkObjectEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks/assertLinkObjectEquals.xhtml">assertLinkObjectEquals()</a>
+                — Asserts that a link object equals an expected value.</li>
+            <li id="assertLinksObjectContains"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks/assertLinksObjectContains.xhtml">assertLinksObjectContains()</a>
+                — Asserts that a links object contains an expected link.</li>
+            <li id="assertLinksObjectEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertLinks" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertLinks/assertLinksObjectEquals.xhtml">assertLinksObjectEquals()</a>
+                — Asserts that a links object equals an expected links array.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertJsonapi" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertJsonapi.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertJsonapi</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertJsonapiObjectEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertJsonapi" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertJsonapi/assertJsonapiObjectEquals.xhtml">assertJsonapiObjectEquals()</a>
+                — Asserts that a jsonapi object equals an expected array.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertPagination</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertHasNoPaginationLinks"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertHasNoPaginationLinks.xhtml">assertHasNoPaginationLinks()</a>
+                — Asserts that a links object has no pagination links.</li>
+            <li id="assertHasNoPaginationMeta"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertHasNoPaginationMeta.xhtml">assertHasNoPaginationMeta()</a>
+                — Asserts that a meta object has no "pagination" member.</li>
+            <li id="assertHasPaginationLinks"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertHasPaginationLinks.xhtml">assertHasPaginationLinks()</a>
+                — Asserts that a links object has pagination links.</li>
+            <li id="assertPaginationLinksEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertPagination" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertPagination/assertPaginationLinksEquals.xhtml">assertPaginationLinksEquals()</a>
+                — Asserts that a links object has the expected pagination links.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertResource</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertResourceCollectionContains"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource/assertResourceCollectionContains.xhtml">assertResourceCollectionContains()</a>
+                — Asserts that an array of resource objects contains a given collection.</li>
+            <li id="assertResourceCollectionEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource/assertResourceCollectionEquals.xhtml">assertResourceCollectionEquals()</a>
+                — Asserts that an array of resource objects is equal to a given collection (same values and same order).</li>
+            <li id="assertResourceObjectEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertResource" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResource/assertResourceObjectEquals.xhtml">assertResourceObjectEquals()</a>
+                — Asserts that a resource object correspond to a given model.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertResourceIdentifierCollectionEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage/assertResourceIdentifierCollectionEquals.xhtml">assertResourceIdentifierCollectionEquals()</a>
+                — Asserts that an array of resource identifer objects correspond to an expected collection.</li>
+            <li id="assertResourceIdentifierEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage/assertResourceIdentifierEquals.xhtml">assertResourceIdentifierEquals()</a>
+                — Asserts that a resource identifier object is equal to an expected resource identifier.</li>
+            <li id="assertResourceLinkageEquals"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertResourceLinkage" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertResourceLinkage/assertResourceLinkageEquals.xhtml">assertResourceLinkageEquals()</a>
+                — Asserts that a resource linkage object correspond to a given reference object which can be either the null value, a single resource identifier object, an empty collection or a collection of resource identifier ojects.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertErrors" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertErrors.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertErrors</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertErrorsContains"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertErrors" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertErrors/assertErrorsContains.xhtml">assertErrorsContains()</a>
+                — Asserts that an errors array contains a given subset of expected errors.</li>
+          </ul>
+          <h3>Inherited from <a title="VGirol\JsonApiAssert\Asserts\Content\AssertInclude" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertInclude.xhtml">VGirol\JsonApiAssert\Asserts\Content\AssertInclude</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="assertIncludeObjectContains"><a title="VGirol\JsonApiAssert\Asserts\Content\AssertInclude" href="../traits/VGirol_JsonApiAssert_Asserts_Content_AssertInclude/assertIncludeObjectContains.xhtml">assertIncludeObjectContains()</a>
+                — Asserts that an array of included resource objects contains a given resource object or collection.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2019-05-09T22:19:20+00:00 (commit #<span title="6d5829fd9ada6d8deff1e27326b30ccf668345ef">6d5829f</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Added scripts</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-05-08T22:46:07+00:00 (commit #<span title="e5fbc0deb39c96809587101e76e1fa894000dad1">e5fbc0d</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Factories</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-05-02T05:57:48+00:00 (commit #<span title="13fd7ace86f924842f05a3710770eb44b092f40f">13fd7ac</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Temp</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-23T23:14:46+00:00 (commit #<span title="dd9cb4e8001587cf20c113718442ec5cca28b3f1">dd9cb4e</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Added InvalidArgumentException</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-23T22:58:38+00:00 (commit #<span title="c40f63fa32b0435d8af8026ac9d65968489637bf">c40f63f</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Many lintings</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-18T22:55:51+00:00 (commit #<span title="c0849395e4eadc9b0b0e6d1dd46bbdc2aaf1eb6e">c084939</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Many lintings</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-12T20:09:53+00:00 (commit #<span title="934d3439f5578a5e602cfa8ace2bb5869c193ea8">934d343</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Refactored protected method</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-08T10:35:23+00:00 (commit #<span title="12a785759bf3e3c2caa7d7e5771a11969eddc34e">12a7857</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Updated CHANGELOG</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-08T10:13:14+00:00 (commit #<span title="1cce3aad291f26d1f2e2801047fdb71b57e92570">1cce3aa</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Updated README, refactored tests and linted files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-02-23T23:38:48+00:00 (commit #<span title="c1c6d7926d945bca5f8a0a608a032f3d4c51fc0b">c1c6d79</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Changing directories and files names</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -17,7 +17,9 @@ trait SetExceptionsTrait
      * Set the class name of the expected exception
      *
      * @see \PHPUnit\Framework\TestCase::expectException
+     *
      * @param string $exception
+     *
      * @return void
      */
     abstract public function expectException(string $exception): void;
@@ -26,7 +28,9 @@ trait SetExceptionsTrait
      * Set the message of the expected exception
      *
      * @see \PHPUnit\Framework\TestCase::expectExceptionMessage
+     *
      * @param string $message
+     *
      * @return void
      */
     abstract public function expectExceptionMessage(string $message): void;
@@ -35,7 +39,9 @@ trait SetExceptionsTrait
      * Set the a regular expression for the message of the expected exception
      *
      * @see \PHPUnit\Framework\TestCase::expectExceptionMessageRegExp
+     *
      * @param string $messageRegExp
+     *
      * @return void
      */
     abstract public function expectExceptionMessageRegExp(string $messageRegExp): void;
@@ -44,6 +50,7 @@ trait SetExceptionsTrait
      * Set the expected exception and message when defining a test that will fail.
      *
      * @param string|null $message
+     *
      * @return void
      */
     protected function setFailureException($message = null)
@@ -58,6 +65,7 @@ trait SetExceptionsTrait
      * Set the expected exception and message when defining a test that will fail.
      *
      * @param string|null $message
+     *
      * @return void
      */
     protected function setFailureExceptionRegex($message = null)
@@ -72,8 +80,9 @@ trait SetExceptionsTrait
      * Set the expected exception and message when testing a call with invalid arguments to a method.
      *
      * @param integer $arg
-     * @param string $type
-     * @param mixed $value
+     * @param string  $type
+     * @param mixed   $value
+     *
      * @return void
      */
     protected function setInvalidArgumentException(int $arg, string $type, $value = null)

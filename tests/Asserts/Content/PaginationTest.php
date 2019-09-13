@@ -38,10 +38,10 @@ class PaginationTest extends TestCase
                 implode(
                     ', ',
                     [
-                        Members::FIRST,
-                        Members::LAST,
-                        Members::PREV,
-                        Members::NEXT
+                        Members::LINK_PAGINATION_FIRST,
+                        Members::LINK_PAGINATION_LAST,
+                        Members::LINK_PAGINATION_PREV,
+                        Members::LINK_PAGINATION_NEXT
                     ]
                 )
             )

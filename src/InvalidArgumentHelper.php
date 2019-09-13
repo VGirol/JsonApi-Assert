@@ -1,9 +1,11 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 /*
  * This file is inspired from PHPUnit\Util\InvalidArgumentHelper.
  */
+
 namespace VGirol\JsonApiAssert;
 
 /**
@@ -17,8 +19,9 @@ final class InvalidArgumentHelper
      * Creates a new instance of VGirol\JsonApiAssert\InvalidArgumentException with customized message.
      *
      * @param integer $argument
-     * @param string $type
-     * @param mixed $value
+     * @param string  $type
+     * @param mixed   $value
+     *
      * @return InvalidArgumentException
      */
     public static function factory(int $argument, string $type, $value = null): InvalidArgumentException

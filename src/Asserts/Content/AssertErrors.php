@@ -6,34 +6,45 @@ use PHPUnit\Framework\Assert as PHPUnit;
 use PHPUnit\Framework\ExpectationFailedException;
 use VGirol\JsonApiAssert\Messages;
 
+/**
+ * This trait adds the ability to test errors content.
+ */
 trait AssertErrors
 {
     /**
      * Asserts that an errors array contains a given subset of expected errors.
      *
-     * @param array $expectedErrors
-     * @param array $errors
+     * It will do the following checks :
+     * 1) asserts that the errors array is valid (@see assertIsValidErrorsObject).
+     * 2) asserts that the errors array length is greater or equal than the expected errors array length.
+     * 3) asserts that each expected error is present in the errors array.
+     *
+     * @link https://jsonapi.org/format/#error-objects
+     *
+     * @param array   $expected An array of expected error objects
+     * @param array   $errors   An array of errors to inspect
      * @param boolean $strict   If true, unsafe characters are not allowed when checking members name.
      *
+     * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
-    public static function assertErrorsContains($expectedErrors, $errors, $strict)
+    public static function assertErrorsContains($expected, $errors, $strict)
     {
         try {
-            static::assertIsValidErrorsObject($expectedErrors, $strict);
+            static::assertIsValidErrorsObject($expected, $strict);
         } catch (ExpectationFailedException $e) {
-            static::invalidArgument(1, 'errors object', $expectedErrors);
+            static::invalidArgument(1, 'errors object', $expected);
         }
 
         static::assertIsValidErrorsObject($errors, $strict);
 
         PHPUnit::assertGreaterThanOrEqual(
-            count($expectedErrors),
+            count($expected),
             count($errors),
             Messages::ERRORS_OBJECT_CONTAINS_NOT_ENOUGH_ERRORS
         );
 
-        foreach ($expectedErrors as $expectedError) {
+        foreach ($expected as $expectedError) {
             PHPUnit::assertContains($expectedError, $errors);
         }
     }
