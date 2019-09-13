@@ -13,11 +13,17 @@
         processIsolation="false"
         stopOnFailure="false">
     <testsuites>
+        <testsuite name="VGirol Test Suite">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
         <testsuite name="Asserts">
             <directory suffix="Test.php">./tests/Asserts</directory>
         </testsuite>
         <testsuite name="Constraints">
             <directory suffix="Test.php">./tests/Constraints</directory>
+        </testsuite>
+        <testsuite name="Exceptions">
+            <directory suffix="Test.php">./tests/Exceptions</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -27,7 +33,7 @@
     </filter>
     <logging>
         <log type="coverage-html" target="./build/coverage/html"/>
-        <log type="coverage-xml" target="./build/coverage/xml"/>
+        <log type="coverage-xml" target="./build/coverage/coverage-xml"/>
         <log type="coverage-clover" target="./build/coverage/clover.xml"/>
         <log type="junit" target="./build/coverage/phpunit.junit.xml"/>
     </logging>

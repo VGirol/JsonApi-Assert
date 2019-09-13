@@ -14,7 +14,19 @@
         }
     },
     "mutators": {
-        "@default": true
+        "@default": true,
+        "MethodCallRemoval": {
+            "ignore": [
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasData",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasAttributes",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasLinks",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasMeta",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasIncluded",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasRelationships",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasErrors",
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasJsonapi"
+            ]
+        }
     },
     "testFramework":"phpunit",
     "phpUnit": {

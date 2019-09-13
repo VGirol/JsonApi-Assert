@@ -24,7 +24,7 @@
                     <file name="phploc/phploc.xml" />
                 </source>
                 <source type="phpunit">
-                    <coverage path="coverage/xml" />
+                    <coverage path="coverage/coverage-xml" />
                 </source>
             </enrich>
 
