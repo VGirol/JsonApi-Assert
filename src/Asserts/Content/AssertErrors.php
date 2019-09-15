@@ -2,6 +2,8 @@
 
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
+use DMS\PHPUnitExtensions\ArraySubset\Assert as AssertArray;
+use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
 use PHPUnit\Framework\Assert as PHPUnit;
 use PHPUnit\Framework\ExpectationFailedException;
 use VGirol\JsonApiAssert\Messages;
@@ -45,7 +47,16 @@ trait AssertErrors
         );
 
         foreach ($expected as $expectedError) {
-            PHPUnit::assertContains($expectedError, $errors);
+            $test = false;
+            foreach ($errors as $error) {
+                $constraint = new ArraySubset($expectedError, true);
+                if ($constraint->evaluate($error, '', true)) {
+                    $test = true;
+                    break;
+                }
+            }
+            PHPUnit::assertTrue($test);
+            // PHPUnit::assertContains($expectedError, $errors);
         }
     }
 }
