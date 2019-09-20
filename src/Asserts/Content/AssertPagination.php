@@ -9,7 +9,7 @@ use VGirol\JsonApiAssert\Constraint\PaginationLinksEqualConstraint;
 use VGirol\JsonApiAssert\Members;
 
 /**
- * Assertions relating to the pagination
+ * This trait adds the ability to test pagination (links and meta).
  */
 trait AssertPagination
 {
@@ -21,17 +21,20 @@ trait AssertPagination
     private static function allowedMembers(): array
     {
         return [
-            Members::FIRST,
-            Members::LAST,
-            Members::PREV,
-            Members::NEXT
+            Members::LINK_PAGINATION_FIRST,
+            Members::LINK_PAGINATION_LAST,
+            Members::LINK_PAGINATION_PREV,
+            Members::LINK_PAGINATION_NEXT
         ];
     }
 
     /**
      * Asserts that a links object has pagination links.
      *
-     * @param array $links
+     * @link https://jsonapi.org/format/#document-links
+     *
+     * @param array $links A links object to inspect
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -46,7 +49,10 @@ trait AssertPagination
     /**
      * Asserts that a links object has no pagination links.
      *
-     * @param array $links
+     * @link https://jsonapi.org/format/#document-links
+     *
+     * @param array $links A links object to inspect
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -60,8 +66,11 @@ trait AssertPagination
     /**
      * Asserts that a links object has the expected pagination links.
      *
-     * @param array $expected
-     * @param array $json
+     * @link https://jsonapi.org/format/#document-links
+     *
+     * @param array $expected The expected links object
+     * @param array $json     The links object to test
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -71,14 +80,29 @@ trait AssertPagination
     }
 
     /**
+     * Asserts that a meta object has no "pagination" member.
+     *
+     * @link https://jsonapi.org/format/#document-meta
+     *
+     * @param array $meta The meta object to inspect
+     *
+     * @return void
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     */
+    public static function assertHasNoPaginationMeta($meta): void
+    {
+        static::assertNotHasMember(Members::META_PAGINATION, $meta);
+    }
+
+    /**
      * Returns a new instance of the \VGirol\JsonApiAssert\Constraint\PaginationLinksEqualConstraint class.
      *
-     * @param array $expected   The expected links
+     * @param array $expected The expected links
      *
      * @return \VGirol\JsonApiAssert\Constraint\PaginationLinksEqualConstraint
      */
     private static function paginationLinksEqualConstraint($expected): PaginationLinksEqualConstraint
     {
-        return new PaginationLinksEqualConstraint($expected);
+        return new PaginationLinksEqualConstraint($expected, static::allowedMembers());
     }
 }

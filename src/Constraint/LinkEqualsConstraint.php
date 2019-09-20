@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VGirol\JsonApiAssert\Constraint;
 
 use PHPUnit\Framework\Constraint\Constraint;
+use VGirol\JsonApiAssert\Members;
 
 /**
  * A constraint class to assert that a link object equals an expected value.
@@ -12,14 +13,14 @@ use PHPUnit\Framework\Constraint\Constraint;
 class LinkEqualsConstraint extends Constraint
 {
     /**
-     * @var string|null
+     * @var array|string|null
      */
     private $expected;
 
     /**
      * Class constructor.
      *
-     * @param string|null $expected
+     * @param array|string|null $expected
      */
     public function __construct($expected)
     {
@@ -41,7 +42,7 @@ class LinkEqualsConstraint extends Constraint
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
-     * @param mixed $other value or object to evaluate
+     * @param array|string|null $other value or object to evaluate
      */
     protected function matches($other): bool
     {
@@ -53,8 +54,15 @@ class LinkEqualsConstraint extends Constraint
             return false;
         }
 
-        $linkElms = explode('?', $other);
-        $expectedElms = explode('?', $this->expected);
+        /** @var string $href */
+        $href = \is_array($other) && isset($other[Members::LINK_HREF]) ? $other[Members::LINK_HREF] : $other;
+
+        /** @var string $expectedHref */
+        $expectedHref = \is_array($this->expected) && isset($this->expected[Members::LINK_HREF]) ?
+            $this->expected[Members::LINK_HREF] : $this->expected;
+
+        $linkElms = explode('?', $href);
+        $expectedElms = explode('?', $expectedHref);
 
         if (count($expectedElms) != count($linkElms)) {
             return false;

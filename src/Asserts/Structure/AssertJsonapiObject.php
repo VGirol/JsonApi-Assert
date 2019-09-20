@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
@@ -15,8 +16,18 @@ trait AssertJsonapiObject
     /**
      * Asserts that a json fragment is a valid jsonapi object.
      *
-     * @param array     $json
-     * @param boolean   $strict         If true, unsafe characters are not allowed when checking members name.
+     * It will do the following checks :
+     * 1) asserts that the jsonapi object is not an array of objects (@see assertIsNotArrayOfObjects).
+     * 2) asserts that the jsonapi object contains only the following allowed members : "version" and "meta"
+     * (@see assertContainsOnlyAllowedMembers).
+     *
+     * Optionaly, if presents, it will checks :
+     * 3) asserts that the version member is a string.
+     * 4) asserts that meta member is valid (@see assertIsValidMetaObject).
+     *
+     * @param array   $json
+     * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -28,7 +39,7 @@ trait AssertJsonapiObject
         );
 
         $allowed = [
-            Members::VERSION,
+            Members::JSONAPI_VERSION,
             Members::META
         ];
         static::assertContainsOnlyAllowedMembers(
@@ -36,9 +47,9 @@ trait AssertJsonapiObject
             $json
         );
 
-        if (isset($json[Members::VERSION])) {
+        if (isset($json[Members::JSONAPI_VERSION])) {
             PHPUnit::assertIsString(
-                $json[Members::VERSION],
+                $json[Members::JSONAPI_VERSION],
                 Messages::JSONAPI_VERSION_IS_NOT_STRING
             );
         }

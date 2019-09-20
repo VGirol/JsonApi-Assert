@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert;
 
@@ -55,8 +56,9 @@ trait HasJsonApiAssert
      * Throws an InvalidArgumentException because of an invalid argument passed to a method.
      *
      * @param integer $argument
-     * @param string $type
-     * @param mixed $value
+     * @param string  $type
+     * @param mixed   $value
+     *
      * @return void
      * @throws \VGirol\JsonApiAssert\InvalidArgumentException
      *

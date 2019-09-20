@@ -1,4 +1,5 @@
 <?php
+
 namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
@@ -90,7 +91,15 @@ class TopLevelMembersTest extends TestCase
             ],
             'no data but included' => [
                 [
-                    'included' => 'not allowed',
+                    'included' => [
+                        [
+                            'type' => 'articles',
+                            'id' => '1',
+                            'attributes' => [
+                                'title' => 'JSON:API paints my bikeshed!'
+                            ]
+                        ]
+                    ],
                     'meta' => [
                         'anything' => 'ok'
                     ]

@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - VGirol\JsonApiAssert\Messages</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#VGirol_JsonApiAssert">VGirol\JsonApiAssert</a>
+          </li>
+          <li class="separator">Messages</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Messages.php.xhtml#line10">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>VGirol\JsonApiAssert\</small>Messages</h1>
+        <h4>All the messages</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Messages
+            {<br/><ul class="none"><li>// constants</li><li>const ACCEPT_HEADER_WITHOUT_PARAMETERS = 'A request that include the JSON:API media type in her Accept header MUST specify
+        the media type %s there at least once without any media type parameters.';</li><li>const ATTRIBUTES_OBJECT_IS_NOT_ARRAY = 'An attributes object MUST be an array or an arrayable object with a "toArray" method.';</li><li>const CONTENT_TYPE_HEADER_MISSING = 'Clients MUST send all JSON:API data in request documents with the header "Content-Type: %s"
+        without any media type parameters.';</li><li>const CONTENT_TYPE_HEADER_ALLREADY_SET = 'The response header "Content-Type" is allready set with bad value :
+        a response MUST specify the header "Content-Type: %s" without any media type parameters.';</li><li>const CONTENT_TYPE_HEADER_WITHOUT_PARAMETERS = 'A request MUST specify the header "Content-Type: %s" without any media type parameters.';</li><li>const ERROR_CODE_IS_NOT_STRING = 'The value of the "code" member MUST be a string.';</li><li>const ERROR_DETAILS_IS_NOT_STRING = 'The value of the "details" member MUST be a string.';</li><li>const ERROR_OBJECT_NOT_ARRAY = 'An error object MUST be an array.';</li><li>const ERROR_OBJECT_NOT_EMPTY = 'An error object MUST NOT be empty.';</li><li>const ERROR_SOURCE_OBJECT_NOT_ARRAY = 'An error source object MUST be an array.';</li><li>const ERROR_SOURCE_PARAMETER_IS_NOT_STRING = 'The value of the "parameter" member MUST be a string.';</li><li>const ERROR_SOURCE_POINTER_IS_NOT_STRING = 'The value of the "pointer" member MUST be a string.';</li><li>const ERROR_SOURCE_POINTER_START = 'The value of the "pointer" member MUST start with a slash (/).';</li><li>const ERROR_STATUS_IS_NOT_STRING = 'The value of the "status" member MUST be a string.';</li><li>const ERROR_TITLE_IS_NOT_STRING = 'The value of the "title" member MUST be a string.';</li><li>const ERRORS_OBJECT_NOT_ARRAY = 'Top-level "errors" member MUST be an array of error objects.';</li><li>const FIELDS_HAVE_SAME_NAME = 'A resource CAN NOT have an attribute and relationship with the same name.';</li><li>const FIELDS_NAME_NOT_ALLOWED = 'A resource CAN NOT have an attribute or relationship named "type" or "id".';</li><li>const HAS_MEMBER = 'Failed asserting that a JSON object HAS the member "%s".';</li><li>const HAS_ONLY_MEMBERS = 'Failed asserting that a JSON object HAS ONLY the members "%s".';</li><li>const OBJECT_NOT_ARRAY = 'A resource linkage MUST be an array of resource objects or resource identifier objects.';</li><li>const LINK_OBJECT_MISS_HREF_MEMBER = 'A link object MUST contain an "href" member.';</li><li>const LINKS_OBJECT_NOT_ARRAY = 'A links object MUST be an array.';</li><li>const MEMBER_NAME_HAVE_RESERVED_CHARACTERS = 'Member names MUST contain only allowed characters.';</li><li>const MEMBER_NAME_IS_NOT_STRING = 'Each member key MUST be a string.';</li><li>const MEMBER_NAME_IS_TOO_SHORT = 'Member names MUST contain at least one character.';</li><li>const MEMBER_NAME_NOT_ALLOWED = 'Any object that constitutes or is contained in an attribute MUST NOT contain a "relationships"
+        or "links" member.';</li><li>const MEMBER_NAME_START_AND_END_WITH_ALLOWED_CHARACTERS = 'Member names MUST start and end with a globally allowed character.';</li><li>const META_OBJECT_IS_NOT_ARRAY = 'A meta object MUST be an array.';</li><li>const NOT_HAS_MEMBER = 'Failed asserting that a JSON object NOT HAS the member "%s".';</li><li>const ONLY_ALLOWED_MEMBERS = 'Unless otherwise noted, objects defined by this specification MUST NOT contain any additional members.';</li><li>const PRIMARY_DATA_NOT_ARRAY = 'Primary data MUST be an array or an arrayable object with a "toArray" method.';</li><li>const PRIMARY_DATA_SAME_TYPE = 'All elements of resource collection MUST be of same type (resource object or resource identifier object).';</li><li>const RESOURCE_COLLECTION_NOT_ARRAY = 'Resource collection MUST be represented as an empty array or an array of resource objects.';</li><li>const RESOURCE_ID_MEMBER_IS_ABSENT = 'A resource object MUST contain the "id" top-level members.';</li><li>const RESOURCE_ID_MEMBER_IS_EMPTY = 'The value of the "id" member CAN NOT be empty.';</li><li>const RESOURCE_ID_MEMBER_IS_NOT_STRING = 'The value of the "id" member MUST be a string.';</li><li>const RESOURCE_IDENTIFIER_IS_NOT_ARRAY = 'A resource identifier object MUST be an array.';</li><li>const RESOURCE_IS_NOT_ARRAY = 'A resource object MUST be an array.';</li><li>const RESOURCE_LINKAGE_NOT_ARRAY = 'Resource linkage MUST be represented as null, a single resource identifier object,
+        an empty array or an array of resource identifier objects.';</li><li>const RESOURCE_TYPE_MEMBER_IS_ABSENT = 'A resource object MUST contain the "type" top-level members.';</li><li>const RESOURCE_TYPE_MEMBER_IS_EMPTY = 'The value of the "type" member CAN NOT be empty.';</li><li>const RESOURCE_TYPE_MEMBER_IS_NOT_STRING = 'The value of the "type" member MUST be a string.';</li><li>const TEST_FAILED = 'Failed asserting that test has failed.';</li><li>const TOP_LEVEL_DATA_AND_ERROR = 'The members "data" and "errors" MUST NOT coexist in the same JSON document.';</li><li>const TOP_LEVEL_DATA_AND_INCLUDED = 'If a document does not contain a top-level "data" member, the "included" member MUST NOT be present either.';</li><li>const TOP_LEVEL_MEMBERS = 'A JSON document MUST contain at least one of the following top-level members: "%s".';</li><li>const COMPOUND_DOCUMENT_ONLY_ONE_RESOURCE = 'A compound document MUST NOT include more than one resource object for each "type" and "id" pair.';</li><li>const CONTAINS_AT_LEAST_ONE = 'contains at least one element of "%s"';</li><li>const JSONAPI_VERSION_IS_NOT_STRING = 'If present, the value of the version member MUST be a string.';</li><li>const LINK_OBJECT_IS_NOT_ARRAY = 'A link MUST be represented as either a null value, a string or an object.';</li><li>const MUST_NOT_BE_ARRAY_OF_OBJECTS = 'Failed asserting that an array is not an array of objects.';</li><li>const MUST_BE_ARRAY_OF_OBJECTS = 'Failed asserting that an array is an array of objects.';</li><li>const INCLUDED_RESOURCE_NOT_LINKED = 'An included resource MUST correspond to an existing resource linkage.';</li><li>const ERRORS_OBJECT_CONTAINS_NOT_ENOUGH_ERRORS = 'Errors array must be greater or equal than the expected errors array.';</li><li>const ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR = 'Failed asserting that "errors" member %s contains the expected error %s.';</li></ul>
+
+            }<br/></div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">0%</td>
+            <td class="nummeric">0 / 0</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">0%</td>
+            <td class="nummeric"> / </td>
+          </tr>
+        </table>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="ACCEPT_HEADER_WITHOUT_PARAMETERS">ACCEPT_HEADER_WITHOUT_PARAMETERS</td>
+              <td>'A request that include the JSON:API media type in her Accept header MUST specify
+        the media type %s there at least once without any media type parameters.'</td>
+            </tr>
+            <tr>
+              <td id="ATTRIBUTES_OBJECT_IS_NOT_ARRAY">ATTRIBUTES_OBJECT_IS_NOT_ARRAY</td>
+              <td>'An attributes object MUST be an array or an arrayable object with a "toArray" method.'</td>
+            </tr>
+            <tr>
+              <td id="CONTENT_TYPE_HEADER_MISSING">CONTENT_TYPE_HEADER_MISSING</td>
+              <td>'Clients MUST send all JSON:API data in request documents with the header "Content-Type: %s"
+        without any media type parameters.'</td>
+            </tr>
+            <tr>
+              <td id="CONTENT_TYPE_HEADER_ALLREADY_SET">CONTENT_TYPE_HEADER_ALLREADY_SET</td>
+              <td>'The response header "Content-Type" is allready set with bad value :
+        a response MUST specify the header "Content-Type: %s" without any media type parameters.'</td>
+            </tr>
+            <tr>
+              <td id="CONTENT_TYPE_HEADER_WITHOUT_PARAMETERS">CONTENT_TYPE_HEADER_WITHOUT_PARAMETERS</td>
+              <td>'A request MUST specify the header "Content-Type: %s" without any media type parameters.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_CODE_IS_NOT_STRING">ERROR_CODE_IS_NOT_STRING</td>
+              <td>'The value of the "code" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_DETAILS_IS_NOT_STRING">ERROR_DETAILS_IS_NOT_STRING</td>
+              <td>'The value of the "details" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_OBJECT_NOT_ARRAY">ERROR_OBJECT_NOT_ARRAY</td>
+              <td>'An error object MUST be an array.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_OBJECT_NOT_EMPTY">ERROR_OBJECT_NOT_EMPTY</td>
+              <td>'An error object MUST NOT be empty.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_SOURCE_OBJECT_NOT_ARRAY">ERROR_SOURCE_OBJECT_NOT_ARRAY</td>
+              <td>'An error source object MUST be an array.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_SOURCE_PARAMETER_IS_NOT_STRING">ERROR_SOURCE_PARAMETER_IS_NOT_STRING</td>
+              <td>'The value of the "parameter" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_SOURCE_POINTER_IS_NOT_STRING">ERROR_SOURCE_POINTER_IS_NOT_STRING</td>
+              <td>'The value of the "pointer" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_SOURCE_POINTER_START">ERROR_SOURCE_POINTER_START</td>
+              <td>'The value of the "pointer" member MUST start with a slash (/).'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_STATUS_IS_NOT_STRING">ERROR_STATUS_IS_NOT_STRING</td>
+              <td>'The value of the "status" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="ERROR_TITLE_IS_NOT_STRING">ERROR_TITLE_IS_NOT_STRING</td>
+              <td>'The value of the "title" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="ERRORS_OBJECT_NOT_ARRAY">ERRORS_OBJECT_NOT_ARRAY</td>
+              <td>'Top-level "errors" member MUST be an array of error objects.'</td>
+            </tr>
+            <tr>
+              <td id="FIELDS_HAVE_SAME_NAME">FIELDS_HAVE_SAME_NAME</td>
+              <td>'A resource CAN NOT have an attribute and relationship with the same name.'</td>
+            </tr>
+            <tr>
+              <td id="FIELDS_NAME_NOT_ALLOWED">FIELDS_NAME_NOT_ALLOWED</td>
+              <td>'A resource CAN NOT have an attribute or relationship named "type" or "id".'</td>
+            </tr>
+            <tr>
+              <td id="HAS_MEMBER">HAS_MEMBER</td>
+              <td>'Failed asserting that a JSON object HAS the member "%s".'</td>
+            </tr>
+            <tr>
+              <td id="HAS_ONLY_MEMBERS">HAS_ONLY_MEMBERS</td>
+              <td>'Failed asserting that a JSON object HAS ONLY the members "%s".'</td>
+            </tr>
+            <tr>
+              <td id="OBJECT_NOT_ARRAY">OBJECT_NOT_ARRAY</td>
+              <td>'A resource linkage MUST be an array of resource objects or resource identifier objects.'</td>
+            </tr>
+            <tr>
+              <td id="LINK_OBJECT_MISS_HREF_MEMBER">LINK_OBJECT_MISS_HREF_MEMBER</td>
+              <td>'A link object MUST contain an "href" member.'</td>
+            </tr>
+            <tr>
+              <td id="LINKS_OBJECT_NOT_ARRAY">LINKS_OBJECT_NOT_ARRAY</td>
+              <td>'A links object MUST be an array.'</td>
+            </tr>
+            <tr>
+              <td id="MEMBER_NAME_HAVE_RESERVED_CHARACTERS">MEMBER_NAME_HAVE_RESERVED_CHARACTERS</td>
+              <td>'Member names MUST contain only allowed characters.'</td>
+            </tr>
+            <tr>
+              <td id="MEMBER_NAME_IS_NOT_STRING">MEMBER_NAME_IS_NOT_STRING</td>
+              <td>'Each member key MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="MEMBER_NAME_IS_TOO_SHORT">MEMBER_NAME_IS_TOO_SHORT</td>
+              <td>'Member names MUST contain at least one character.'</td>
+            </tr>
+            <tr>
+              <td id="MEMBER_NAME_NOT_ALLOWED">MEMBER_NAME_NOT_ALLOWED</td>
+              <td>'Any object that constitutes or is contained in an attribute MUST NOT contain a "relationships"
+        or "links" member.'</td>
+            </tr>
+            <tr>
+              <td id="MEMBER_NAME_START_AND_END_WITH_ALLOWED_CHARACTERS">MEMBER_NAME_START_AND_END_WITH_ALLOWED_CHARACTERS</td>
+              <td>'Member names MUST start and end with a globally allowed character.'</td>
+            </tr>
+            <tr>
+              <td id="META_OBJECT_IS_NOT_ARRAY">META_OBJECT_IS_NOT_ARRAY</td>
+              <td>'A meta object MUST be an array.'</td>
+            </tr>
+            <tr>
+              <td id="NOT_HAS_MEMBER">NOT_HAS_MEMBER</td>
+              <td>'Failed asserting that a JSON object NOT HAS the member "%s".'</td>
+            </tr>
+            <tr>
+              <td id="ONLY_ALLOWED_MEMBERS">ONLY_ALLOWED_MEMBERS</td>
+              <td>'Unless otherwise noted, objects defined by this specification MUST NOT contain any additional members.'</td>
+            </tr>
+            <tr>
+              <td id="PRIMARY_DATA_NOT_ARRAY">PRIMARY_DATA_NOT_ARRAY</td>
+              <td>'Primary data MUST be an array or an arrayable object with a "toArray" method.'</td>
+            </tr>
+            <tr>
+              <td id="PRIMARY_DATA_SAME_TYPE">PRIMARY_DATA_SAME_TYPE</td>
+              <td>'All elements of resource collection MUST be of same type (resource object or resource identifier object).'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_COLLECTION_NOT_ARRAY">RESOURCE_COLLECTION_NOT_ARRAY</td>
+              <td>'Resource collection MUST be represented as an empty array or an array of resource objects.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_ID_MEMBER_IS_ABSENT">RESOURCE_ID_MEMBER_IS_ABSENT</td>
+              <td>'A resource object MUST contain the "id" top-level members.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_ID_MEMBER_IS_EMPTY">RESOURCE_ID_MEMBER_IS_EMPTY</td>
+              <td>'The value of the "id" member CAN NOT be empty.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_ID_MEMBER_IS_NOT_STRING">RESOURCE_ID_MEMBER_IS_NOT_STRING</td>
+              <td>'The value of the "id" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_IDENTIFIER_IS_NOT_ARRAY">RESOURCE_IDENTIFIER_IS_NOT_ARRAY</td>
+              <td>'A resource identifier object MUST be an array.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_IS_NOT_ARRAY">RESOURCE_IS_NOT_ARRAY</td>
+              <td>'A resource object MUST be an array.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_LINKAGE_NOT_ARRAY">RESOURCE_LINKAGE_NOT_ARRAY</td>
+              <td>'Resource linkage MUST be represented as null, a single resource identifier object,
+        an empty array or an array of resource identifier objects.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_TYPE_MEMBER_IS_ABSENT">RESOURCE_TYPE_MEMBER_IS_ABSENT</td>
+              <td>'A resource object MUST contain the "type" top-level members.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_TYPE_MEMBER_IS_EMPTY">RESOURCE_TYPE_MEMBER_IS_EMPTY</td>
+              <td>'The value of the "type" member CAN NOT be empty.'</td>
+            </tr>
+            <tr>
+              <td id="RESOURCE_TYPE_MEMBER_IS_NOT_STRING">RESOURCE_TYPE_MEMBER_IS_NOT_STRING</td>
+              <td>'The value of the "type" member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="TEST_FAILED">TEST_FAILED</td>
+              <td>'Failed asserting that test has failed.'</td>
+            </tr>
+            <tr>
+              <td id="TOP_LEVEL_DATA_AND_ERROR">TOP_LEVEL_DATA_AND_ERROR</td>
+              <td>'The members "data" and "errors" MUST NOT coexist in the same JSON document.'</td>
+            </tr>
+            <tr>
+              <td id="TOP_LEVEL_DATA_AND_INCLUDED">TOP_LEVEL_DATA_AND_INCLUDED</td>
+              <td>'If a document does not contain a top-level "data" member, the "included" member MUST NOT be present either.'</td>
+            </tr>
+            <tr>
+              <td id="TOP_LEVEL_MEMBERS">TOP_LEVEL_MEMBERS</td>
+              <td>'A JSON document MUST contain at least one of the following top-level members: "%s".'</td>
+            </tr>
+            <tr>
+              <td id="COMPOUND_DOCUMENT_ONLY_ONE_RESOURCE">COMPOUND_DOCUMENT_ONLY_ONE_RESOURCE</td>
+              <td>'A compound document MUST NOT include more than one resource object for each "type" and "id" pair.'</td>
+            </tr>
+            <tr>
+              <td id="CONTAINS_AT_LEAST_ONE">CONTAINS_AT_LEAST_ONE</td>
+              <td>'contains at least one element of "%s"'</td>
+            </tr>
+            <tr>
+              <td id="JSONAPI_VERSION_IS_NOT_STRING">JSONAPI_VERSION_IS_NOT_STRING</td>
+              <td>'If present, the value of the version member MUST be a string.'</td>
+            </tr>
+            <tr>
+              <td id="LINK_OBJECT_IS_NOT_ARRAY">LINK_OBJECT_IS_NOT_ARRAY</td>
+              <td>'A link MUST be represented as either a null value, a string or an object.'</td>
+            </tr>
+            <tr>
+              <td id="MUST_NOT_BE_ARRAY_OF_OBJECTS">MUST_NOT_BE_ARRAY_OF_OBJECTS</td>
+              <td>'Failed asserting that an array is not an array of objects.'</td>
+            </tr>
+            <tr>
+              <td id="MUST_BE_ARRAY_OF_OBJECTS">MUST_BE_ARRAY_OF_OBJECTS</td>
+              <td>'Failed asserting that an array is an array of objects.'</td>
+            </tr>
+            <tr>
+              <td id="INCLUDED_RESOURCE_NOT_LINKED">INCLUDED_RESOURCE_NOT_LINKED</td>
+              <td>'An included resource MUST correspond to an existing resource linkage.'</td>
+            </tr>
+            <tr>
+              <td id="ERRORS_OBJECT_CONTAINS_NOT_ENOUGH_ERRORS">ERRORS_OBJECT_CONTAINS_NOT_ENOUGH_ERRORS</td>
+              <td>'Errors array must be greater or equal than the expected errors array.'</td>
+            </tr>
+            <tr>
+              <td id="ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR">ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR</td>
+              <td>'Failed asserting that "errors" member %s contains the expected error %s.'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2019-07-13T08:38:21+00:00 (commit #<span title="a33aaf9a44d8e1488005996d6451b877acade51b">a33aaf9</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Many changes</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-05-15T20:11:03+00:00 (commit #<span title="e0183a59276c452e83b2f6b2e9b5fdd8c9a948a9">e0183a5</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">before 400</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-23T23:14:46+00:00 (commit #<span title="dd9cb4e8001587cf20c113718442ec5cca28b3f1">dd9cb4e</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Added InvalidArgumentException</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-23T22:58:38+00:00 (commit #<span title="c40f63fa32b0435d8af8026ac9d65968489637bf">c40f63f</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Many lintings</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-20T22:48:37+00:00 (commit #<span title="f697a2d01edc4e8ce6e34dc81de3297062e79677">f697a2d</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Updated docblocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-05T23:22:10+00:00 (commit #<span title="afc5218c9c6264aac402bab0c307aa9a64d08d02">afc5218</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Linted some files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-04-03T23:27:46+00:00 (commit #<span title="cf392e73bc9c6f0118fe10089450c06ee244bde5">cf392e7</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Many bug fixes (thanks to mutation tests)</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-03-29T15:59:42+00:00 (commit #<span title="f00547019e4ea6b531348349441a05b6bc19c052">f005470</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Added 2 assertions</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-03-24T00:06:28+00:00 (commit #<span title="83d8f6c35ab3022347198390391b33fbdc5b87e7">83d8f6c</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">File linting</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-03-06T23:10:22+00:00 (commit #<span title="8d89dcce4496d49f342b0530e32e0596a30de70d">8d89dcc</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Adding DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2019-02-23T23:38:48+00:00 (commit #<span title="c1c6d7926d945bca5f8a0a608a032f3d4c51fc0b">c1c6d79</span>)</h3>
+            <div>
+              <p>
+                        Author: Crapo (vincent@girol.fr) /
+                        Commiter: Crapo (vincent@girol.fr)
+                    </p>
+              <pre class="wrapped">Changing directories and files names</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

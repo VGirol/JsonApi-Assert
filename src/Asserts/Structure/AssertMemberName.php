@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
@@ -14,8 +15,16 @@ trait AssertMemberName
     /**
      * Asserts that a member name is valid.
      *
-     * @param string    $name
-     * @param boolean   $strict     If true, unsafe characters are not allowed when checking members name.
+     * It will do the following checks :
+     * 1) asserts that the name is a string with at least one character.
+     * 2) asserts that the name has only allowed characters.
+     * 3) asserts that it starts and ends with a globally allowed character.
+     *
+     * @link https://jsonapi.org/format/#document-member-names-allowed-characters
+     *
+     * @param string  $name
+     * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */

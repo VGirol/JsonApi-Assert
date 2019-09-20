@@ -9,19 +9,8 @@ namespace VGirol\JsonApiAssert;
  */
 abstract class Messages
 {
-    const ACCEPT_HEADER_WITHOUT_PARAMETERS =
-    'A request that include the JSON:API media type in her Accept header MUST specify
-        the media type %s there at least once without any media type parameters.';
     const ATTRIBUTES_OBJECT_IS_NOT_ARRAY =
     'An attributes object MUST be an array or an arrayable object with a "toArray" method.';
-    const CONTENT_TYPE_HEADER_MISSING =
-    'Clients MUST send all JSON:API data in request documents with the header "Content-Type: %s"
-        without any media type parameters.';
-    const CONTENT_TYPE_HEADER_ALLREADY_SET =
-    'The response header "Content-Type" is allready set with bad value :
-        a response MUST specify the header "Content-Type: %s" without any media type parameters.';
-    const CONTENT_TYPE_HEADER_WITHOUT_PARAMETERS =
-    'A request MUST specify the header "Content-Type: %s" without any media type parameters.';
     const ERROR_CODE_IS_NOT_STRING =
     'The value of the "code" member MUST be a string.';
     const ERROR_DETAILS_IS_NOT_STRING =

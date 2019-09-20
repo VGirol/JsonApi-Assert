@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
@@ -15,8 +16,13 @@ trait AssertErrorsObject
     /**
      * Asserts that a json fragment is a valid errors object.
      *
-     * @param array     $json
-     * @param boolean   $strict         If true, unsafe characters are not allowed when checking members name.
+     * It will do the following checks :
+     * 1) asserts that the errors object is an array of objects (@see assertIsArrayOfObjects).
+     * 2) asserts that each error object of the collection is valid (@see assertIsValidErrorObject).
+     *
+     * @param array   $json
+     * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -35,8 +41,23 @@ trait AssertErrorsObject
     /**
      * Asserts that a json fragment is a valid error object.
      *
-     * @param array     $json
-     * @param boolean   $strict         If true, unsafe characters are not allowed when checking members name.
+     * It will do the following checks :
+     * 1) asserts that the error object is not empty.
+     * 2) asserts it contains only the following allowed members :
+     * "id", "links", "status", "code", "title", "details", "source", "meta" (@see assertContainsOnlyAllowedMembers).
+     *
+     * Optionaly, if presents, it will checks :
+     * 3) asserts that the "status" member is a string.
+     * 4) asserts that the "code" member is a string.
+     * 5) asserts that the "title" member is a string.
+     * 6) asserts that the "details" member is a string.
+     * 7) asserts that the "source" member is valid(@see assertIsValidErrorSourceObject).
+     * 8) asserts that the "links" member is valid(@see assertIsValidErrorLinksObject).
+     * 9) asserts that the "meta" member is valid(@see assertIsValidMetaObject).
+     *
+     * @param array   $json
+     * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -55,20 +76,20 @@ trait AssertErrorsObject
         $allowed = [
             Members::ID,
             Members::LINKS,
-            Members::STATUS,
-            Members::CODE,
-            Members::TITLE,
-            Members::DETAILS,
-            Members::SOURCE,
+            Members::ERROR_STATUS,
+            Members::ERROR_CODE,
+            Members::ERROR_TITLE,
+            Members::ERROR_DETAILS,
+            Members::ERROR_SOURCE,
             Members::META
         ];
         static::assertContainsOnlyAllowedMembers($allowed, $json);
 
         $checks = [
-            Members::STATUS => Messages::ERROR_STATUS_IS_NOT_STRING,
-            Members::CODE => Messages::ERROR_CODE_IS_NOT_STRING,
-            Members::TITLE => Messages::ERROR_TITLE_IS_NOT_STRING,
-            Members::DETAILS => Messages::ERROR_DETAILS_IS_NOT_STRING
+            Members::ERROR_STATUS => Messages::ERROR_STATUS_IS_NOT_STRING,
+            Members::ERROR_CODE => Messages::ERROR_CODE_IS_NOT_STRING,
+            Members::ERROR_TITLE => Messages::ERROR_TITLE_IS_NOT_STRING,
+            Members::ERROR_DETAILS => Messages::ERROR_DETAILS_IS_NOT_STRING
         ];
 
         foreach ($checks as $member => $failureMsg) {
@@ -77,8 +98,8 @@ trait AssertErrorsObject
             }
         }
 
-        if (isset($json[Members::SOURCE])) {
-            static::assertIsValidErrorSourceObject($json[Members::SOURCE]);
+        if (isset($json[Members::ERROR_SOURCE])) {
+            static::assertIsValidErrorSourceObject($json[Members::ERROR_SOURCE]);
         }
 
         if (isset($json[Members::LINKS])) {
@@ -93,21 +114,30 @@ trait AssertErrorsObject
     /**
      * Asserts that a json fragment is a valid error links object.
      *
-     * @param array     $json
-     * @param boolean   $strict         If true, unsafe characters are not allowed when checking members name.
+     * It will do the following checks :
+     * 1) asserts that le links object is valid (@see assertIsValidLinksObject with only "about" member allowed).
+     *
+     * @param array   $json
+     * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public static function assertIsValidErrorLinksObject($json, bool $strict): void
     {
-        $allowed = [Members::ABOUT];
+        $allowed = [Members::LINK_ABOUT];
         static::assertIsValidLinksObject($json, $allowed, $strict);
     }
 
     /**
      * Asserts that a json fragment is a valid error source object.
      *
+     * It will do the following checks :
+     * 1) if the "pointer" member is present, asserts it is a string starting with a "/" character.
+     * 2) if the "parameter" member is present, asserts that it is a string.
+     *
      * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -118,21 +148,21 @@ trait AssertErrorsObject
             Messages::ERROR_SOURCE_OBJECT_NOT_ARRAY
         );
 
-        if (isset($json[Members::POINTER])) {
+        if (isset($json[Members::ERROR_POINTER])) {
             PHPUnit::assertIsString(
-                $json[Members::POINTER],
+                $json[Members::ERROR_POINTER],
                 Messages::ERROR_SOURCE_POINTER_IS_NOT_STRING
             );
             PHPUnit::assertStringStartsWith(
                 '/',
-                $json[Members::POINTER],
+                $json[Members::ERROR_POINTER],
                 Messages::ERROR_SOURCE_POINTER_START
             );
         }
 
-        if (isset($json[Members::PARAMETER])) {
+        if (isset($json[Members::ERROR_PARAMETER])) {
             PHPUnit::assertIsString(
-                $json[Members::PARAMETER],
+                $json[Members::ERROR_PARAMETER],
                 Messages::ERROR_SOURCE_PARAMETER_IS_NOT_STRING
             );
         }

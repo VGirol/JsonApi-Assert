@@ -1,20 +1,24 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use PHPUnit\Framework\Assert as PHPUnit;
 
 /**
- * Assertions relating to the pagination
+ * This trait adds the ability to test jsonapi object content.
  */
 trait AssertJsonapi
 {
     /**
      * Asserts that a jsonapi object equals an expected array.
      *
-     * @param array $expected
-     * @param array $json
+     * @link https://jsonapi.org/format/#document-jsonapi-object
+     *
+     * @param array $expected The expected jsonapi object
+     * @param array $json     The jsonapi object to test
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
@@ -17,8 +18,9 @@ trait AssertMembers
     /**
      * Asserts that a json object has an expected member.
      *
-     * @param string    $expected
-     * @param array     $json
+     * @param string $expected
+     * @param array  $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \PHPUnit\Framework\Exception
@@ -39,6 +41,7 @@ trait AssertMembers
      *
      * @param array<string> $expected
      * @param array         $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \PHPUnit\Framework\Exception
@@ -61,6 +64,7 @@ trait AssertMembers
      *
      * @param array<string> $expected
      * @param array         $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \PHPUnit\Framework\Exception
@@ -84,8 +88,9 @@ trait AssertMembers
     /**
      * Asserts that a json object not has an unexpected member.
      *
-     * @param string    $expected
-     * @param array     $json
+     * @param string $expected
+     * @param array  $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \PHPUnit\Framework\Exception
@@ -106,6 +111,7 @@ trait AssertMembers
      *
      * @param array<string> $expected
      * @param array         $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \PHPUnit\Framework\Exception
@@ -124,7 +130,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has a "data" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -136,7 +145,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has an "attributes" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -148,7 +160,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has a "links" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -160,7 +175,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has a "meta" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -172,7 +190,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has an "included" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -184,7 +205,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has a "relationships" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -196,7 +220,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has an "errors" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -208,7 +235,10 @@ trait AssertMembers
     /**
      * Asserts that a json object has a "jsonapi" member.
      *
-     * @param array     $json
+     * @see assertHasMember
+     *
+     * @param array $json
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -218,11 +248,12 @@ trait AssertMembers
     }
 
     /**
-     * Asserts that a json object contains at least one member from the list provided.
+     * Asserts that a json object contains at least one member from the provided list.
      *
-     * @param array<string> $expected   The expected members
-     * @param array $json       The json object
-     * @param string $message   An optional message to explain why the test failed
+     * @param array<string> $expected The expected members
+     * @param array         $json     The json object
+     * @param string        $message  An optional message to explain why the test failed
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -234,7 +265,8 @@ trait AssertMembers
     /**
      * Returns a new instance of the \VGirol\JsonApiAssert\Constraint\ContainsAtLeastOneConstraint class.
      *
-     * @param array $expected   The expected members
+     * @param array $expected The expected members
+     *
      * @return \VGirol\JsonApiAssert\Constraint\ContainsAtLeastOneConstraint
      */
     private static function containsAtLeastOneMemberConstraint($expected): ContainsAtLeastOneConstraint
@@ -245,8 +277,9 @@ trait AssertMembers
     /**
      * Check if a json object contains at least one member from the list provided.
      *
-     * @param array $expected   The expected members
-     * @param array $json       The json object
+     * @param array $expected The expected members
+     * @param array $json     The json object
+     *
      * @return boolean
      */
     private static function containsAtLeastOneMember($expected, $json): bool
@@ -259,9 +292,10 @@ trait AssertMembers
     /**
      * Asserts that a json object contains only members from the provided list.
      *
-     * @param array<string> $expected   The expected members
-     * @param array $json       The json object
-     * @param string $message   An optional message to explain why the test failed
+     * @param array<string> $expected The expected members
+     * @param array         $json     The json object
+     * @param string        $message  An optional message to explain why the test failed
+     *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
@@ -274,7 +308,8 @@ trait AssertMembers
     /**
      * Returns a new instance of the \VGirol\JsonApiAssert\Constraint\ContainsOnlyAllowedMembersConstraint class.
      *
-     * @param array $expected   The expected members
+     * @param array $expected The expected members
+     *
      * @return \VGirol\JsonApiAssert\Constraint\ContainsOnlyAllowedMembersConstraint
      */
     private static function containsOnlyAllowedMembersConstraint($expected): ContainsOnlyAllowedMembersConstraint

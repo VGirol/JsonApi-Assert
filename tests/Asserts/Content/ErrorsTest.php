@@ -24,12 +24,26 @@ class ErrorsTest extends TestCase
             [
                 'status' => '409',
                 'title' => 'Conflict',
-                'details' => 'description'
+                'details' => 'description',
+                'meta' => [
+                    'trace' => [
+                        [
+                            'file' => 'path'
+                        ]
+                    ]
+                ]
             ],
             [
                 'status' => '415',
                 'title' => 'Not Acceptable',
-                'details' => 'description'
+                'details' => 'description',
+                'meta' => [
+                    'trace' => [
+                        [
+                            'file' => 'path'
+                        ]
+                    ]
+                ]
             ]
         ];
 

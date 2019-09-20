@@ -19,13 +19,21 @@ class PaginationLinksEqualConstraint extends Constraint
     private $expected;
 
     /**
+     * The list of the allowed link names for pagination
+     *
+     * @var array
+     */
+    private $allowedMembers;
+
+    /**
      * Class constructor.
      *
      * @param array $expected
      */
-    public function __construct($expected)
+    public function __construct($expected, $allowedMembers)
     {
         $this->expected = $expected;
+        $this->allowedMembers = $allowedMembers;
     }
 
     /**
@@ -49,13 +57,13 @@ class PaginationLinksEqualConstraint extends Constraint
     {
         // Add missing members with false value
         $cleanExpected = array_merge(
-            array_fill_keys(static::allowedMembers(), false),
+            array_fill_keys($this->allowedMembers, false),
             $this->expected
         );
         asort($cleanExpected);
 
         // Extract only pagination members from incoming json
-        $cleanJson = array_intersect_key($other, array_flip($this->allowedMembers()));
+        $cleanJson = array_intersect_key($other, array_flip($this->allowedMembers));
         asort($cleanJson);
 
         // Search for unexpected members
@@ -98,20 +106,5 @@ class PaginationLinksEqualConstraint extends Constraint
         }
 
         return true;
-    }
-
-    /**
-     * Gets the list of allowed members for pagination links
-     *
-     * @return array
-     */
-    private static function allowedMembers(): array
-    {
-        return [
-            Members::FIRST,
-            Members::LAST,
-            Members::PREV,
-            Members::NEXT
-        ];
     }
 }
