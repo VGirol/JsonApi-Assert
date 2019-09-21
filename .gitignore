@@ -1,6 +1,7 @@
 !.gitignore
 # .phan/
 build/
+docs/
 # scripts/
 vendor/
 .phpunit.result.cache

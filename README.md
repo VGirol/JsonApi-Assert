@@ -95,7 +95,7 @@ class MyTest extends TestCase
 
 ## Documentation
 
-The API documentation is available in HTML format in the `./docs/api` folder.
+The API documentation is available in XHTML format at the url [jsonapi-assert.girol.fr](http://jsonapi-assert.girol.fr/index.xhtml).
 
 ## Changelog
 
