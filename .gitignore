@@ -1,5 +1,6 @@
 !.gitignore
 # .phan/
+.vscode/
 build/
 docs/
 # scripts/
