@@ -227,7 +227,7 @@ class ResourceTest extends TestCase
                         ]
                     ]
                 ],
-                null
+                sprintf(Messages::RESOURCE_COLLECTION_HAVE_NOT_SAME_LENGTH, 2, 1)
             ],
             'not equal' => [
                 [
