@@ -117,4 +117,6 @@ abstract class Messages
     'Failed asserting that "errors" member %s contains the expected error %s.';
     const RESOURCE_COLLECTION_HAVE_NOT_SAME_LENGTH =
     'Failed asserting that the resource collection length (%u) is equal to %u.';
+    const RESOURCE_IS_NOT_EQUAL =
+    'Failed asserting that the resource %s is equal to %s.';
 }
