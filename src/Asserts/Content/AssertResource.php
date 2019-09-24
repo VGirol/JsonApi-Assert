@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use PHPUnit\Framework\Assert as PHPUnit;
+use VGirol\JsonApiAssert\Messages;
 
 /**
  * This trait adds the ability to test resource object (single or collection).
@@ -47,7 +48,14 @@ trait AssertResource
     public static function assertResourceCollectionEquals($expected, $json)
     {
         static::assertIsArrayOfObjects($expected);
-        PHPUnit::assertEquals(count($expected), count($json));
+
+        $count = count($json);
+        $expectedCount = count($expected);
+        PHPUnit::assertEquals(
+            $expectedCount,
+            $count,
+            sprintf(Messages::RESOURCE_COLLECTION_HAVE_NOT_SAME_LENGTH, $count, $expectedCount)
+        );
 
         $index = 0;
         foreach ($expected as $resource) {
