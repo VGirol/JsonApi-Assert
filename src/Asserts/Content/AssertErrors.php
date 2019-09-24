@@ -55,8 +55,14 @@ trait AssertErrors
                     break;
                 }
             }
-            PHPUnit::assertTrue($test);
-            // PHPUnit::assertContains($expectedError, $errors);
+            PHPUnit::assertTrue(
+                $test,
+                sprintf(
+                    Messages::ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR,
+                    var_export($errors, true),
+                    var_export($expectedError, true)
+                )
+            );
         }
     }
 }

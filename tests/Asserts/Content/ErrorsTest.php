@@ -126,7 +126,32 @@ class ErrorsTest extends TestCase
                     ]
                 ],
                 false,
-                null
+                sprintf(
+                    Messages::ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR,
+                    var_export(
+                        [
+                            [
+                                'status' => '406',
+                                'title' => 'Not Acceptable',
+                                'details' => 'description'
+                            ],
+                            [
+                                'status' => '415',
+                                'title' => 'Not Acceptable',
+                                'details' => 'description'
+                            ]
+                        ],
+                        true
+                    ),
+                    var_export(
+                        [
+                            'status' => '409',
+                            'title' => 'Conflict',
+                            'details' => 'description'
+                        ],
+                        true
+                    )
+                )
             ],
             'expected error not the same' => [
                 [
