@@ -51,7 +51,9 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailureException();
+        $this->setFailureException(
+            sprintf(Messages::RESOURCE_IS_NOT_EQUAL, var_export($json, true), var_export($expected, true))
+        );
 
         Assert::assertResourceObjectEquals($expected, $json);
     }

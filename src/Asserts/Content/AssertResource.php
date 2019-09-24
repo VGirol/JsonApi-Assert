@@ -25,7 +25,11 @@ trait AssertResource
      */
     public static function assertResourceObjectEquals($expected, $json)
     {
-        PHPUnit::assertEquals($expected, $json);
+        PHPUnit::assertEquals(
+            $expected,
+            $json,
+            sprintf(Messages::RESOURCE_IS_NOT_EQUAL, var_export($json, true), var_export($expected, true))
+        );
     }
 
     /**
