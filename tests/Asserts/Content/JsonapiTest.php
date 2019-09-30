@@ -3,6 +3,7 @@
 namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 
 use VGirol\JsonApiAssert\Assert;
+use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
 
 class JsonapiTest extends TestCase
@@ -36,7 +37,7 @@ class JsonapiTest extends TestCase
             ]
         ];
 
-        $this->setFailure();
+        $this->setFailure($this->formatAsRegex(Messages::JSONAPI_OBJECT_NOT_EQUAL));
 
         Assert::assertJsonapiObjectEquals($expected, $json);
     }

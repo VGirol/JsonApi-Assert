@@ -133,4 +133,6 @@ abstract class Messages
     'Failed asserting that the resource linkage is not null.';
     const LINKS_OBJECT_HAVE_NOT_SAME_LENGTH =
     'Failed asserting that the links collection length (%u) is equal to %u.';
+    const JSONAPI_OBJECT_NOT_EQUAL =
+    'Failed asserting that the "jsonapi" object %s is equal to %s.';
 }
