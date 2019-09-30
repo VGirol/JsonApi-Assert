@@ -44,7 +44,7 @@ class TopLevelMembersTest extends TestCase
      */
     public function documentHasNotValidTopLevelMembers($data, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertHasValidTopLevelMembers($data);
     }
 

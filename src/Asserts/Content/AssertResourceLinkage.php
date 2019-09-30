@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use PHPUnit\Framework\Assert as PHPUnit;
+use VGirol\JsonApiAssert\Messages;
 
 /**
  * This trait adds the ability to test resource linkage (single or collection).
@@ -25,7 +26,11 @@ trait AssertResourceLinkage
      */
     public static function assertResourceIdentifierEquals($expected, $json)
     {
-        PHPUnit::assertSame($expected, $json);
+        PHPUnit::assertSame(
+            $expected,
+            $json,
+            sprintf(Messages::RESOURCE_IDENTIFIER_IS_NOT_EQUAL, var_export($json, true), var_export($expected, true))
+        );
     }
 
     /**
@@ -49,7 +54,14 @@ trait AssertResourceLinkage
     public static function assertResourceIdentifierCollectionEquals($expected, $json)
     {
         static::assertIsArrayOfObjects($json);
-        PHPUnit::assertEquals(count($expected), count($json));
+
+        $expectedCount = count($expected);
+        $count = count($json);
+        PHPUnit::assertEquals(
+            $expectedCount,
+            $count,
+            sprintf(Messages::RESOURCE_LINKAGE_COLLECTION_HAVE_NOT_SAME_LENGTH, $count, $expectedCount)
+        );
 
         $index = 0;
         foreach ($expected as $resource) {
@@ -89,12 +101,16 @@ trait AssertResourceLinkage
         static::assertIsValidResourceLinkage($json, $strict);
 
         if ($expected === null) {
-            PHPUnit::assertNull($json);
+            PHPUnit::assertNull(
+                $json,
+                sprintf(Messages::RESOURCE_LINKAGE_MUST_BE_NULL, var_export($json, true))
+            );
 
             return;
         }
 
-        PHPUnit::assertNotNull($json);
+        PHPUnit::assertNotNull($json, Messages::RESOURCE_LINKAGE_MUST_NOT_BE_NULL);
+
         /** @var array $json */
 
         if (!static::isArrayOfObjects($expected)) {
@@ -105,7 +121,7 @@ trait AssertResourceLinkage
         }
 
         if (count($expected) == 0) {
-            PHPUnit::assertEmpty($json);
+            PHPUnit::assertEmpty($json, Messages::RESOURCE_LINKAGE_COLLECTION_MUST_BE_EMPTY);
 
             return;
         }

@@ -29,7 +29,7 @@ class JsonapiObjectTest extends TestCase
      */
     public function jsonapiObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsValidJsonapiObject($data, $strict);
     }
 

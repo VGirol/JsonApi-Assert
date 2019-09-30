@@ -46,6 +46,23 @@ trait SetExceptionsTrait
      */
     abstract public function expectExceptionMessageRegExp(string $messageRegExp): void;
 
+
+    /**
+     * Set the expected exception and message when defining a test that will fail.
+     *
+     * @param string|null $message The failure message could be either a string or a regular expression.
+     *
+     * @return void
+     */
+    protected function setFailure(?string $message = null)
+    {
+        if (($message !== null) && (strpos($message, '/') === 0)) {
+            $this->setFailureExceptionRegex($message);
+        } else {
+            $this->setFailureException($message);
+        }
+    }
+
     /**
      * Set the expected exception and message when defining a test that will fail.
      *
@@ -53,7 +70,7 @@ trait SetExceptionsTrait
      *
      * @return void
      */
-    protected function setFailureException($message = null)
+    protected function setFailureException(?string $message = null)
     {
         $this->expectException(ExpectationFailedException::class);
         if ($message !== null) {
@@ -68,7 +85,7 @@ trait SetExceptionsTrait
      *
      * @return void
      */
-    protected function setFailureExceptionRegex($message = null)
+    protected function setFailureExceptionRegex(?string $message = null)
     {
         $this->expectException(ExpectationFailedException::class);
         if ($message !== null) {
@@ -99,5 +116,21 @@ trait SetExceptionsTrait
                 \preg_quote($type)
             )
         );
+    }
+
+    /**
+     * Format the failure message as a regular expression.
+     *
+     * @param string $message
+     *
+     * @return string
+     */
+    protected function formatAsRegex(string $message): string
+    {
+        return '/' . preg_replace(
+            "!\%(\+?)('.|[0 ]|)(-?)([1-9][0-9]*|)(\.[1-9][0-9]*|)([%a-zA-Z])!u",
+            '.*',
+            preg_quote($message)
+        ) . '/s';
     }
 }

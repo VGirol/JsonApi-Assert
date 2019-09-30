@@ -32,7 +32,7 @@ class PaginationTest extends TestCase
             'self' => 'url'
         ];
 
-        $this->setFailureException(
+        $this->setFailure(
             sprintf(
                 Messages::CONTAINS_AT_LEAST_ONE,
                 implode(
@@ -72,7 +72,7 @@ class PaginationTest extends TestCase
             'first' => 'urlFirst'
         ];
 
-        $this->setFailureException(
+        $this->setFailure(
             sprintf(Messages::NOT_HAS_MEMBER, 'first')
         );
 
@@ -111,7 +111,7 @@ class PaginationTest extends TestCase
             'last' => 'urlLast'
         ];
 
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertPaginationLinksEquals($expected, $json);
     }
@@ -119,23 +119,23 @@ class PaginationTest extends TestCase
     public function paginationLinksEqualsFailedProvider()
     {
         return [
-            'has not expected member' => [
+            'has too many members' => [
                 [
                     'first' => 'urlFirst',
                     'next' => false,
                     'prev' => false,
                     'last' => 'urlLast'
                 ],
-                null
+                Messages::PAGINATION_LINKS_NOT_EQUAL
             ],
-            'not has expected member' => [
+            'has not all expected member' => [
                 [
                     'first' => 'urlFirst',
                     'next' => 'urlNext',
                     'prev' => 'urlPrev',
                     'last' => 'urlLast'
                 ],
-                null
+                Messages::PAGINATION_LINKS_NOT_EQUAL
             ],
             'not same value' => [
                 [
@@ -144,7 +144,7 @@ class PaginationTest extends TestCase
                     'prev' => false,
                     'last' => 'urlLast'
                 ],
-                null
+                Messages::PAGINATION_LINKS_NOT_EQUAL
             ]
         ];
     }
