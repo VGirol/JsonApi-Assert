@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use PHPUnit\Framework\Assert as PHPUnit;
+use VGirol\JsonApiAssert\Messages;
 
 /**
  * This trait adds the ability to test jsonapi object content.
@@ -24,6 +25,10 @@ trait AssertJsonapi
      */
     public static function assertJsonapiObjectEquals($expected, $json): void
     {
-        PHPUnit::assertSame($expected, $json);
+        PHPUnit::assertSame(
+            $expected,
+            $json,
+            sprintf(Messages::JSONAPI_OBJECT_NOT_EQUAL, var_export($json, true), var_export($expected, true))
+        );
     }
 }
