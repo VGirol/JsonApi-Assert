@@ -119,4 +119,18 @@ abstract class Messages
     'Failed asserting that the resource collection length (%u) is equal to %u.';
     const RESOURCE_IS_NOT_EQUAL =
     'Failed asserting that the resource %s is equal to %s.';
+    const PAGINATION_LINKS_NOT_EQUAL =
+    'Failed asserting that pagination links equal expected values.';
+    const RESOURCE_LINKAGE_COLLECTION_MUST_BE_EMPTY =
+    'Failed asserting that the resource linkage collection is empty.';
+    const RESOURCE_LINKAGE_COLLECTION_HAVE_NOT_SAME_LENGTH =
+    'Failed asserting that the resource linkage collection length (%u) is equal to %u.';
+    const RESOURCE_IDENTIFIER_IS_NOT_EQUAL =
+    'Failed asserting that the resource identifier %s is equal to %s.';
+    const RESOURCE_LINKAGE_MUST_BE_NULL =
+    'Failed asserting that the resource linkage %s is null.';
+    const RESOURCE_LINKAGE_MUST_NOT_BE_NULL =
+    'Failed asserting that the resource linkage is not null.';
+    const LINKS_OBJECT_HAVE_NOT_SAME_LENGTH =
+    'Failed asserting that the links collection length (%u) is equal to %u.';
 }

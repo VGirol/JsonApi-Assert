@@ -56,7 +56,7 @@ class ErrorsTest extends TestCase
      */
     public function errorsContainsFailed($expectedErrors, $errors, $strict, $failureMsg)
     {
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertErrorsContains($expectedErrors, $errors, $strict);
     }
@@ -103,7 +103,7 @@ class ErrorsTest extends TestCase
                     ]
                 ],
                 false,
-                null
+                Messages::ERRORS_OBJECT_CONTAINS_NOT_ENOUGH_ERRORS
             ],
             'expected error not present' => [
                 [
@@ -176,7 +176,7 @@ class ErrorsTest extends TestCase
                     ]
                 ],
                 false,
-                null
+                $this->formatAsRegex(Messages::ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR)
             ]
         ];
     }

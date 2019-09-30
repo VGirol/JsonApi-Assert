@@ -61,10 +61,8 @@ trait AssertResource
             sprintf(Messages::RESOURCE_COLLECTION_HAVE_NOT_SAME_LENGTH, $count, $expectedCount)
         );
 
-        $index = 0;
-        foreach ($expected as $resource) {
+        foreach ($expected as $index => $resource) {
             static::assertResourceObjectEquals($resource, $json[$index]);
-            $index++;
         }
     }
 

@@ -6,7 +6,6 @@ namespace VGirol\JsonApiAssert\Constraint;
 
 use PHPUnit\Framework\Constraint\Constraint;
 use VGirol\JsonApiAssert\Constraint\LinkEqualsConstraint;
-use VGirol\JsonApiAssert\Members;
 
 /**
  * A constraint class to assert that a link object equals an expected value.

@@ -51,7 +51,7 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailureException(
+        $this->setFailure(
             sprintf(Messages::RESOURCE_IS_NOT_EQUAL, var_export($json, true), var_export($expected, true))
         );
 
@@ -146,7 +146,7 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailureException();
+        $this->setFailure();
 
         Assert::assertResourceCollectionContains($expected, $json);
     }
@@ -201,7 +201,7 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertResourceCollectionEquals($expected, $json);
     }
@@ -248,7 +248,7 @@ class ResourceTest extends TestCase
                         ]
                     ]
                 ],
-                null
+                $this->formatAsRegex(Messages::RESOURCE_IS_NOT_EQUAL)
             ]
         ];
     }

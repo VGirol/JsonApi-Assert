@@ -39,7 +39,7 @@ class ResourceLinkageTest extends TestCase
             'type' => 'test'
         ];
 
-        $this->setFailureException();
+        $this->setFailure();
 
         Assert::assertResourceIdentifierEquals($expected, $json);
     }
@@ -79,7 +79,7 @@ class ResourceLinkageTest extends TestCase
      */
     public function resourceIdentifierCollectionEqualsFailed($expected, $json, $failureMsg)
     {
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertResourceIdentifierCollectionEquals($expected, $json);
     }
@@ -121,7 +121,7 @@ class ResourceLinkageTest extends TestCase
                         'type' => 'test'
                     ]
                 ],
-                null
+                $this->formatAsRegex(Messages::RESOURCE_LINKAGE_COLLECTION_HAVE_NOT_SAME_LENGTH)
             ],
             'not same value' => [
                 [
@@ -144,7 +144,7 @@ class ResourceLinkageTest extends TestCase
                         'type' => 'test'
                     ]
                 ],
-                null
+                $this->formatAsRegex(Messages::RESOURCE_IDENTIFIER_IS_NOT_EQUAL)
             ]
         ];
     }
@@ -229,7 +229,7 @@ class ResourceLinkageTest extends TestCase
      */
     public function resourceLinkageEqualsFailed($expected, $json, $strict, $failureMsg)
     {
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertResourceLinkageEquals($expected, $json, $strict);
     }
@@ -250,7 +250,7 @@ class ResourceLinkageTest extends TestCase
                     'type' => 'test'
                 ],
                 true,
-                null
+                $this->formatAsRegex(Messages::RESOURCE_LINKAGE_MUST_BE_NULL)
             ],
             'is null but resource identifier expected' => [
                 [
@@ -259,7 +259,7 @@ class ResourceLinkageTest extends TestCase
                 ],
                 null,
                 true,
-                null
+                Messages::RESOURCE_LINKAGE_MUST_NOT_BE_NULL
             ],
             'is not a single resource identifier' => [
                 [
@@ -289,7 +289,7 @@ class ResourceLinkageTest extends TestCase
                     'type' => 'test'
                 ],
                 true,
-                null
+                $this->formatAsRegex(Messages::RESOURCE_IDENTIFIER_IS_NOT_EQUAL)
             ],
             'is not empty collection as expected' => [
                 [],
@@ -298,7 +298,7 @@ class ResourceLinkageTest extends TestCase
                     'type' => 'test'
                 ],
                 true,
-                null
+                Messages::RESOURCE_LINKAGE_COLLECTION_MUST_BE_EMPTY
             ],
             'is not same collection' => [
                 [
@@ -322,7 +322,7 @@ class ResourceLinkageTest extends TestCase
                     ]
                 ],
                 true,
-                null
+                $this->formatAsRegex(Messages::RESOURCE_IDENTIFIER_IS_NOT_EQUAL)
             ]
         ];
     }

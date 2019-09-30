@@ -36,7 +36,7 @@ class JsonapiTest extends TestCase
             ]
         ];
 
-        $this->setFailureException();
+        $this->setFailure();
 
         Assert::assertJsonapiObjectEquals($expected, $json);
     }

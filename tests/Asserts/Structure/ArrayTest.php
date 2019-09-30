@@ -41,7 +41,7 @@ class ArrayTest extends TestCase
      */
     public function assertIsArrayOfObjectsFailed($data, $message, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsArrayOfObjects($data, $message);
     }
 
@@ -105,9 +105,9 @@ class ArrayTest extends TestCase
                 'first' => 'jsonapi'
             ]
         ];
-        $failureMessage = null;
+        $failureMessage = Messages::MUST_NOT_BE_ARRAY_OF_OBJECTS;
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsNotArrayOfObjects($data);
     }
 

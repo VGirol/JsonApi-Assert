@@ -62,7 +62,7 @@ class ContainsAtLeastOneTest extends TestCase
 
         $constraint = new ContainsAtLeastOneConstraint($allowed);
 
-        $this->setFailureExceptionRegex(sprintf(
+        $this->setFailure(sprintf(
             '/Failed asserting that [\S\s]* %s\./',
             $constraint->toString()
         ));

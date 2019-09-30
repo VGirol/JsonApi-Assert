@@ -26,7 +26,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorLinksObjectIsNotValid($json, $strict, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorLinksObject($json, $strict);
     }
 
@@ -76,7 +76,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorSourceObjectIsNotValid($data, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorSourceObject($data);
     }
 
@@ -144,7 +144,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorObject($data, $strict);
     }
 
@@ -288,7 +288,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorsObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorsObject($data, $strict);
     }
 
@@ -305,22 +305,24 @@ class ErrorsObjectTest extends TestCase
             'error object not valid' => [
                 [
                     [
-                        'code' => 'E13',
-                        '+not' => 'not valid',
+                        'status' => 666,
+                        'code' => 'E13'
                     ]
                 ],
                 false,
-                null
+                Messages::ERROR_STATUS_IS_NOT_STRING
             ],
             'error object not safe' => [
                 [
                     [
                         'code' => 'E13',
-                        'not valid' => 'not valid',
+                        'meta' => [
+                            'not valid' => 'not valid'
+                        ]
                     ]
                 ],
                 true,
-                null
+                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }

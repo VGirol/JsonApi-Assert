@@ -7,6 +7,7 @@ namespace VGirol\JsonApiAssert\Asserts\Content;
 use PHPUnit\Framework\Assert as PHPUnit;
 use VGirol\JsonApiAssert\Constraint\PaginationLinksEqualConstraint;
 use VGirol\JsonApiAssert\Members;
+use VGirol\JsonApiAssert\Messages;
 
 /**
  * This trait adds the ability to test pagination (links and meta).
@@ -76,7 +77,11 @@ trait AssertPagination
      */
     public static function assertPaginationLinksEquals($expected, $json): void
     {
-        PHPUnit::assertThat($json, self::paginationLinksEqualConstraint($expected));
+        PHPUnit::assertThat(
+            $json,
+            self::paginationLinksEqualConstraint($expected),
+            Messages::PAGINATION_LINKS_NOT_EQUAL
+        );
     }
 
     /**

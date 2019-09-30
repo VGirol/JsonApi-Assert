@@ -78,7 +78,7 @@ class IncludedTest extends TestCase
      */
     public function compoundDocumentIsNotValid($json, $strict, $failureMessage)
     {
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertIsValidIncludedCollection($json['included'], $json['data'], $strict);
     }
 

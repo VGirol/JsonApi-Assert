@@ -6,6 +6,7 @@ namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use PHPUnit\Framework\Assert as PHPUnit;
 use VGirol\JsonApiAssert\Constraint\LinkEqualsConstraint;
+use VGirol\JsonApiAssert\Messages;
 
 /**
  * This trait adds the ability to test links objects.
@@ -29,7 +30,14 @@ trait AssertLinks
      */
     public static function assertLinksObjectEquals($expected, $links): void
     {
-        PHPUnit::assertEquals(count($expected), count($links));
+        $countExpected = count($expected);
+        $count = count($links);
+        PHPUnit::assertEquals(
+            $countExpected,
+            $count,
+            sprintf(Messages::LINKS_OBJECT_HAVE_NOT_SAME_LENGTH, $count, $countExpected)
+        );
+
         foreach ($expected as $name => $value) {
             static::assertLinksObjectContains($name, $value, $links);
         }
@@ -64,14 +72,13 @@ trait AssertLinks
      *
      * @param array|string|null $expected The expected link value
      * @param array|string|null $link     The link to test
-     * @param string            $message  An optional message to explain why the test failed
      *
      * @return void
      * @throws \PHPUnit\Framework\ExpectationFailedException
      */
-    public static function assertLinkObjectEquals($expected, $link, string $message = ''): void
+    public static function assertLinkObjectEquals($expected, $link): void
     {
-        PHPUnit::assertThat($link, self::linkEqualsConstraint($expected), $message);
+        PHPUnit::assertThat($link, self::linkEqualsConstraint($expected));
     }
 
     /**

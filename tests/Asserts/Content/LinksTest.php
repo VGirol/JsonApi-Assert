@@ -39,9 +39,9 @@ class LinksTest extends TestCase
      * @test
      * @dataProvider linkObjectEqualsFailedProvider
      */
-    public function linkObjectEqualsFailed($expected, $link, $failureMsg)
+    public function linkObjectEqualsFailed($expected, $link)
     {
-        $this->setFailureException($failureMsg);
+        $this->setFailure($this->formatAsRegex('Failed asserting that %s equals %s.'));
 
         Assert::assertLinkObjectEquals($expected, $link);
     }
@@ -51,38 +51,31 @@ class LinksTest extends TestCase
         return [
             'must be null' => [
                 null,
-                'not null',
-                null
+                'not null'
             ],
             'must not be null' => [
                 'url',
-                null,
                 null
             ],
             'must have query string' => [
                 'url?query=test',
-                'url',
-                null
+                'url'
             ],
             'must not have query string' => [
                 'url',
-                'url?query=test',
-                null
+                'url?query=test'
             ],
             'not same url' => [
                 'url1',
-                'url2',
-                null
+                'url2'
             ],
             'not same count of query strings' => [
                 'url?query1=test',
-                'url?query1=test&query2=anything',
-                null
+                'url?query1=test&query2=anything'
             ],
             'not same query strings' => [
                 'url?query1=test',
-                'url?query1=anything',
-                null
+                'url?query1=anything'
             ]
         ];
     }
@@ -107,7 +100,7 @@ class LinksTest extends TestCase
      */
     public function linksObjectContainsFailed($name, $expected, $links, $failureMsg)
     {
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertLinksObjectContains($name, $expected, $links);
     }
@@ -129,7 +122,7 @@ class LinksTest extends TestCase
                 [
                     'self' => 'url1'
                 ],
-                null
+                $this->formatAsRegex('Failed asserting that %s equals %s.')
             ]
         ];
     }
@@ -154,7 +147,7 @@ class LinksTest extends TestCase
      */
     public function linksObjectEqualsFailed($expected, $links, $failureMsg)
     {
-        $this->setFailureException($failureMsg);
+        $this->setFailure($failureMsg);
 
         Assert::assertLinksObjectEquals($expected, $links);
     }
@@ -170,7 +163,7 @@ class LinksTest extends TestCase
                     'self' => 'url',
                     'anything' => 'url'
                 ],
-                null
+                $this->formatAsRegex(Messages::LINKS_OBJECT_HAVE_NOT_SAME_LENGTH)
             ],
             'link is not as expected' => [
                 [
@@ -179,7 +172,7 @@ class LinksTest extends TestCase
                 [
                     'self' => 'url2'
                 ],
-                null
+                $this->formatAsRegex('Failed asserting that %s equals %s.')
             ]
         ];
     }

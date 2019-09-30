@@ -32,7 +32,7 @@ class MembersTest extends TestCase
         ];
         $failureMessage = sprintf(Messages::HAS_MEMBER, 'member');
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertHasMember($expected, $json);
     }
 
@@ -94,7 +94,7 @@ class MembersTest extends TestCase
         $keys = ['meta', 'nothing'];
         $failureMessage = sprintf(Messages::HAS_MEMBER, 'nothing');
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertHasMembers($keys, $data);
     }
 
@@ -158,7 +158,7 @@ class MembersTest extends TestCase
         $keys = ['meta', 'data'];
         $failureMessage = sprintf(Messages::HAS_ONLY_MEMBERS, implode(', ', $keys));
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertHasOnlyMembers($keys, $data);
     }
 
@@ -220,7 +220,7 @@ class MembersTest extends TestCase
         $expected = 'anything';
         $failureMessage = sprintf(Messages::NOT_HAS_MEMBER, $expected);
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertNotHasMember($expected, $data);
     }
 
@@ -287,7 +287,7 @@ class MembersTest extends TestCase
         ];
         $failureMessage = sprintf(Messages::NOT_HAS_MEMBER, 'anything');
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertNotHasMembers($expected, $data);
     }
 
@@ -435,7 +435,7 @@ class MembersTest extends TestCase
         ];
         $failureMessage = sprintf(Messages::CONTAINS_AT_LEAST_ONE, implode(', ', $expected));
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertContainsAtLeastOneMember($expected, $data);
     }
 
@@ -465,7 +465,7 @@ class MembersTest extends TestCase
         ];
         $failureMessage = Messages::ONLY_ALLOWED_MEMBERS;
 
-        $this->setFailureException($failureMessage);
+        $this->setFailure($failureMessage);
         JsonApiAssert::assertContainsOnlyAllowedMembers($expected, $data);
     }
 }

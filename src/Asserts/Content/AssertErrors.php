@@ -2,7 +2,6 @@
 
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
-use DMS\PHPUnitExtensions\ArraySubset\Assert as AssertArray;
 use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
 use PHPUnit\Framework\Assert as PHPUnit;
 use PHPUnit\Framework\ExpectationFailedException;
