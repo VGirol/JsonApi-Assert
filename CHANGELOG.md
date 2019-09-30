@@ -33,3 +33,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Removed
 
 - Moved Factory classes into another package : VGirol/JsonApi-Faker
+
+## 1.2.1 - 2019-09-30
+
+### Added
+
+- Added some failure messages
+- Added new methods for testing (VGirol\JsonApiAssert\SetExceptionsTrait::setFailure and VGirol\JsonApiAssert\SetExceptionsTrait::formatAsRegex)
