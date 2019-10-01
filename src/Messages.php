@@ -121,6 +121,8 @@ abstract class Messages
     'Failed asserting that the resource %s is equal to %s.';
     const PAGINATION_LINKS_NOT_EQUAL =
     'Failed asserting that pagination links equal expected values.';
+    const PAGINATION_META_NOT_EQUAL =
+    'Failed asserting that pagination meta equal expected values.';
     const RESOURCE_LINKAGE_COLLECTION_MUST_BE_EMPTY =
     'Failed asserting that the resource linkage collection is empty.';
     const RESOURCE_LINKAGE_COLLECTION_HAVE_NOT_SAME_LENGTH =

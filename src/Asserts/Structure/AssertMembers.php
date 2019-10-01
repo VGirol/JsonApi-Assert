@@ -7,7 +7,7 @@ namespace VGirol\JsonApiAssert\Asserts\Structure;
 use PHPUnit\Framework\Assert as PHPUnit;
 use VGirol\JsonApiAssert\Constraint\ContainsAtLeastOneConstraint;
 use VGirol\JsonApiAssert\Constraint\ContainsOnlyAllowedMembersConstraint;
-use VGirol\JsonApiAssert\Members;
+use VGirol\JsonApiConstant\Members;
 use VGirol\JsonApiAssert\Messages;
 
 /**
