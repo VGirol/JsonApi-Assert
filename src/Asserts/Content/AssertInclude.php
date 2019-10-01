@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Content;
 
+use VGirol\JsonApiAssert\Members;
+
 /**
  * This trait adds the ability to test include content.
  */
