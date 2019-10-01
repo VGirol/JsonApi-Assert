@@ -56,11 +56,9 @@ trait SetExceptionsTrait
      */
     protected function setFailure(?string $message = null)
     {
-        if (($message !== null) && (strpos($message, '/') === 0)) {
-            $this->setFailureExceptionRegex($message);
-        } else {
-            $this->setFailureException($message);
-        }
+        $fn = (($message !== null) && (strpos($message, '/') === 0))
+            ? 'setFailureExceptionRegex' : 'setFailureException';
+        $this->{$fn}($message);
     }
 
     /**

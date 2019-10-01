@@ -3,7 +3,7 @@
 namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 
 use VGirol\JsonApiAssert\Assert;
-use VGirol\JsonApiAssert\Members;
+use VGirol\JsonApiConstant\Members;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
 

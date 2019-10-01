@@ -20,12 +20,22 @@
     ],
     "require": {
         "php": "^7.2",
+        "vgirol/jsonapi-constant": "dev-master",
         "phpunit/phpunit": "^8.0",
         "dms/phpunit-arraysubset-asserts": "^0.1.0"
     },
     "require-dev": {
         "infection/infection": "^0.14"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../JsonApi-Constant",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {

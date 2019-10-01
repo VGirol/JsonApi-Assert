@@ -6,8 +6,8 @@ namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use PHPUnit\Framework\Assert as PHPUnit;
 use VGirol\JsonApiAssert\Constraint\PaginationLinksEqualConstraint;
-use VGirol\JsonApiAssert\Members;
 use VGirol\JsonApiAssert\Messages;
+use VGirol\JsonApiConstant\Members;
 
 /**
  * This trait adds the ability to test pagination (links and meta).
@@ -85,6 +85,21 @@ trait AssertPagination
     }
 
     /**
+     * Asserts that a meta object has a "pagination" member.
+     *
+     * @link https://jsonapi.org/format/#document-meta
+     *
+     * @param array $meta The meta object to inspect
+     *
+     * @return void
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     */
+    public static function assertHasPaginationMeta($meta): void
+    {
+        static::assertHasMember(Members::META_PAGINATION, $meta);
+    }
+
+    /**
      * Asserts that a meta object has no "pagination" member.
      *
      * @link https://jsonapi.org/format/#document-meta
@@ -97,6 +112,22 @@ trait AssertPagination
     public static function assertHasNoPaginationMeta($meta): void
     {
         static::assertNotHasMember(Members::META_PAGINATION, $meta);
+    }
+
+    /**
+     * Asserts that a meta object has the expected pagination member.
+     *
+     * @link https://jsonapi.org/format/#document-links
+     *
+     * @param array $expected The expected pagination meta object
+     * @param array $json     The meta object to test
+     *
+     * @return void
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     */
+    public static function assertPaginationMetaEquals($expected, $json): void
+    {
+        PHPUnit::assertEquals($expected, $json, Messages::PAGINATION_META_NOT_EQUAL);
     }
 
     /**
