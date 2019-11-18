@@ -7,7 +7,7 @@
         "jsonapi-assert",
         "unit tests",
         "JSON API",
-        "assertion"
+        "assertions"
     ],
     "homepage": "http://github.com/VGirol/JsonApi-Assert",
     "license": "MIT",
