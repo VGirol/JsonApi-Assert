@@ -114,7 +114,7 @@ abstract class Messages
     const ERRORS_OBJECT_CONTAINS_NOT_ENOUGH_ERRORS =
     'Errors array must be greater or equal than the expected errors array.';
     const ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR =
-    'Failed asserting that "errors" member %s contains the expected error %s.';
+    'The "errors" member does not contain the expected error %s.';
     const RESOURCE_COLLECTION_HAVE_NOT_SAME_LENGTH =
     'Failed asserting that the resource collection length (%u) is equal to %u.';
     const RESOURCE_IS_NOT_EQUAL =
