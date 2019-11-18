@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": "~7.2.0|^7.3",
+        "php": "~7.2.9|^7.3",
         "vgirol/jsonapi-constant": "dev-master",
         "phpunit/phpunit": "^8.0",
         "dms/phpunit-arraysubset-asserts": "^0.1.0"
