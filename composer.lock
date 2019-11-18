@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ed7a75f27dff4844a7a43d1354ba842",
+    "content-hash": "7020ffda10a46c1825faf9b2ce6f5026",
     "packages": [
         {
             "name": "dms/phpunit-arraysubset-asserts",
@@ -2713,7 +2713,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "~7.2.9|^7.3"
     },
     "platform-dev": []
 }
