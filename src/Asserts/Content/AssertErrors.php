@@ -58,7 +58,6 @@ trait AssertErrors
                 $test,
                 sprintf(
                     Messages::ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR,
-                    var_export($errors, true),
                     var_export($expectedError, true)
                 )
             );
