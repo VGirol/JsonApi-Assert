@@ -25,7 +25,7 @@
         "dms/phpunit-arraysubset-asserts": "^0.1.0"
     },
     "require-dev": {
-        "infection/infection": "^0.14"
+        "infection/infection": "^0.14|^0.15"
     },
     "repositories": [
         {
