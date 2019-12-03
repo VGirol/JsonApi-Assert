@@ -6,7 +6,7 @@ use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
 
-class ResourceLTest extends TestCase
+class ResourceLinkageTest extends TestCase
 {
     /**
      * @test

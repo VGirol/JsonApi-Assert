@@ -72,7 +72,6 @@ class ArrayTest extends TestCase
      */
     public function assertIsArrayOfObjectsWithInvalidArguments()
     {
-
         $json = 'invalid';
 
         $this->setInvalidArgumentException(1, 'array', $json);
@@ -117,7 +116,6 @@ class ArrayTest extends TestCase
      */
     public function assertIsNotArrayOfObjectsWithInvalidArguments()
     {
-
         $json = null;
 
         $this->setInvalidArgumentException(1, 'array', $json);
