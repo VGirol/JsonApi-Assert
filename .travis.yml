@@ -19,7 +19,6 @@ matrix:
   fast_finish: true
 
 before_script:
-  - phpenv config-add xdebug.ini
   - travis_retry composer self-update
   - travis_retry composer install ${COMPOSER_FLAGS} --no-interaction --prefer-dist
   - mkdir -p build/coverage
