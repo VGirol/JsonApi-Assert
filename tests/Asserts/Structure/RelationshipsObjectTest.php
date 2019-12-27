@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class RelationshipsObjectTest extends TestCase
 {
@@ -22,18 +23,18 @@ class RelationshipsObjectTest extends TestCase
         return [
             'without pagination' => [
                 [
-                    'self' => 'url'
+                    Members::LINK_SELF => 'url'
                 ],
                 false,
                 false
             ],
             'with pagination' => [
                 [
-                    'self' => 'url',
-                    'first' => 'url',
-                    'prev' => null,
-                    'next' => null,
-                    'last' => 'url'
+                    Members::LINK_SELF => 'url',
+                    Members::LINK_PAGINATION_FIRST => 'url',
+                    Members::LINK_PAGINATION_PREV => null,
+                    Members::LINK_PAGINATION_NEXT => null,
+                    Members::LINK_PAGINATION_LAST => 'url'
                 ],
                 true,
                 false
@@ -56,7 +57,7 @@ class RelationshipsObjectTest extends TestCase
         return [
             'not allowed member' => [
                 [
-                    'self' => 'url',
+                    Members::LINK_SELF => 'url',
                     'anything' => 'not allowed'
                 ],
                 false,
@@ -65,9 +66,9 @@ class RelationshipsObjectTest extends TestCase
             ],
             'with pagination and not allowed member' => [
                 [
-                    'self' => 'url',
-                    'first' => 'url',
-                    'last' => 'url',
+                    Members::LINK_SELF => 'url',
+                    Members::LINK_PAGINATION_FIRST => 'url',
+                    Members::LINK_PAGINATION_LAST => 'url',
                     'anything' => 'not allowed'
                 ],
                 true,
@@ -91,21 +92,21 @@ class RelationshipsObjectTest extends TestCase
         return [
             'empty to one relationship' => [
                 [
-                    'data' => null
+                    Members::DATA => null
                 ],
                 false
             ],
             'to one relationship' => [
                 [
-                    'data' => [
-                        'type' => 'author',
-                        'id' => '2'
+                    Members::DATA => [
+                        Members::TYPE => 'author',
+                        Members::ID => '2'
                     ],
-                    'links' => [
-                        'self' => 'http://example.com/articles/1/relationships/author',
-                        'related' => 'http://example.com/articles/1/author',
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles/1/relationships/author',
+                        Members::LINK_RELATED => 'http://example.com/articles/1/author',
                     ],
-                    'meta' => [
+                    Members::META => [
                         'anything' => 'valid'
                     ]
                 ],
@@ -113,29 +114,29 @@ class RelationshipsObjectTest extends TestCase
             ],
             'empty to many relationship' => [
                 [
-                    'data' => []
+                    Members::DATA => []
                 ],
                 false
             ],
             'to many relationship' => [
                 [
-                    'data' => [
+                    Members::DATA => [
                         [
-                            'type' => 'author',
-                            'id' => '2'
+                            Members::TYPE => 'author',
+                            Members::ID => '2'
                         ],
                         [
-                            'type' => 'author',
-                            'id' => '3'
+                            Members::TYPE => 'author',
+                            Members::ID => '3'
                         ]
                     ],
-                    'links' => [
-                        'self' => 'http://example.com/articles/1/relationships/author',
-                        'related' => 'http://example.com/articles/1/author',
-                        'first' => 'url',
-                        'next' => 'url'
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles/1/relationships/author',
+                        Members::LINK_RELATED => 'http://example.com/articles/1/author',
+                        Members::LINK_PAGINATION_FIRST => 'url',
+                        Members::LINK_PAGINATION_NEXT => 'url'
                     ],
-                    'meta' => [
+                    Members::META => [
                         'anything' => 'valid'
                     ]
                 ],
@@ -169,15 +170,15 @@ class RelationshipsObjectTest extends TestCase
                     ]
                 ],
                 false,
-                sprintf(Messages::CONTAINS_AT_LEAST_ONE, implode(', ', ['links', 'data', 'meta']))
+                sprintf(Messages::CONTAINS_AT_LEAST_ONE, implode(', ', [Members::LINKS, Members::DATA, Members::META]))
             ],
             'meta is not valid' => [
                 [
-                    'data' => [
-                        'type' => 'test',
-                        'id' => '2'
+                    Members::DATA => [
+                        Members::TYPE => 'test',
+                        Members::ID => '2'
                     ],
-                    'meta' => [
+                    Members::META => [
                         'key+' => 'not valid'
                     ]
                 ],
@@ -186,25 +187,25 @@ class RelationshipsObjectTest extends TestCase
             ],
             'links is not valid' => [
                 [
-                    'data' => [
-                        'type' => 'test',
-                        'id' => '2'
+                    Members::DATA => [
+                        Members::TYPE => 'test',
+                        Members::ID => '2'
                     ],
-                    'links' => 'not valid'
+                    Members::LINKS => 'not valid'
                 ],
                 false,
                 Messages::LINKS_OBJECT_NOT_ARRAY
             ],
             'single resource with pagination' => [
                 [
-                    'data' => [
-                        'type' => 'test',
-                        'id' => '2'
+                    Members::DATA => [
+                        Members::TYPE => 'test',
+                        Members::ID => '2'
                     ],
-                    'links' => [
-                        'self' => 'url',
-                        'first' => 'url',
-                        'last' => 'url'
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'url',
+                        Members::LINK_PAGINATION_FIRST => 'url',
+                        Members::LINK_PAGINATION_LAST => 'url'
                     ]
                 ],
                 false,
@@ -213,24 +214,24 @@ class RelationshipsObjectTest extends TestCase
             'array of resource identifier objects without pagination' => [
                 [
                     [
-                        'data' => [
+                        Members::DATA => [
                             [
-                                'type' => 'test',
-                                'id' => '2'
+                                Members::TYPE => 'test',
+                                Members::ID => '2'
                             ],
                             [
-                                'type' => 'test',
-                                'id' => '3'
+                                Members::TYPE => 'test',
+                                Members::ID => '3'
                             ]
                         ],
-                        'links' => [
-                            'self' => 'url',
-                            'related' => 'url'
+                        Members::LINKS => [
+                            Members::LINK_SELF => 'url',
+                            Members::LINK_RELATED => 'url'
                         ]
                     ]
                 ],
                 false,
-                sprintf(Messages::CONTAINS_AT_LEAST_ONE, implode(', ', ['links', 'data', 'meta']))
+                sprintf(Messages::CONTAINS_AT_LEAST_ONE, implode(', ', [Members::LINKS, Members::DATA, Members::META]))
             ]
         ];
     }
@@ -242,13 +243,13 @@ class RelationshipsObjectTest extends TestCase
     {
         $data = [
             'author' => [
-                'links' => [
-                    'self' => 'http://example.com/articles/1/relationships/author',
-                    'related' => 'http://example.com/articles/1/author'
+                Members::LINKS => [
+                    Members::LINK_SELF => 'http://example.com/articles/1/relationships/author',
+                    Members::LINK_RELATED => 'http://example.com/articles/1/author'
                 ],
-                'data' => [
-                    'type' => 'people',
-                    'id' => '9'
+                Members::DATA => [
+                    Members::TYPE => 'people',
+                    Members::ID => '9'
                 ]
             ]
         ];
@@ -281,9 +282,9 @@ class RelationshipsObjectTest extends TestCase
             'no valid member name' => [
                 [
                     'author+' => [
-                        'data' => [
-                            'type' => 'people',
-                            'id' => '9'
+                        Members::DATA => [
+                            Members::TYPE => 'people',
+                            Members::ID => '9'
                         ]
                     ]
                 ],
@@ -293,9 +294,9 @@ class RelationshipsObjectTest extends TestCase
             'no safe member name' => [
                 [
                     'author not safe' => [
-                        'data' => [
-                            'type' => 'people',
-                            'id' => '9'
+                        Members::DATA => [
+                            Members::TYPE => 'people',
+                            Members::ID => '9'
                         ]
                     ]
                 ],

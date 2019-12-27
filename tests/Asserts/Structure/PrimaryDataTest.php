@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class PrimaryDataTest extends TestCase
 {
@@ -30,12 +31,12 @@ class PrimaryDataTest extends TestCase
             'resource identifier collection' => [
                 [
                     [
-                        'type' => 'test',
-                        'id' => '2'
+                        Members::TYPE => 'test',
+                        Members::ID => '2'
                     ],
                     [
-                        'type' => 'test',
-                        'id' => '3'
+                        Members::TYPE => 'test',
+                        Members::ID => '3'
                     ]
                 ],
                 false
@@ -43,17 +44,17 @@ class PrimaryDataTest extends TestCase
             'resource object collection' => [
                 [
                     [
-                        'type' => 'test',
-                        'id' => '2',
-                        'attributes' => [
-                            'title' => 'test'
+                        Members::TYPE => 'test',
+                        Members::ID => '2',
+                        Members::ATTRIBUTES => [
+                            'attr' => 'test'
                         ]
                     ],
                     [
-                        'type' => 'test',
-                        'id' => '3',
-                        'attributes' => [
-                            'title' => 'another'
+                        Members::TYPE => 'test',
+                        Members::ID => '3',
+                        Members::ATTRIBUTES => [
+                            'attr' => 'another'
                         ]
                     ]
                 ],
@@ -61,16 +62,16 @@ class PrimaryDataTest extends TestCase
             ],
             'unique resource identifier' => [
                 [
-                    'type' => 'test',
-                    'id' => '2'
+                    Members::TYPE => 'test',
+                    Members::ID => '2'
                 ],
                 false
             ],
             'unique resource object' => [
                 [
-                    'type' => 'test',
-                    'id' => '2',
-                    'attributes' => [
+                    Members::TYPE => 'test',
+                    Members::ID => '2',
+                    Members::ATTRIBUTES => [
                         'anything' => 'ok'
                     ]
                 ],
@@ -100,13 +101,13 @@ class PrimaryDataTest extends TestCase
             'collection with different type of resource objects' => [
                 [
                     [
-                        'type' => 'test',
-                        'id' => '1'
+                        Members::TYPE => 'test',
+                        Members::ID => '1'
                     ],
                     [
-                        'type' => 'test',
-                        'id' => '2',
-                        'attributes' => [
+                        Members::TYPE => 'test',
+                        Members::ID => '2',
+                        Members::ATTRIBUTES => [
                             'anything' => 'valid'
                         ]
                     ]
@@ -117,12 +118,12 @@ class PrimaryDataTest extends TestCase
             'collection with not valid resource identifier objects' => [
                 [
                     [
-                        'type' => 'test',
-                        'id' => '1'
+                        Members::TYPE => 'test',
+                        Members::ID => '1'
                     ],
                     [
-                        'type' => 'test',
-                        'id' => '2',
+                        Members::TYPE => 'test',
+                        Members::ID => '2',
                         'unvalid' => 'wrong'
                     ]
                 ],
@@ -131,12 +132,12 @@ class PrimaryDataTest extends TestCase
             ],
             'not safe meta member' => [
                 [
-                    'type' => 'test',
-                    'id' => '2',
-                    'attributes' => [
+                    Members::TYPE => 'test',
+                    Members::ID => '2',
+                    Members::ATTRIBUTES => [
                         'anything' => 'valid'
                     ],
-                    'meta' => [
+                    Members::META => [
                         'not valid' => 'due to the blank character'
                     ]
                 ],

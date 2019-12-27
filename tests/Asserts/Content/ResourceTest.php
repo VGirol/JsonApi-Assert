@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class ResourceTest extends TestCase
 {
@@ -14,16 +15,16 @@ class ResourceTest extends TestCase
     public function resourceObjectEquals()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '123',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
         $json = [
-            'id' => '123',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '123',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
@@ -37,16 +38,16 @@ class ResourceTest extends TestCase
     public function resourceObjectEqualsFailed()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '123',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
         $json = [
-            'id' => '456',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '456',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
@@ -66,16 +67,16 @@ class ResourceTest extends TestCase
     {
         $json = [
             [
-                'id' => '456',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '456',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr2' => 'value2'
                 ]
             ],
             [
-                'id' => '123',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '123',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr1' => 'value1'
                 ]
             ]
@@ -89,9 +90,9 @@ class ResourceTest extends TestCase
         return [
             'single resource' => [
                 [
-                    'id' => '123',
-                    'type' => 'test',
-                    'attributes' => [
+                    Members::ID => '123',
+                    Members::TYPE => 'test',
+                    Members::ATTRIBUTES => [
                         'attr1' => 'value1'
                     ]
                 ]
@@ -99,16 +100,16 @@ class ResourceTest extends TestCase
             'resources collection' => [
                 [
                     [
-                        'id' => '456',
-                        'type' => 'test',
-                        'attributes' => [
+                        Members::ID => '456',
+                        Members::TYPE => 'test',
+                        Members::ATTRIBUTES => [
                             'attr2' => 'value2'
                         ]
                     ],
                     [
-                        'id' => '123',
-                        'type' => 'test',
-                        'attributes' => [
+                        Members::ID => '123',
+                        Members::TYPE => 'test',
+                        Members::ATTRIBUTES => [
                             'attr1' => 'value1'
                         ]
                     ]
@@ -123,24 +124,24 @@ class ResourceTest extends TestCase
     public function resourceCollectionContainsFailed()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '123',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
         $json = [
             [
-                'id' => '456',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '456',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr2' => 'value2'
                 ]
             ],
             [
-                'id' => '789',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '789',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr3' => 'value3'
                 ]
             ]
@@ -158,18 +159,18 @@ class ResourceTest extends TestCase
     {
         $expected = [
             [
-                'id' => '123',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '123',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr1' => 'value1'
                 ]
             ]
         ];
         $json = [
             [
-                'id' => '123',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '123',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr1' => 'value1'
                 ]
             ]
@@ -186,16 +187,16 @@ class ResourceTest extends TestCase
     {
         $json = [
             [
-                'id' => '456',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '456',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr2' => 'value2'
                 ]
             ],
             [
-                'id' => '123',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '123',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr1' => 'value1'
                 ]
             ]
@@ -211,9 +212,9 @@ class ResourceTest extends TestCase
         return [
             'not an array of objects' => [
                 [
-                    'id' => '123',
-                    'type' => 'test',
-                    'attributes' => [
+                    Members::ID => '123',
+                    Members::TYPE => 'test',
+                    Members::ATTRIBUTES => [
                         'attr1' => 'value1'
                     ]
                 ],
@@ -222,9 +223,9 @@ class ResourceTest extends TestCase
             'not same count' => [
                 [
                     [
-                        'id' => '456',
-                        'type' => 'test',
-                        'attributes' => [
+                        Members::ID => '456',
+                        Members::TYPE => 'test',
+                        Members::ATTRIBUTES => [
                             'attr2' => 'value2'
                         ]
                     ]
@@ -234,16 +235,16 @@ class ResourceTest extends TestCase
             'not equal' => [
                 [
                     [
-                        'id' => '456',
-                        'type' => 'test',
-                        'attributes' => [
+                        Members::ID => '456',
+                        Members::TYPE => 'test',
+                        Members::ATTRIBUTES => [
                             'attr2' => 'value2'
                         ]
                     ],
                     [
-                        'id' => '789',
-                        'type' => 'test',
-                        'attributes' => [
+                        Members::ID => '789',
+                        Members::TYPE => 'test',
+                        Members::ATTRIBUTES => [
                             'attr1' => 'value1'
                         ]
                     ]

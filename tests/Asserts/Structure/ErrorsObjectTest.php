@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class ErrorsObjectTest extends TestCase
 {
@@ -13,7 +14,7 @@ class ErrorsObjectTest extends TestCase
     public function errorLinksObjectIsValid()
     {
         $links = [
-            'about' => 'url'
+            Members::LINK_ABOUT => 'url'
         ];
         $strict = false;
 
@@ -63,8 +64,8 @@ class ErrorsObjectTest extends TestCase
             'long' => [
                 [
                     'anything' => 'blabla',
-                    'pointer' => '/data/attributes/title',
-                    'parameter' => 'blabla'
+                    Members::ERROR_POINTER => '/data/attributes/title',
+                    Members::ERROR_PARAMETER => 'blabla'
                 ]
             ]
         ];
@@ -90,21 +91,21 @@ class ErrorsObjectTest extends TestCase
             'pointer is not a string' => [
                 [
                     'valid' => 'valid',
-                    'pointer' => 666
+                    Members::ERROR_POINTER => 666
                 ],
                 Messages::ERROR_SOURCE_POINTER_IS_NOT_STRING
             ],
             'pointer does not start with a /' => [
                 [
                     'valid' => 'valid',
-                    'pointer' => 'not valid'
+                    Members::ERROR_POINTER => 'not valid'
                 ],
                 Messages::ERROR_SOURCE_POINTER_START
             ],
             'parameter is not a string' => [
                 [
                     'valid' => 'valid',
-                    'parameter' => 666
+                    Members::ERROR_PARAMETER => 666
                 ],
                 Messages::ERROR_SOURCE_PARAMETER_IS_NOT_STRING
             ]
@@ -117,19 +118,19 @@ class ErrorsObjectTest extends TestCase
     public function errorObjectIsValid()
     {
         $data = [
-            'id' => 15,
-            'links' => [
-                'about' => 'url'
+            Members::ID => 15,
+            Members::LINKS => [
+                Members::LINK_ABOUT => 'url'
             ],
-            'status' => 'test',
-            'code' => 'E13',
-            'title' => 'test',
-            'details' => 'test',
-            'source' => [
+            Members::ERROR_STATUS => 'test',
+            Members::ERROR_CODE => 'E13',
+            Members::ERROR_TITLE => 'test',
+            Members::ERROR_DETAILS => 'test',
+            Members::ERROR_SOURCE => [
                 'anything' => 'valid',
-                'pointer' => '/data/type'
+                Members::ERROR_POINTER => '/data/type'
             ],
-            'meta' => [
+            Members::META => [
                 'is valid' => 'because $strict is false'
             ]
         ];
@@ -163,7 +164,7 @@ class ErrorsObjectTest extends TestCase
             ],
             'not allowed member' => [
                 [
-                    'code' => 'E13',
+                    Members::ERROR_CODE => 'E13',
                     'not' => 'not valid',
                 ],
                 false,
@@ -171,49 +172,49 @@ class ErrorsObjectTest extends TestCase
             ],
             'status is not a string' => [
                 [
-                    'code' => 'E13',
-                    'status' => 666,
+                    Members::ERROR_CODE => 'E13',
+                    Members::ERROR_STATUS => 666,
                 ],
                 false,
                 Messages::ERROR_STATUS_IS_NOT_STRING
             ],
             'code is not a string' => [
                 [
-                    'code' => 13,
-                    'status' => 'ok',
+                    Members::ERROR_CODE => 13,
+                    Members::ERROR_STATUS => 'ok',
                 ],
                 false,
                 Messages::ERROR_CODE_IS_NOT_STRING
             ],
             'title is not a string' => [
                 [
-                    'title' => 13,
-                    'status' => 'ok',
+                    Members::ERROR_TITLE => 13,
+                    Members::ERROR_STATUS => 'ok',
                 ],
                 false,
                 Messages::ERROR_TITLE_IS_NOT_STRING
             ],
             'details is not a string' => [
                 [
-                    'details' => 13,
-                    'status' => 'ok',
+                    Members::ERROR_DETAILS => 13,
+                    Members::ERROR_STATUS => 'ok',
                 ],
                 false,
                 Messages::ERROR_DETAILS_IS_NOT_STRING
             ],
             'source is not an array' => [
                 [
-                    'status' => 'ok',
-                    'source' => 'not valid'
+                    Members::ERROR_STATUS => 'ok',
+                    Members::ERROR_SOURCE => 'not valid'
                 ],
                 false,
                 Messages::ERROR_SOURCE_OBJECT_NOT_ARRAY
             ],
             'source pointer is not a string' => [
                 [
-                    'status' => 'ok',
-                    'source' => [
-                        'pointer' => 666
+                    Members::ERROR_STATUS => 'ok',
+                    Members::ERROR_SOURCE => [
+                        Members::ERROR_POINTER => 666
                     ]
                 ],
                 false,
@@ -221,9 +222,9 @@ class ErrorsObjectTest extends TestCase
             ],
             'source pointer is not valid' => [
                 [
-                    'status' => 'ok',
-                    'source' => [
-                        'pointer' => 'not valid'
+                    Members::ERROR_STATUS => 'ok',
+                    Members::ERROR_SOURCE => [
+                        Members::ERROR_POINTER => 'not valid'
                     ]
                 ],
                 false,
@@ -231,9 +232,9 @@ class ErrorsObjectTest extends TestCase
             ],
             'source parameter is not a string' => [
                 [
-                    'status' => 'ok',
-                    'source' => [
-                        'parameter' => 666
+                    Members::ERROR_STATUS => 'ok',
+                    Members::ERROR_SOURCE => [
+                        Members::ERROR_PARAMETER => 666
                     ]
                 ],
                 false,
@@ -241,8 +242,8 @@ class ErrorsObjectTest extends TestCase
             ],
             'links is not valid' => [
                 [
-                    'status' => 'ok',
-                    'links' => [
+                    Members::ERROR_STATUS => 'ok',
+                    Members::LINKS => [
                         'no' => 'not valid'
                     ]
                 ],
@@ -251,8 +252,8 @@ class ErrorsObjectTest extends TestCase
             ],
             'meta is not valid' => [
                 [
-                    'status' => 'ok',
-                    'meta' => [
+                    Members::ERROR_STATUS => 'ok',
+                    Members::META => [
                         'not+' => 'not valid'
                     ]
                 ],
@@ -269,12 +270,12 @@ class ErrorsObjectTest extends TestCase
     {
         $data = [
             [
-                'status' => 'test',
-                'code' => 'E13',
+                Members::ERROR_STATUS => 'test',
+                Members::ERROR_CODE => 'E13',
             ],
             [
-                'status' => 'test2',
-                'code' => 'E132',
+                Members::ERROR_STATUS => 'test2',
+                Members::ERROR_CODE => 'E132',
             ]
         ];
         $strict = false;
@@ -305,8 +306,8 @@ class ErrorsObjectTest extends TestCase
             'error object not valid' => [
                 [
                     [
-                        'status' => 666,
-                        'code' => 'E13'
+                        Members::ERROR_STATUS => 666,
+                        Members::ERROR_CODE => 'E13'
                     ]
                 ],
                 false,
@@ -315,8 +316,8 @@ class ErrorsObjectTest extends TestCase
             'error object not safe' => [
                 [
                     [
-                        'code' => 'E13',
-                        'meta' => [
+                        Members::ERROR_CODE => 'E13',
+                        Members::META => [
                             'not valid' => 'not valid'
                         ]
                     ]

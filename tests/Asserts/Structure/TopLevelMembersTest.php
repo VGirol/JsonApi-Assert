@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class TopLevelMembersTest extends TestCase
 {
@@ -14,22 +15,22 @@ class TopLevelMembersTest extends TestCase
     public function documentHasValidTopLevelMembers()
     {
         $data = [
-            'links' => [
-                'self' => 'http://example.com/articles'
+            Members::LINKS => [
+                Members::LINK_SELF => 'http://example.com/articles'
             ],
-            'data' => [
+            Members::DATA => [
                 [
-                    'type' => 'articles',
-                    'id' => '1',
-                    'attributes' => [
-                        'title' => 'First'
+                    Members::TYPE => 'articles',
+                    Members::ID => '1',
+                    Members::ATTRIBUTES => [
+                        Members::ERROR_TITLE => 'First'
                     ]
                 ],
                 [
-                    'type' => 'articles',
-                    'id' => '2',
-                    'attributes' => [
-                        'title' => 'Second'
+                    Members::TYPE => 'articles',
+                    Members::ID => '2',
+                    Members::ATTRIBUTES => [
+                        Members::ERROR_TITLE => 'Second'
                     ]
                 ]
             ]
@@ -53,24 +54,24 @@ class TopLevelMembersTest extends TestCase
         return [
             'miss mandatory members' => [
                 [
-                    'links' => [
-                        'self' => 'http://example.com/articles'
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles'
                     ]
                 ],
-                sprintf(Messages::TOP_LEVEL_MEMBERS, implode('", "', ['data', 'errors', 'meta']))
+                sprintf(Messages::TOP_LEVEL_MEMBERS, implode('", "', [Members::DATA, Members::ERRORS, Members::META]))
             ],
             'data and error incompatible' => [
                 [
-                    'errors' => [
+                    Members::ERRORS => [
                         [
-                            'code' => 'E13'
+                            Members::ERROR_CODE => 'E13'
                         ]
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'JSON:API paints my bikeshed!'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'JSON:API paints my bikeshed!'
                         ]
                     ]
                 ],
@@ -78,11 +79,11 @@ class TopLevelMembersTest extends TestCase
             ],
             'only allowed members' => [
                 [
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'JSON:API paints my bikeshed!'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'JSON:API paints my bikeshed!'
                         ]
                     ],
                     'anything' => 'not allowed'
@@ -91,16 +92,16 @@ class TopLevelMembersTest extends TestCase
             ],
             'no data but included' => [
                 [
-                    'included' => [
+                    Members::INCLUDED => [
                         [
-                            'type' => 'articles',
-                            'id' => '1',
-                            'attributes' => [
-                                'title' => 'JSON:API paints my bikeshed!'
+                            Members::TYPE => 'articles',
+                            Members::ID => '1',
+                            Members::ATTRIBUTES => [
+                                Members::ERROR_TITLE => 'JSON:API paints my bikeshed!'
                             ]
                         ]
                     ],
-                    'meta' => [
+                    Members::META => [
                         'anything' => 'ok'
                     ]
                 ],

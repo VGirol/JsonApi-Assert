@@ -3,9 +3,9 @@
 namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 
 use VGirol\JsonApiAssert\Assert;
-use VGirol\JsonApiConstant\Members;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class PaginationTest extends TestCase
 {
@@ -15,9 +15,9 @@ class PaginationTest extends TestCase
     public function hasPaginationLinks()
     {
         $json = [
-            'self' => 'url',
-            'first' => 'urlFirst',
-            'last' => 'urlLast'
+            Members::LINK_SELF => 'url',
+            Members::LINK_PAGINATION_FIRST => 'urlFirst',
+            Members::LINK_PAGINATION_LAST => 'urlLast'
         ];
 
         Assert::assertHasPaginationLinks($json);
@@ -29,7 +29,7 @@ class PaginationTest extends TestCase
     public function hasPaginationLinksFailed()
     {
         $json = [
-            'self' => 'url'
+            Members::LINK_SELF => 'url'
         ];
 
         $this->setFailure(
@@ -56,7 +56,7 @@ class PaginationTest extends TestCase
     public function hasNoPaginationLinks()
     {
         $json = [
-            'self' => 'url'
+            Members::LINK_SELF => 'url'
         ];
 
         Assert::assertHasNoPaginationLinks($json);
@@ -68,12 +68,12 @@ class PaginationTest extends TestCase
     public function hasNoPaginationLinksFailed()
     {
         $json = [
-            'self' => 'url',
-            'first' => 'urlFirst'
+            Members::LINK_SELF => 'url',
+            Members::LINK_PAGINATION_FIRST => 'urlFirst'
         ];
 
         $this->setFailure(
-            sprintf(Messages::NOT_HAS_MEMBER, 'first')
+            sprintf(Messages::NOT_HAS_MEMBER, Members::LINK_PAGINATION_FIRST)
         );
 
         Assert::assertHasNoPaginationLinks($json);
@@ -85,14 +85,14 @@ class PaginationTest extends TestCase
     public function paginationLinksEquals()
     {
         $expected = [
-            'first' => 'urlFirst',
-            'next' => true,
-            'last' => false
+            Members::LINK_PAGINATION_FIRST => 'urlFirst',
+            Members::LINK_PAGINATION_NEXT => true,
+            Members::LINK_PAGINATION_LAST => false
         ];
         $json = [
-            'self' => 'url',
-            'first' => 'urlFirst',
-            'next' => 'urlNext'
+            Members::LINK_SELF => 'url',
+            Members::LINK_PAGINATION_FIRST => 'urlFirst',
+            Members::LINK_PAGINATION_NEXT => 'urlNext'
         ];
 
         Assert::assertPaginationLinksEquals($expected, $json);
@@ -105,10 +105,10 @@ class PaginationTest extends TestCase
     public function paginationLinksEqualsFailed($expected, $failureMsg)
     {
         $json = [
-            'self' => 'url',
-            'first' => 'urlFirst',
-            'next' => 'urlNext',
-            'last' => 'urlLast'
+            Members::LINK_SELF => 'url',
+            Members::LINK_PAGINATION_FIRST => 'urlFirst',
+            Members::LINK_PAGINATION_NEXT => 'urlNext',
+            Members::LINK_PAGINATION_LAST => 'urlLast'
         ];
 
         $this->setFailure($failureMsg);
@@ -121,28 +121,28 @@ class PaginationTest extends TestCase
         return [
             'has too many members' => [
                 [
-                    'first' => 'urlFirst',
-                    'next' => false,
-                    'prev' => false,
-                    'last' => 'urlLast'
+                    Members::LINK_PAGINATION_FIRST => 'urlFirst',
+                    Members::LINK_PAGINATION_NEXT => false,
+                    Members::LINK_PAGINATION_PREV => false,
+                    Members::LINK_PAGINATION_LAST => 'urlLast'
                 ],
                 Messages::PAGINATION_LINKS_NOT_EQUAL
             ],
             'has not all expected member' => [
                 [
-                    'first' => 'urlFirst',
-                    'next' => 'urlNext',
-                    'prev' => 'urlPrev',
-                    'last' => 'urlLast'
+                    Members::LINK_PAGINATION_FIRST => 'urlFirst',
+                    Members::LINK_PAGINATION_NEXT => 'urlNext',
+                    Members::LINK_PAGINATION_PREV => 'urlPrev',
+                    Members::LINK_PAGINATION_LAST => 'urlLast'
                 ],
                 Messages::PAGINATION_LINKS_NOT_EQUAL
             ],
             'not same value' => [
                 [
-                    'first' => 'urlFirstError',
-                    'next' => 'urlNext',
-                    'prev' => false,
-                    'last' => 'urlLast'
+                    Members::LINK_PAGINATION_FIRST => 'urlFirstError',
+                    Members::LINK_PAGINATION_NEXT => 'urlNext',
+                    Members::LINK_PAGINATION_PREV => false,
+                    Members::LINK_PAGINATION_LAST => 'urlLast'
                 ],
                 Messages::PAGINATION_LINKS_NOT_EQUAL
             ]

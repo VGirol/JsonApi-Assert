@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class LinksObjectTest extends TestCase
 {
@@ -29,8 +30,8 @@ class LinksObjectTest extends TestCase
             ],
             'as object' => [
                 [
-                    'href' => 'validLink',
-                    'meta' => [
+                    Members::LINK_HREF => 'validLink',
+                    Members::META => [
                         'key' => 'value'
                     ]
                 ],
@@ -59,15 +60,15 @@ class LinksObjectTest extends TestCase
             ],
             'no "href" member' => [
                 [
-                    'meta' => 'error'
+                    Members::META => 'error'
                 ],
                 false,
                 Messages::LINK_OBJECT_MISS_HREF_MEMBER
             ],
             'not only allowed members' => [
                 [
-                    'href' => 'valid',
-                    'meta' => 'valid',
+                    Members::LINK_HREF => 'valid',
+                    Members::META => 'valid',
                     'test' => 'error'
                 ],
                 false,
@@ -75,8 +76,8 @@ class LinksObjectTest extends TestCase
             ],
             'meta not valid' => [
                 [
-                    'href' => 'valid',
-                    'meta' => [
+                    Members::LINK_HREF => 'valid',
+                    Members::META => [
                         'key+' => 'not valid'
                     ]
                 ],
@@ -85,8 +86,8 @@ class LinksObjectTest extends TestCase
             ],
             'meta not safe' => [
                 [
-                    'href' => 'valid',
-                    'meta' => [
+                    Members::LINK_HREF => 'valid',
+                    Members::META => [
                         'not safe' => 'because of blank character'
                     ]
                 ],
@@ -102,10 +103,10 @@ class LinksObjectTest extends TestCase
     public function linksObjectIsValid()
     {
         $data = [
-            'self' => 'url',
-            'related' => 'url'
+            Members::LINK_SELF => 'url',
+            Members::LINK_RELATED => 'url'
         ];
-        $allowed = ['self', 'related'];
+        $allowed = [Members::LINK_SELF, Members::LINK_RELATED];
         $strict = false;
 
         JsonApiAssert::assertIsValidLinksObject($data, $allowed, $strict);
@@ -126,38 +127,38 @@ class LinksObjectTest extends TestCase
         return [
             'not an array' => [
                 'error',
-                ['self', 'related'],
+                [Members::LINK_SELF, Members::LINK_RELATED],
                 false,
                 Messages::LINKS_OBJECT_NOT_ARRAY
             ],
             'not only allowed members' => [
                 [
-                    'self' => 'valid',
-                    'first' => 'valid',
+                    Members::LINK_SELF => 'valid',
+                    Members::LINK_PAGINATION_FIRST => 'valid',
                     'test' => 'error'
                 ],
-                ['self', 'related'],
+                [Members::LINK_SELF, Members::LINK_RELATED],
                 false,
                 Messages::ONLY_ALLOWED_MEMBERS
             ],
             'link not valid' => [
                 [
-                    'self' => 666
+                    Members::LINK_SELF => 666
                 ],
-                ['self', 'related'],
+                [Members::LINK_SELF, Members::LINK_RELATED],
                 false,
                 Messages::LINK_OBJECT_IS_NOT_ARRAY
             ],
             'link has not safe meta member' => [
                 [
-                    'self' => [
-                        'href' => 'url',
-                        'meta' => [
+                    Members::LINK_SELF => [
+                        Members::LINK_HREF => 'url',
+                        Members::META => [
                             'not safe' => 'because of blank character'
                         ]
                     ]
                 ],
-                ['self', 'related'],
+                [Members::LINK_SELF, Members::LINK_RELATED],
                 true,
                 Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
             ]

@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class StructureTest extends TestCase
 {
@@ -21,43 +22,43 @@ class StructureTest extends TestCase
         return [
             'with data' => [
                 [
-                    'links' => [
-                        'self' => 'http://example.com/articles',
-                        'first' => 'url',
-                        'last' => 'url'
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles',
+                        Members::LINK_PAGINATION_FIRST => 'url',
+                        Members::LINK_PAGINATION_LAST => 'url'
                     ],
-                    'data' => [
+                    Members::DATA => [
                         [
-                            'type' => 'articles',
-                            'id' => '1',
-                            'attributes' => [
-                                'title' => 'JSON:API paints my bikeshed!'
+                            Members::TYPE => 'articles',
+                            Members::ID => '1',
+                            Members::ATTRIBUTES => [
+                                Members::ERROR_TITLE => 'JSON:API paints my bikeshed!'
                             ]
                         ],
                         [
-                            'type' => 'articles',
-                            'id' => '2',
-                            'attributes' => [
-                                'title' => 'Rails is Omakase'
+                            Members::TYPE => 'articles',
+                            Members::ID => '2',
+                            Members::ATTRIBUTES => [
+                                Members::ERROR_TITLE => 'Rails is Omakase'
                             ],
-                            'relationships' => [
+                            Members::RELATIONSHIPS => [
                                 'test' => [
-                                    'data' => [
-                                        'type' => 'relation',
-                                        'id' => '12'
+                                    Members::DATA => [
+                                        Members::TYPE => 'relation',
+                                        Members::ID => '12'
                                     ]
                                 ]
                             ]
                         ]
                     ],
-                    'meta' => [
+                    Members::META => [
                         'anything' => 'valid'
                     ],
-                    'included' => [
+                    Members::INCLUDED => [
                         [
-                            'type' => 'relation',
-                            'id' => '12',
-                            'attributes' => [
+                            Members::TYPE => 'relation',
+                            Members::ID => '12',
+                            Members::ATTRIBUTES => [
                                 'anything' => 'valid'
                             ]
                         ]
@@ -67,16 +68,16 @@ class StructureTest extends TestCase
             ],
             'with errors' => [
                 [
-                    'errors' => [
+                    Members::ERRORS => [
                         [
-                            'code' => 'E13'
+                            Members::ERROR_CODE => 'E13'
                         ],
                         [
-                            'code' => 'E14'
+                            Members::ERROR_CODE => 'E14'
                         ]
                     ],
-                    'jsonapi' => [
-                        'version' => 'valid'
+                    Members::JSONAPI => [
+                        Members::JSONAPI_VERSION => 'valid'
                     ]
                 ],
                 false
@@ -99,14 +100,14 @@ class StructureTest extends TestCase
         return [
             'no valid top-level member' => [
                 [
-                    'links' => [
-                        'self' => 'http://example.com/articles',
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles',
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'First'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'First'
                         ]
                     ],
                     'anything' => 'not valid'
@@ -116,14 +117,14 @@ class StructureTest extends TestCase
             ],
             'no valid primary data' => [
                 [
-                    'links' => [
-                        'self' => 'http://example.com/articles',
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles',
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => 1,
-                        'attributes' => [
-                            'title' => 'First'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => 1,
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'First'
                         ]
                     ]
                 ],
@@ -132,7 +133,7 @@ class StructureTest extends TestCase
             ],
             'no valid errors object' => [
                 [
-                    'errors' => [
+                    Members::ERRORS => [
                         'wrong' => 'not valid'
                     ]
                 ],
@@ -141,14 +142,14 @@ class StructureTest extends TestCase
             ],
             'no valid meta' => [
                 [
-                    'meta' => [
+                    Members::META => [
                         'key+' => 'not valid'
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'First'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'First'
                         ]
                     ]
                 ],
@@ -157,14 +158,14 @@ class StructureTest extends TestCase
             ],
             'no valid jsonapi' => [
                 [
-                    'jsonapi' => [
-                        'version' => 1
+                    Members::JSONAPI => [
+                        Members::JSONAPI_VERSION => 1
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'First'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'First'
                         ]
                     ]
                 ],
@@ -173,14 +174,14 @@ class StructureTest extends TestCase
             ],
             'no valid included' => [
                 [
-                    'included' => [
+                    Members::INCLUDED => [
                         'key' => 'not valid'
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'First'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'First'
                         ]
                     ]
                 ],
@@ -189,15 +190,15 @@ class StructureTest extends TestCase
             ],
             'bad value for top-level links member' => [
                 [
-                    'links' => [
-                        'self' => 'http://example.com/articles',
+                    Members::LINKS => [
+                        Members::LINK_SELF => 'http://example.com/articles',
                         'forbidden' => 'not valid'
                     ],
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'attributes' => [
-                            'title' => 'First'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::ATTRIBUTES => [
+                            Members::ERROR_TITLE => 'First'
                         ]
                     ]
                 ],
@@ -213,7 +214,7 @@ class StructureTest extends TestCase
     public function topLevelLinksObjectIsValid()
     {
         $links = [
-            'self' => 'url'
+            Members::LINK_SELF => 'url'
         ];
         $strict = false;
 

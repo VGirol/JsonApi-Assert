@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class ResourceLinkageTest extends TestCase
 {
@@ -14,12 +15,12 @@ class ResourceLinkageTest extends TestCase
     public function resourceIdentifierEquals()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test'
+            Members::ID => '123',
+            Members::TYPE => 'test'
         ];
         $json = [
-            'id' => '123',
-            'type' => 'test'
+            Members::ID => '123',
+            Members::TYPE => 'test'
         ];
 
         Assert::assertResourceIdentifierEquals($expected, $json);
@@ -31,12 +32,12 @@ class ResourceLinkageTest extends TestCase
     public function resourceIdentifierEqualsFailed()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test'
+            Members::ID => '123',
+            Members::TYPE => 'test'
         ];
         $json = [
-            'id' => '456',
-            'type' => 'test'
+            Members::ID => '456',
+            Members::TYPE => 'test'
         ];
 
         $this->setFailure();
@@ -51,22 +52,22 @@ class ResourceLinkageTest extends TestCase
     {
         $expected = [
             [
-                'id' => '123',
-                'type' => 'test'
+                Members::ID => '123',
+                Members::TYPE => 'test'
             ],
             [
-                'id' => '456',
-                'type' => 'test'
+                Members::ID => '456',
+                Members::TYPE => 'test'
             ]
         ];
         $json = [
             [
-                'id' => '123',
-                'type' => 'test'
+                Members::ID => '123',
+                Members::TYPE => 'test'
             ],
             [
-                'id' => '456',
-                'type' => 'test'
+                Members::ID => '456',
+                Members::TYPE => 'test'
             ]
         ];
 
@@ -90,35 +91,35 @@ class ResourceLinkageTest extends TestCase
             'not an array of objects' => [
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 Messages::MUST_BE_ARRAY_OF_OBJECTS
             ],
             'not same count' => [
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 $this->formatAsRegex(Messages::RESOURCE_LINKAGE_COLLECTION_HAVE_NOT_SAME_LENGTH)
@@ -126,22 +127,22 @@ class ResourceLinkageTest extends TestCase
             'not same value' => [
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '789',
-                        'type' => 'test'
+                        Members::ID => '789',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 $this->formatAsRegex(Messages::RESOURCE_IDENTIFIER_IS_NOT_EQUAL)
@@ -168,12 +169,12 @@ class ResourceLinkageTest extends TestCase
             ],
             'single resource identifier' => [
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 true
             ],
@@ -185,14 +186,14 @@ class ResourceLinkageTest extends TestCase
             'collection with only one resource identifiers' => [
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 true
@@ -200,22 +201,22 @@ class ResourceLinkageTest extends TestCase
             'collection of resource identifiers' => [
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 true
@@ -246,16 +247,16 @@ class ResourceLinkageTest extends TestCase
             'is not null as expected' => [
                 null,
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 true,
                 $this->formatAsRegex(Messages::RESOURCE_LINKAGE_MUST_BE_NULL)
             ],
             'is null but resource identifier expected' => [
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 null,
                 true,
@@ -263,17 +264,17 @@ class ResourceLinkageTest extends TestCase
             ],
             'is not a single resource identifier' => [
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 true,
@@ -281,12 +282,12 @@ class ResourceLinkageTest extends TestCase
             ],
             'is not the same resource identifier' => [
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 [
-                    'id' => '456',
-                    'type' => 'test'
+                    Members::ID => '456',
+                    Members::TYPE => 'test'
                 ],
                 true,
                 $this->formatAsRegex(Messages::RESOURCE_IDENTIFIER_IS_NOT_EQUAL)
@@ -294,8 +295,8 @@ class ResourceLinkageTest extends TestCase
             'is not empty collection as expected' => [
                 [],
                 [
-                    'id' => '123',
-                    'type' => 'test'
+                    Members::ID => '123',
+                    Members::TYPE => 'test'
                 ],
                 true,
                 Messages::RESOURCE_LINKAGE_COLLECTION_MUST_BE_EMPTY
@@ -303,22 +304,22 @@ class ResourceLinkageTest extends TestCase
             'is not same collection' => [
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '456',
-                        'type' => 'test'
+                        Members::ID => '456',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 [
                     [
-                        'id' => '123',
-                        'type' => 'test'
+                        Members::ID => '123',
+                        Members::TYPE => 'test'
                     ],
                     [
-                        'id' => '789',
-                        'type' => 'test'
+                        Members::ID => '789',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 true,

@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class AttributesObjectTest extends TestCase
 {
@@ -29,12 +30,12 @@ class AttributesObjectTest extends TestCase
     public function forbiddenMemberNameProvider()
     {
         return [
-            'relationships' => [
-                'relationships',
+            'member named "relationships"' => [
+                Members::RELATIONSHIPS,
                 Messages::MEMBER_NAME_NOT_ALLOWED
             ],
-            'links' => [
-                'links',
+            'member named "links"' => [
+                Members::LINKS,
                 Messages::MEMBER_NAME_NOT_ALLOWED
             ]
         ];
@@ -80,7 +81,7 @@ class AttributesObjectTest extends TestCase
             'direct member' => [
                 [
                     'anything' => 'ok',
-                    'links' => 'forbidden'
+                    Members::LINKS => 'forbidden'
                 ],
                 Messages::MEMBER_NAME_NOT_ALLOWED
             ],
@@ -88,7 +89,7 @@ class AttributesObjectTest extends TestCase
                 [
                     'anything' => 'ok',
                     'something' => [
-                        'links' => 'forbidden'
+                        Members::LINKS => 'forbidden'
                     ]
                 ],
                 Messages::MEMBER_NAME_NOT_ALLOWED
@@ -154,7 +155,7 @@ class AttributesObjectTest extends TestCase
                 [
                     'key' => [
                         'obj' => 'value',
-                        'links' => 'forbidden'
+                        Members::LINKS => 'forbidden'
                     ]
                 ],
                 false,

@@ -45,8 +45,8 @@ class MetaObjectTest extends TestCase
             ],
             'array of objects' => [
                 [
-                    [ 'first' => 'element' ],
-                    [ 'second' => 'element' ]
+                    [ 'key1' => 'element' ],
+                    [ 'key2' => 'element' ]
                 ],
                 false,
                 Messages::META_OBJECT_IS_NOT_ARRAY
