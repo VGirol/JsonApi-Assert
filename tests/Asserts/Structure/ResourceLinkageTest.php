@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class ResourceLinkageTest extends TestCase
 {
@@ -29,20 +30,20 @@ class ResourceLinkageTest extends TestCase
             ],
             'single resource identifier object' => [
                 [
-                    'type' => 'people',
-                    'id' => '9'
+                    Members::TYPE => 'people',
+                    Members::ID => '9'
                 ],
                 false
             ],
             'array of resource identifier objects' => [
                 [
                     [
-                        'type' => 'people',
-                        'id' => '9'
+                        Members::TYPE => 'people',
+                        Members::ID => '9'
                     ],
                     [
-                        'type' => 'people',
-                        'id' => '10'
+                        Members::TYPE => 'people',
+                        Members::ID => '10'
                     ]
                 ],
                 false
@@ -70,8 +71,8 @@ class ResourceLinkageTest extends TestCase
             ],
             'not valid single resource identifier object' => [
                 [
-                    'type' => 'people',
-                    'id' => '9',
+                    Members::TYPE => 'people',
+                    Members::ID => '9',
                     'anything' => 'not valid'
                 ],
                 false,
@@ -80,13 +81,13 @@ class ResourceLinkageTest extends TestCase
             'not valid array of resource identifier objects' => [
                 [
                     [
-                        'type' => 'people',
-                        'id' => '9',
+                        Members::TYPE => 'people',
+                        Members::ID => '9',
                         'anything' => 'not valid'
                     ],
                     [
-                        'type' => 'people',
-                        'id' => '10'
+                        Members::TYPE => 'people',
+                        Members::ID => '10'
                     ]
                 ],
                 false,
@@ -94,9 +95,9 @@ class ResourceLinkageTest extends TestCase
             ],
             'not safe member name' => [
                 [
-                    'type' => 'people',
-                    'id' => '9',
-                    'meta' => [
+                    Members::TYPE => 'people',
+                    Members::ID => '9',
+                    Members::META => [
                         'not valid' => 'due to the blank character'
                     ]
                 ],
@@ -112,9 +113,9 @@ class ResourceLinkageTest extends TestCase
     public function resourceIdentifierObjectIsValid()
     {
         $data = [
-            'id' => '1',
-            'type' => 'test',
-            'meta' => [
+            Members::ID => '1',
+            Members::TYPE => 'test',
+            Members::META => [
                 'member' => 'is valid'
             ]
         ];
@@ -143,38 +144,38 @@ class ResourceLinkageTest extends TestCase
             ],
             'id is missing' => [
                 [
-                    'type' => 'test'
+                    Members::TYPE => 'test'
                 ],
                 false,
                 Messages::RESOURCE_ID_MEMBER_IS_ABSENT
             ],
             'id is not valid' => [
                 [
-                    'id' => 1,
-                    'type' => 'test'
+                    Members::ID => 1,
+                    Members::TYPE => 'test'
                 ],
                 false,
                 Messages::RESOURCE_ID_MEMBER_IS_NOT_STRING
             ],
             'type is missing' => [
                 [
-                    'id' => '1'
+                    Members::ID => '1'
                 ],
                 false,
                 Messages::RESOURCE_TYPE_MEMBER_IS_ABSENT
             ],
             'type is not valid' => [
                 [
-                    'id' => '1',
-                    'type' => 404
+                    Members::ID => '1',
+                    Members::TYPE => 404
                 ],
                 false,
                 Messages::RESOURCE_TYPE_MEMBER_IS_NOT_STRING
             ],
             'member not allowed' => [
                 [
-                    'id' => '1',
-                    'type' => 'test',
+                    Members::ID => '1',
+                    Members::TYPE => 'test',
                     'wrong' => 'wrong'
                 ],
                 false,
@@ -182,9 +183,9 @@ class ResourceLinkageTest extends TestCase
             ],
             'meta has not valid member name' => [
                 [
-                    'id' => '1',
-                    'type' => 'test',
-                    'meta' => [
+                    Members::ID => '1',
+                    Members::TYPE => 'test',
+                    Members::META => [
                         'not valid' => 'due to the blank character'
                     ]
                 ],

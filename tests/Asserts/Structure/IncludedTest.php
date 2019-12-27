@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class IncludedTest extends TestCase
 {
@@ -13,63 +14,63 @@ class IncludedTest extends TestCase
     public function compoundDocumentIsValid()
     {
         $json = [
-            'data' => [
+            Members::DATA => [
                 [
-                    'type' => 'articles',
-                    'id' => '1',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::TYPE => 'articles',
+                    Members::ID => '1',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
-                    'relationships' => [
+                    Members::RELATIONSHIPS => [
                         'anonymous' => [
-                            'meta' => [
+                            Members::META => [
                                 'key' => 'value'
                             ]
                         ],
                         'test' => [
-                            'data' => [
-                                'type' => 'first',
-                                'id' => '10'
+                            Members::DATA => [
+                                Members::TYPE => 'something',
+                                Members::ID => '10'
                             ]
                         ]
                     ]
                 ],
                 [
-                    'type' => 'articles',
-                    'id' => '2',
-                    'attributes' => [
-                        'title' => 'another'
+                    Members::TYPE => 'articles',
+                    Members::ID => '2',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'another'
                     ]
                 ]
             ],
-            'included' => [
+            Members::INCLUDED => [
                 [
-                    'type' => 'first',
-                    'id' => '10',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::TYPE => 'something',
+                    Members::ID => '10',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
-                    'relationships' => [
-                        'test' => [
-                            'data' => [
-                                'type' => 'second',
-                                'id' => '12'
+                    Members::RELATIONSHIPS => [
+                        'anonymous' => [
+                            Members::DATA => [
+                                Members::TYPE => 'second',
+                                Members::ID => '12'
                             ]
                         ]
                     ]
                 ],
                 [
-                    'type' => 'second',
-                    'id' => '12',
-                    'attributes' => [
-                        'title' => 'another test'
+                    Members::TYPE => 'second',
+                    Members::ID => '12',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'another test'
                     ]
                 ]
             ]
         ];
         $strict = false;
 
-        JsonApiAssert::assertIsValidIncludedCollection($json['included'], $json['data'], $strict);
+        JsonApiAssert::assertIsValidIncludedCollection($json[Members::INCLUDED], $json[Members::DATA], $strict);
     }
 
     /**
@@ -79,7 +80,7 @@ class IncludedTest extends TestCase
     public function compoundDocumentIsNotValid($json, $strict, $failureMessage)
     {
         $this->setFailure($failureMessage);
-        JsonApiAssert::assertIsValidIncludedCollection($json['included'], $json['data'], $strict);
+        JsonApiAssert::assertIsValidIncludedCollection($json[Members::INCLUDED], $json[Members::DATA], $strict);
     }
 
     public function notValidIncludedProvider()
@@ -87,10 +88,10 @@ class IncludedTest extends TestCase
         return [
             'included member is not a resource collection' => [
                 [
-                    'data' => [],
-                    'included' => [
-                        'id' => '1',
-                        'type' => 'test'
+                    Members::DATA => [],
+                    Members::INCLUDED => [
+                        Members::ID => '1',
+                        Members::TYPE => 'test'
                     ]
                 ],
                 false,
@@ -98,31 +99,31 @@ class IncludedTest extends TestCase
             ],
             'one included resource is not identified by a resource identifier object' => [
                 [
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'relationships' => [
-                            'test' => [
-                                'data' => [
-                                    'type' => 'first',
-                                    'id' => '10'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::RELATIONSHIPS => [
+                            'anonymous' => [
+                                Members::DATA => [
+                                    Members::TYPE => 'something',
+                                    Members::ID => '10'
                                 ]
                             ]
                         ]
                     ],
-                    'included' => [
+                    Members::INCLUDED => [
                         [
-                            'type' => 'first',
-                            'id' => '10',
-                            'attributes' => [
-                                'title' => 'test'
+                            Members::TYPE => 'something',
+                            Members::ID => '10',
+                            Members::ATTRIBUTES => [
+                                'attr' => 'test'
                             ]
                         ],
                         [
-                            'type' => 'first',
-                            'id' => '12',
-                            'attributes' => [
-                                'title' => 'another'
+                            Members::TYPE => 'something',
+                            Members::ID => '12',
+                            Members::ATTRIBUTES => [
+                                'attr' => 'another'
                             ]
                         ]
                     ]
@@ -132,31 +133,31 @@ class IncludedTest extends TestCase
             ],
             'a resource is included twice' => [
                 [
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'relationships' => [
-                            'test' => [
-                                'data' => [
-                                    'type' => 'first',
-                                    'id' => '10'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::RELATIONSHIPS => [
+                            'anonymous' => [
+                                Members::DATA => [
+                                    Members::TYPE => 'something',
+                                    Members::ID => '10'
                                 ]
                             ]
                         ]
                     ],
-                    'included' => [
+                    Members::INCLUDED => [
                         [
-                            'type' => 'first',
-                            'id' => '10',
-                            'attributes' => [
-                                'title' => 'test'
+                            Members::TYPE => 'something',
+                            Members::ID => '10',
+                            Members::ATTRIBUTES => [
+                                'attr' => 'test'
                             ]
                         ],
                         [
-                            'type' => 'first',
-                            'id' => '10',
-                            'attributes' => [
-                                'title' => 'test'
+                            Members::TYPE => 'something',
+                            Members::ID => '10',
+                            Members::ATTRIBUTES => [
+                                'attr' => 'test'
                             ]
                         ]
                     ]
@@ -166,29 +167,29 @@ class IncludedTest extends TestCase
             ],
             'an included resource is not valid' => [
                 [
-                    'data' => [
-                        'type' => 'articles',
-                        'id' => '1',
-                        'relationships' => [
-                            'test' => [
-                                'data' => [
-                                    'type' => 'first',
-                                    'id' => '10'
+                    Members::DATA => [
+                        Members::TYPE => 'articles',
+                        Members::ID => '1',
+                        Members::RELATIONSHIPS => [
+                            'anonymous' => [
+                                Members::DATA => [
+                                    Members::TYPE => 'something',
+                                    Members::ID => '10'
                                 ]
                             ]
                         ]
                     ],
-                    'included' => [
+                    Members::INCLUDED => [
                         [
-                            'type' => 'first',
-                            'id' => '10'
+                            Members::TYPE => 'something',
+                            Members::ID => '10'
                         ]
                     ]
                 ],
                 false,
                 sprintf(
                     Messages::CONTAINS_AT_LEAST_ONE,
-                    implode(', ', ['attributes', 'relationships', 'links', 'meta'])
+                    implode(', ', [Members::ATTRIBUTES, Members::RELATIONSHIPS, Members::LINKS, Members::META])
                 )
             ]
         ];

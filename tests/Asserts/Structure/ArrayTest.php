@@ -25,10 +25,10 @@ class ArrayTest extends TestCase
             'filled array' => [
                 [
                     [
-                        'meta' => 'valid'
+                        'key1' => 'value1'
                     ],
                     [
-                        'first' => 'jsonapi'
+                        'key2' => 'value2'
                     ]
                 ]
             ]
@@ -50,16 +50,16 @@ class ArrayTest extends TestCase
         return [
             'associative array' => [
                 [
-                    'meta' => 'valid',
-                    'errors' => 'jsonapi'
+                    'key1' => 'value1',
+                    'key2' => 'value2'
                 ],
                 null,
                 Messages::MUST_BE_ARRAY_OF_OBJECTS
             ],
             'customized message' => [
                 [
-                    'meta' => 'valid',
-                    'errors' => 'jsonapi'
+                    'key1' => 'value1',
+                    'key2' => 'value2'
                 ],
                 'customized message',
                 'customized message'
@@ -85,8 +85,8 @@ class ArrayTest extends TestCase
     public function assertIsNotArrayOfObjects()
     {
         $data = [
-            'meta' => 'valid',
-            'first' => 'jsonapi'
+            'key1' => 'value1',
+            'key2' => 'value2'
         ];
 
         JsonApiAssert::assertIsNotArrayOfObjects($data);
@@ -99,10 +99,10 @@ class ArrayTest extends TestCase
     {
         $data = [
             [
-                'meta' => 'valid'
+                'key1' => 'value1',
             ],
             [
-                'first' => 'jsonapi'
+                'key2' => 'value2'
             ]
         ];
         $failureMessage = Messages::MUST_NOT_BE_ARRAY_OF_OBJECTS;

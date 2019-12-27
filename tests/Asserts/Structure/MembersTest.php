@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class MembersTest extends TestCase
 {
@@ -13,10 +14,10 @@ class MembersTest extends TestCase
     public function assertHasMember()
     {
         $json = [
-            'data' => 'jsonapi',
-            'meta' => 'valid'
+            Members::META => ['key' => 'value'],
+            'anything' => 'else'
         ];
-        $expected = 'data';
+        $expected = Members::META;
 
         JsonApiAssert::assertHasMember($expected, $json);
     }
@@ -73,11 +74,13 @@ class MembersTest extends TestCase
     public function assertHasMembers()
     {
         $data = [
-            'data' => 'jsonapi',
-            'meta' => 'valid',
-            'jsonapi' => 'ok'
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ],
+            'anything' => 'else'
         ];
-        $expected = ['data', 'meta'];
+        $expected = [Members::META, Members::JSONAPI];
 
         JsonApiAssert::assertHasMembers($expected, $data);
     }
@@ -88,10 +91,10 @@ class MembersTest extends TestCase
     public function assertHasMembersFailed()
     {
         $data = [
-            'meta' => 'test',
+            Members::META => ['key' => 'value'],
             'anything' => 'else'
         ];
-        $keys = ['meta', 'nothing'];
+        $keys = [Members::META, 'nothing'];
         $failureMessage = sprintf(Messages::HAS_MEMBER, 'nothing');
 
         $this->setFailure($failureMessage);
@@ -137,10 +140,12 @@ class MembersTest extends TestCase
     public function assertHasOnlyMembers()
     {
         $data = [
-            'data' => 'jsonapi',
-            'meta' => 'valid'
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ]
         ];
-        $expected = ['data', 'meta'];
+        $expected = [Members::META, Members::JSONAPI];
 
         JsonApiAssert::assertHasOnlyMembers($expected, $data);
     }
@@ -151,11 +156,13 @@ class MembersTest extends TestCase
     public function assertHasOnlyMembersFailed()
     {
         $data = [
-            'data' => 'jsonapi',
-            'meta' => 'test',
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ],
             'anything' => 'else'
         ];
-        $keys = ['meta', 'data'];
+        $keys = [Members::META, Members::JSONAPI];
         $failureMessage = sprintf(Messages::HAS_ONLY_MEMBERS, implode(', ', $keys));
 
         $this->setFailure($failureMessage);
@@ -201,8 +208,10 @@ class MembersTest extends TestCase
     public function assertNotHasMember()
     {
         $data = [
-            'data' => 'jsonapi',
-            'meta' => 'valid'
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ]
         ];
         $expected = 'test';
 
@@ -261,8 +270,10 @@ class MembersTest extends TestCase
     public function assertNotHasMembers()
     {
         $data = [
-            'data' => 'jsonapi',
-            'meta' => 'valid'
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ],
         ];
         $expected = [
             'test',
@@ -279,7 +290,7 @@ class MembersTest extends TestCase
     {
         $data = [
             'anything' => 'else',
-            'meta' => 'test'
+            'but' => 'true'
         ];
         $expected = [
             'anything',
@@ -311,8 +322,10 @@ class MembersTest extends TestCase
     public function assertHasJsonapi()
     {
         $data = [
-            'jsonapi' => 'valid',
-            'another' => 'member'
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ],
         ];
 
         JsonApiAssert::assertHasJsonapi($data);
@@ -324,8 +337,10 @@ class MembersTest extends TestCase
     public function assertHasData()
     {
         $data = [
-            'meta' => 'valid',
-            'data' => 'jsonapi'
+            Members::DATA => [],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ],
         ];
 
         JsonApiAssert::assertHasData($data);
@@ -337,8 +352,10 @@ class MembersTest extends TestCase
     public function assertHasAttributes()
     {
         $data = [
-            'meta' => 'valid',
-            'attributes' => 'jsonapi'
+            Members::META => ['key' => 'value'],
+            Members::ATTRIBUTES => [
+                'attr' => 'value'
+            ],
         ];
 
         JsonApiAssert::assertHasAttributes($data);
@@ -350,8 +367,10 @@ class MembersTest extends TestCase
     public function assertHasLinks()
     {
         $data = [
-            'meta' => 'valid',
-            'links' => 'jsonapi'
+            Members::META => ['key' => 'value'],
+            Members::LINKS => [
+                Members::LINK_SELF => 'url'
+            ],
         ];
 
         JsonApiAssert::assertHasLinks($data);
@@ -363,8 +382,10 @@ class MembersTest extends TestCase
     public function assertHasMeta()
     {
         $data = [
-            'meta' => 'valid',
-            'links' => 'jsonapi'
+            Members::META => ['key' => 'value'],
+            Members::JSONAPI => [
+                Members::JSONAPI_VERSION => 'v1.0'
+            ],
         ];
 
         JsonApiAssert::assertHasMeta($data);
@@ -376,8 +397,8 @@ class MembersTest extends TestCase
     public function assertHasIncluded()
     {
         $data = [
-            'meta' => 'valid',
-            'included' => 'jsonapi'
+            Members::META => ['key' => 'value'],
+            Members::INCLUDED => [],
         ];
 
         JsonApiAssert::assertHasIncluded($data);
@@ -389,8 +410,8 @@ class MembersTest extends TestCase
     public function assertHasRelationships()
     {
         $data = [
-            'meta' => 'valid',
-            'relationships' => 'jsonapi'
+            Members::META => ['key' => 'value'],
+            Members::RELATIONSHIPS => [],
         ];
 
         JsonApiAssert::assertHasRelationships($data);
@@ -402,8 +423,8 @@ class MembersTest extends TestCase
     public function assertHasErrors()
     {
         $data = [
-            'meta' => 'valid',
-            'errors' => 'jsonapi'
+            Members::META => ['key' => 'value'],
+            Members::ERRORS => [],
         ];
 
         JsonApiAssert::assertHasErrors($data);
@@ -414,10 +435,10 @@ class MembersTest extends TestCase
      */
     public function assertContainsAtLeastOneMember()
     {
-        $expected = ['first', 'second', 'meta'];
+        $expected = ['val1', 'val2', 'val3'];
         $data = [
-            'meta' => 'valid',
-            'errors' => 'jsonapi'
+            'val2' => 'valid',
+            'anything' => 'else'
         ];
 
         JsonApiAssert::assertContainsAtLeastOneMember($expected, $data);
@@ -428,10 +449,10 @@ class MembersTest extends TestCase
      */
     public function assertContainsAtLeastOneMemberFailed()
     {
-        $expected = ['first', 'second'];
+        $expected = ['val1', 'val2'];
         $data = [
-            'meta' => 'valid',
-            'errors' => 'jsonapi'
+            'anything' => 'else',
+            'something' => 'wrong'
         ];
         $failureMessage = sprintf(Messages::CONTAINS_AT_LEAST_ONE, implode(', ', $expected));
 
@@ -444,10 +465,10 @@ class MembersTest extends TestCase
      */
     public function assertContainsOnlyAllowedMembers()
     {
-        $expected = ['first', 'second', 'meta'];
+        $expected = ['val1', 'val2', 'val3'];
         $data = [
-            'meta' => 'valid',
-            'first' => 'jsonapi'
+            'val1' => 'valid',
+            'val3' => 'and valid'
         ];
 
         JsonApiAssert::assertContainsOnlyAllowedMembers($expected, $data);
@@ -458,10 +479,10 @@ class MembersTest extends TestCase
      */
     public function assertContainsOnlyAllowedMembersFailed()
     {
-        $expected = ['first', 'second', 'meta'];
+        $expected = ['val1', 'val2', 'val3'];
         $data = [
-            'meta' => 'valid',
-            'errors' => 'jsonapi'
+            'anything' => 'wrong',
+            'val1' => 'valid'
         ];
         $failureMessage = Messages::ONLY_ALLOWED_MEMBERS;
 

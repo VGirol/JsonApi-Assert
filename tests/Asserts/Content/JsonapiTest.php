@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class JsonapiTest extends TestCase
 {
@@ -14,10 +15,10 @@ class JsonapiTest extends TestCase
     public function jsonapiObjectEquals()
     {
         $expected = [
-            'version' => '1.0'
+            Members::JSONAPI_VERSION => '1.0'
         ];
         $json = [
-            'version' => '1.0'
+            Members::JSONAPI_VERSION => '1.0'
         ];
 
         Assert::assertJsonapiObjectEquals($expected, $json);
@@ -29,10 +30,10 @@ class JsonapiTest extends TestCase
     public function jsonapiObjectEqualsFailed()
     {
         $expected = [
-            'version' => '1.0'
+            Members::JSONAPI_VERSION => '1.0'
         ];
         $json = [
-            'meta' => [
+            Members::META => [
                 'nothing' => 'nothing'
             ]
         ];

@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 
 use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class IncludeTest extends TestCase
 {
@@ -13,24 +14,24 @@ class IncludeTest extends TestCase
     public function includeObjectContains()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '123',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
         $json = [
             [
-                'id' => '456',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '456',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr2' => 'value2'
                 ]
             ],
             [
-                'id' => '123',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '123',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr1' => 'value1'
                 ]
             ]
@@ -45,24 +46,24 @@ class IncludeTest extends TestCase
     public function includeObjectContainsFailed()
     {
         $expected = [
-            'id' => '123',
-            'type' => 'test',
-            'attributes' => [
+            Members::ID => '123',
+            Members::TYPE => 'test',
+            Members::ATTRIBUTES => [
                 'attr1' => 'value1'
             ]
         ];
         $json = [
             [
-                'id' => '456',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '456',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr2' => 'value2'
                 ]
             ],
             [
-                'id' => '789',
-                'type' => 'test',
-                'attributes' => [
+                Members::ID => '789',
+                Members::TYPE => 'test',
+                Members::ATTRIBUTES => [
                     'attr3' => 'value3'
                 ]
             ]

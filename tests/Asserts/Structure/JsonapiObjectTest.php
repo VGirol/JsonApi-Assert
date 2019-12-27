@@ -4,6 +4,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class JsonapiObjectTest extends TestCase
 {
@@ -13,8 +14,8 @@ class JsonapiObjectTest extends TestCase
     public function jsonapiObjectIsValid()
     {
         $data = [
-            'version' => 'jsonapi v1.1',
-            'meta' => [
+            Members::JSONAPI_VERSION => 'jsonapi v1.1',
+            Members::META => [
                 'allowed' => 'valid'
             ]
         ];
@@ -39,7 +40,7 @@ class JsonapiObjectTest extends TestCase
             'array of objects' => [
                 [
                     [
-                        'version' => 'jsonapi 1.0'
+                        Members::JSONAPI_VERSION => 'jsonapi 1.0'
                     ],
                     [
                         'not' => 'allowed'
@@ -50,7 +51,7 @@ class JsonapiObjectTest extends TestCase
             ],
             'not allowed member' => [
                 [
-                    'version' => 'jsonapi 1.0',
+                    Members::JSONAPI_VERSION => 'jsonapi 1.0',
                     'not' => 'allowed'
                 ],
                 false,
@@ -58,15 +59,15 @@ class JsonapiObjectTest extends TestCase
             ],
             'version is not a string' => [
                 [
-                    'version' => 123
+                    Members::JSONAPI_VERSION => 123
                 ],
                 false,
                 Messages::JSONAPI_VERSION_IS_NOT_STRING
             ],
             'meta not valid' => [
                 [
-                    'version' => 'jsonapi 1.0',
-                    'meta' => [
+                    Members::JSONAPI_VERSION => 'jsonapi 1.0',
+                    Members::META => [
                         'key+' => 'not valid'
                     ]
                 ],
@@ -75,8 +76,8 @@ class JsonapiObjectTest extends TestCase
             ],
             'meta with not safe member' => [
                 [
-                    'version' => 'jsonapi 1.0',
-                    'meta' => [
+                    Members::JSONAPI_VERSION => 'jsonapi 1.0',
+                    Members::META => [
                         'not safe' => 'not valid'
                     ]
                 ],

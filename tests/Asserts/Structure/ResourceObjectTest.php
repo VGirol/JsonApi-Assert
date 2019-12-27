@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Structure;
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class ResourceObjectTest extends TestCase
 {
@@ -31,12 +32,12 @@ class ResourceObjectTest extends TestCase
     public function resourceFieldNameIsForbiddenProvider()
     {
         return [
-            'type' => [
-                'type',
+            Members::TYPE => [
+                Members::TYPE,
                 Messages::FIELDS_NAME_NOT_ALLOWED
             ],
-            'id' => [
-                'id',
+            Members::ID => [
+                Members::ID,
                 Messages::FIELDS_NAME_NOT_ALLOWED
             ]
         ];
@@ -48,7 +49,7 @@ class ResourceObjectTest extends TestCase
     public function resourceLinksObjectIsValid()
     {
         $links = [
-            'self' => 'url'
+            Members::LINK_SELF => 'url'
         ];
         $strict = false;
 
@@ -84,26 +85,26 @@ class ResourceObjectTest extends TestCase
     public function resourceHasValidTopLevelStructure()
     {
         $data = [
-            'id' => '1',
-            'type' => 'articles',
-            'attributes' => [
-                'title' => 'test'
+            Members::ID => '1',
+            Members::TYPE => 'articles',
+            Members::ATTRIBUTES => [
+                'attr' => 'test'
             ],
-            'links' => [
-                'self' => '/articles/1'
+            Members::LINKS => [
+                Members::LINK_SELF => '/articles/1'
             ],
-            'meta' => [
+            Members::META => [
                 'member' => 'is valid'
             ],
-            'relationships' => [
+            Members::RELATIONSHIPS => [
                 'author' => [
-                    'links' => [
-                        'self' => '/articles/1/relationships/author',
-                        'related' => '/articles/1/author'
+                    Members::LINKS => [
+                        Members::LINK_SELF => '/articles/1/relationships/author',
+                        Members::LINK_RELATED => '/articles/1/author'
                     ],
-                    'data' => [
-                        'type' => 'people',
-                        'id' => '9'
+                    Members::DATA => [
+                        Members::TYPE => 'people',
+                        Members::ID => '9'
                     ]
                 ]
             ]
@@ -131,8 +132,8 @@ class ResourceObjectTest extends TestCase
             ],
             'id is missing' => [
                 [
-                    'type' => 'test',
-                    'attributes' => [
+                    Members::TYPE => 'test',
+                    Members::ATTRIBUTES => [
                         'attr' => 'value'
                     ]
                 ],
@@ -140,8 +141,8 @@ class ResourceObjectTest extends TestCase
             ],
             'type is missing' => [
                 [
-                    'id' => '1',
-                    'attributes' => [
+                    Members::ID => '1',
+                    Members::ATTRIBUTES => [
                         'attr' => 'value'
                     ]
                 ],
@@ -149,19 +150,19 @@ class ResourceObjectTest extends TestCase
             ],
             'missing mandatory member' => [
                 [
-                    'id' => '1',
-                    'type' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'test'
                 ],
                 sprintf(
                     Messages::CONTAINS_AT_LEAST_ONE,
-                    implode(', ', ['attributes', 'relationships', 'links', 'meta'])
+                    implode(', ', [Members::ATTRIBUTES, Members::RELATIONSHIPS, Members::LINKS, Members::META])
                 )
             ],
             'member not allowed' => [
                 [
-                    'id' => '1',
-                    'type' => 'test',
-                    'meta' => [
+                    Members::ID => '1',
+                    Members::TYPE => 'test',
+                    Members::META => [
                         'anything' => 'good'
                     ],
                     'wrong' => 'wrong'
@@ -177,8 +178,8 @@ class ResourceObjectTest extends TestCase
     public function resourceIdMemberIsValid()
     {
         $data = [
-            'id' => '1',
-            'type' => 'test'
+            Members::ID => '1',
+            Members::TYPE => 'test'
         ];
 
         JsonApiAssert::assertResourceIdMember($data);
@@ -199,15 +200,15 @@ class ResourceObjectTest extends TestCase
         return [
             'id is empty' => [
                 [
-                    'id' => '',
-                    'type' => 'test'
+                    Members::ID => '',
+                    Members::TYPE => 'test'
                 ],
                 Messages::RESOURCE_ID_MEMBER_IS_EMPTY
             ],
             'id is not a string' => [
                 [
-                    'id' => 1,
-                    'type' => 'test'
+                    Members::ID => 1,
+                    Members::TYPE => 'test'
                 ],
                 Messages::RESOURCE_ID_MEMBER_IS_NOT_STRING
             ]
@@ -220,8 +221,8 @@ class ResourceObjectTest extends TestCase
     public function resourceTypeMemberIsValid()
     {
         $data = [
-            'id' => '1',
-            'type' => 'test'
+            Members::ID => '1',
+            Members::TYPE => 'test'
         ];
         $strict = false;
 
@@ -243,32 +244,32 @@ class ResourceObjectTest extends TestCase
         return [
             'type is empty' => [
                 [
-                    'id' => '1',
-                    'type' => ''
+                    Members::ID => '1',
+                    Members::TYPE => ''
                 ],
                 false,
                 Messages::RESOURCE_TYPE_MEMBER_IS_EMPTY
             ],
             'type is not a string' => [
                 [
-                    'id' => '1',
-                    'type' => 404
+                    Members::ID => '1',
+                    Members::TYPE => 404
                 ],
                 false,
                 Messages::RESOURCE_TYPE_MEMBER_IS_NOT_STRING
             ],
             'type value has forbidden characters' => [
                 [
-                    'id' => '1',
-                    'type' => 'test+1'
+                    Members::ID => '1',
+                    Members::TYPE => 'test+1'
                 ],
                 false,
                 Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
             ],
             'type value has not safe characters' => [
                 [
-                    'id' => '1',
-                    'type' => 'test 1'
+                    Members::ID => '1',
+                    Members::TYPE => 'test 1'
                 ],
                 true,
                 Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
@@ -282,16 +283,16 @@ class ResourceObjectTest extends TestCase
     public function resourceFieldIsValid()
     {
         $data = [
-            'id' => '1',
-            'type' => 'articles',
-            'attributes' => [
-                'title' => 'test'
+            Members::ID => '1',
+            Members::TYPE => 'articles',
+            Members::ATTRIBUTES => [
+                'attr' => 'test'
             ],
-            'relationships' => [
+            Members::RELATIONSHIPS => [
                 'author' => [
-                    'data' => [
-                        'type' => 'people',
-                        'id' => '9'
+                    Members::DATA => [
+                        Members::TYPE => 'people',
+                        Members::ID => '9'
                     ]
                 ]
             ]
@@ -315,16 +316,16 @@ class ResourceObjectTest extends TestCase
         return [
             'attribute and relationship with the same name' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'anonymous' => 'test'
                     ],
-                    'relationships' => [
-                        'title' => [
-                            'data' => [
-                                'type' => 'people',
-                                'id' => '9'
+                    Members::RELATIONSHIPS => [
+                        'anonymous' => [
+                            Members::DATA => [
+                                Members::TYPE => 'people',
+                                Members::ID => '9'
                             ]
                         ]
                     ]
@@ -333,27 +334,27 @@ class ResourceObjectTest extends TestCase
             ],
             'attribute named type or id' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test',
-                        'id' => 'not valid'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test',
+                        Members::ID => 'not valid'
                     ]
                 ],
                 Messages::FIELDS_NAME_NOT_ALLOWED
             ],
             'relationship named type or id' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
-                    'relationships' => [
-                        'type' => [
-                            'data' => [
-                                'type' => 'people',
-                                'id' => '9'
+                    Members::RELATIONSHIPS => [
+                        Members::TYPE => [
+                            Members::DATA => [
+                                Members::TYPE => 'people',
+                                Members::ID => '9'
                             ]
                         ]
                     ]
@@ -369,26 +370,26 @@ class ResourceObjectTest extends TestCase
     public function resourceObjectIsValid()
     {
         $data = [
-            'id' => '1',
-            'type' => 'articles',
-            'attributes' => [
-                'title' => 'test'
+            Members::ID => '1',
+            Members::TYPE => 'articles',
+            Members::ATTRIBUTES => [
+                'attr' => 'test'
             ],
-            'links' => [
-                'self' => '/articles/1'
+            Members::LINKS => [
+                Members::LINK_SELF => '/articles/1'
             ],
-            'meta' => [
+            Members::META => [
                 'member' => 'is valid'
             ],
-            'relationships' => [
+            Members::RELATIONSHIPS => [
                 'author' => [
-                    'links' => [
-                        'self' => '/articles/1/relationships/author',
-                        'related' => '/articles/1/author'
+                    Members::LINKS => [
+                        Members::LINK_SELF => '/articles/1/relationships/author',
+                        Members::LINK_RELATED => '/articles/1/author'
                     ],
-                    'data' => [
-                        'type' => 'people',
-                        'id' => '9'
+                    Members::DATA => [
+                        Members::TYPE => 'people',
+                        Members::ID => '9'
                     ]
                 ]
             ]
@@ -418,10 +419,10 @@ class ResourceObjectTest extends TestCase
             ],
             'id is not valid' => [
                 [
-                    'id' => 1,
-                    'type' => 'test',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => 1,
+                    Members::TYPE => 'test',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ]
                 ],
                 false,
@@ -429,10 +430,10 @@ class ResourceObjectTest extends TestCase
             ],
             'type is not valid' => [
                 [
-                    'id' => '1',
-                    'type' => 404,
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 404,
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ]
                 ],
                 false,
@@ -440,21 +441,21 @@ class ResourceObjectTest extends TestCase
             ],
             'missing mandatory member' => [
                 [
-                    'id' => '1',
-                    'type' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'test'
                 ],
                 false,
                 sprintf(
                     Messages::CONTAINS_AT_LEAST_ONE,
-                    implode(', ', ['attributes', 'relationships', 'links', 'meta'])
+                    implode(', ', [Members::ATTRIBUTES, Members::RELATIONSHIPS, Members::LINKS, Members::META])
                 )
             ],
             'member not allowed' => [
                 [
-                    'id' => '1',
-                    'type' => 'test',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'test',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
                     'wrong' => 'wrong'
                 ],
@@ -463,10 +464,10 @@ class ResourceObjectTest extends TestCase
             ],
             'attributes not valid' => [
                 [
-                    'id' => '1',
-                    'type' => 'test',
-                    'attributes' => [
-                        'title' => 'test',
+                    Members::ID => '1',
+                    Members::TYPE => 'test',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test',
                         'key+' => 'wrong'
                     ]
                 ],
@@ -475,16 +476,16 @@ class ResourceObjectTest extends TestCase
             ],
             'fields not valid (attribute and relationship with the same name)' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'anonymous' => 'test'
                     ],
-                    'relationships' => [
-                        'title' => [
-                            'data' => [
-                                'type' => 'people',
-                                'id' => '9'
+                    Members::RELATIONSHIPS => [
+                        'anonymous' => [
+                            Members::DATA => [
+                                Members::TYPE => 'people',
+                                Members::ID => '9'
                             ]
                         ]
                     ]
@@ -494,11 +495,11 @@ class ResourceObjectTest extends TestCase
             ],
             'fields not valid (attribute named "type" or "id")' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test',
-                        'id' => 'not valid'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test',
+                        Members::ID => 'not valid'
                     ]
                 ],
                 false,
@@ -506,16 +507,16 @@ class ResourceObjectTest extends TestCase
             ],
             'relationship not valid' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
-                    'relationships' => [
+                    Members::RELATIONSHIPS => [
                         'author' => [
-                            'data' => [
-                                'type' => 'people',
-                                'id' => '9',
+                            Members::DATA => [
+                                Members::TYPE => 'people',
+                                Members::ID => '9',
                                 'wrong' => 'not valid'
                             ]
                         ]
@@ -526,12 +527,12 @@ class ResourceObjectTest extends TestCase
             ],
             'meta with not safe member name' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
-                    'meta' => [
+                    Members::META => [
                         'not valid' => 'due to the blank character'
                     ]
                 ],
@@ -540,12 +541,12 @@ class ResourceObjectTest extends TestCase
             ],
             'links not valid' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ],
-                    'links' => [
+                    Members::LINKS => [
                         'not valid' => 'bad'
                     ]
                 ],
@@ -574,10 +575,10 @@ class ResourceObjectTest extends TestCase
         $data = [];
         for ($i = 1; $i < 3; $i++) {
             $data[] = [
-                'id' => (string) $i,
-                'type' => 'articles',
-                'attributes' => [
-                    'title' => 'test'
+                Members::ID => (string) $i,
+                Members::TYPE => 'articles',
+                Members::ATTRIBUTES => [
+                    'attr' => 'test'
                 ]
             ];
         }
@@ -606,10 +607,10 @@ class ResourceObjectTest extends TestCase
             ],
             'not an array of objects' => [
                 [
-                    'id' => '1',
-                    'type' => 'articles',
-                    'attributes' => [
-                        'title' => 'test'
+                    Members::ID => '1',
+                    Members::TYPE => 'articles',
+                    Members::ATTRIBUTES => [
+                        'attr' => 'test'
                     ]
                 ],
                 false,
@@ -618,10 +619,10 @@ class ResourceObjectTest extends TestCase
             'not valid collection' => [
                 [
                     [
-                        'id' => 1,
-                        'type' => 'articles',
-                        'attributes' => [
-                            'title' => 'test'
+                        Members::ID => 1,
+                        Members::TYPE => 'articles',
+                        Members::ATTRIBUTES => [
+                            'attr' => 'test'
                         ]
                     ]
                 ],

@@ -5,6 +5,7 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class ErrorsTest extends TestCase
 {
@@ -15,17 +16,17 @@ class ErrorsTest extends TestCase
     {
         $expectedErrors = [
             [
-                'status' => '415',
-                'title' => 'Not Acceptable',
-                'details' => 'description'
+                Members::ERROR_STATUS => '415',
+                Members::ERROR_TITLE => 'Not Acceptable',
+                Members::ERROR_DETAILS => 'description'
             ]
         ];
         $errors = [
             [
-                'status' => '409',
-                'title' => 'Conflict',
-                'details' => 'description',
-                'meta' => [
+                Members::ERROR_STATUS => '409',
+                Members::ERROR_TITLE => 'Conflict',
+                Members::ERROR_DETAILS => 'description',
+                Members::META => [
                     'trace' => [
                         [
                             'file' => 'path'
@@ -34,10 +35,10 @@ class ErrorsTest extends TestCase
                 ]
             ],
             [
-                'status' => '415',
-                'title' => 'Not Acceptable',
-                'details' => 'description',
-                'meta' => [
+                Members::ERROR_STATUS => '415',
+                Members::ERROR_TITLE => 'Not Acceptable',
+                Members::ERROR_DETAILS => 'description',
+                Members::META => [
                     'trace' => [
                         [
                             'file' => 'path'
@@ -67,16 +68,16 @@ class ErrorsTest extends TestCase
             'errors object is not valid' => [
                 [
                     [
-                        'status' => '415',
-                        'title' => 'Not Acceptable',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '415',
+                        Members::ERROR_TITLE => 'Not Acceptable',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 [
                     [
-                        'status' => 415,
-                        'title' => 'Not Acceptable',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => 415,
+                        Members::ERROR_TITLE => 'Not Acceptable',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 false,
@@ -85,21 +86,21 @@ class ErrorsTest extends TestCase
             'not enough errors' => [
                 [
                     [
-                        'status' => '409',
-                        'title' => 'Conflict',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '409',
+                        Members::ERROR_TITLE => 'Conflict',
+                        Members::ERROR_DETAILS => 'description'
                     ],
                     [
-                        'status' => '409',
-                        'title' => 'Conflict',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '409',
+                        Members::ERROR_TITLE => 'Conflict',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 [
                     [
-                        'status' => '409',
-                        'title' => 'Conflict',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '409',
+                        Members::ERROR_TITLE => 'Conflict',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 false,
@@ -108,21 +109,21 @@ class ErrorsTest extends TestCase
             'expected error not present' => [
                 [
                     [
-                        'status' => '409',
-                        'title' => 'Conflict',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '409',
+                        Members::ERROR_TITLE => 'Conflict',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 [
                     [
-                        'status' => '406',
-                        'title' => 'Not Acceptable',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '406',
+                        Members::ERROR_TITLE => 'Not Acceptable',
+                        Members::ERROR_DETAILS => 'description'
                     ],
                     [
-                        'status' => '415',
-                        'title' => 'Not Acceptable',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '415',
+                        Members::ERROR_TITLE => 'Not Acceptable',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 false,
@@ -130,17 +131,17 @@ class ErrorsTest extends TestCase
                     Messages::ERRORS_OBJECT_DOES_NOT_CONTAIN_EXPECTED_ERROR,
                     var_export(
                         [
-                            'status' => '409',
-                            'title' => 'Conflict',
-                            'details' => 'description'
+                            Members::ERROR_STATUS => '409',
+                            Members::ERROR_TITLE => 'Conflict',
+                            Members::ERROR_DETAILS => 'description'
                         ],
                         true
                     ),
                     var_export(
                         [
-                            'status' => '409',
-                            'title' => 'Conflict',
-                            'details' => 'description'
+                            Members::ERROR_STATUS => '409',
+                            Members::ERROR_TITLE => 'Conflict',
+                            Members::ERROR_DETAILS => 'description'
                         ],
                         true
                     )
@@ -149,23 +150,23 @@ class ErrorsTest extends TestCase
             'expected error not the same' => [
                 [
                     [
-                        'id' => '6',
-                        'status' => '409',
-                        'title' => 'Conflict',
-                        'details' => 'description is different'
+                        Members::ID => '6',
+                        Members::ERROR_STATUS => '409',
+                        Members::ERROR_TITLE => 'Conflict',
+                        Members::ERROR_DETAILS => 'description is different'
                     ]
                 ],
                 [
                     [
-                        'status' => '406',
-                        'title' => 'Not Acceptable',
-                        'details' => 'description'
+                        Members::ERROR_STATUS => '406',
+                        Members::ERROR_TITLE => 'Not Acceptable',
+                        Members::ERROR_DETAILS => 'description'
                     ],
                     [
-                        'id' => '6',
-                        'status' => '409',
-                        'title' => 'Conflict',
-                        'details' => 'description'
+                        Members::ID => '6',
+                        Members::ERROR_STATUS => '409',
+                        Members::ERROR_TITLE => 'Conflict',
+                        Members::ERROR_DETAILS => 'description'
                     ]
                 ],
                 false,
@@ -181,16 +182,16 @@ class ErrorsTest extends TestCase
     {
         $expectedErrors = [
             [
-                'status' => 415,
-                'title' => 'Not Acceptable',
-                'details' => 'description'
+                Members::ERROR_STATUS => 415,
+                Members::ERROR_TITLE => 'Not Acceptable',
+                Members::ERROR_DETAILS => 'description'
             ]
         ];
         $errors = [
             [
-                'status' => '415',
-                'title' => 'Not Acceptable',
-                'details' => 'description'
+                Members::ERROR_STATUS => '415',
+                Members::ERROR_TITLE => 'Not Acceptable',
+                Members::ERROR_DETAILS => 'description'
             ]
         ];
         $strict = false;
