@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert;
 
+use PHPUnit\Framework\Assert as PHPUnit;
+use PHPUnit\Framework\ExpectationFailedException;
 use VGirol\JsonApiAssert\Asserts\Content\AssertErrors;
 use VGirol\JsonApiAssert\Asserts\Content\AssertInclude;
 use VGirol\JsonApiAssert\Asserts\Content\AssertJsonapi;
@@ -23,12 +25,17 @@ use VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject;
 use VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage;
 use VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject;
 use VGirol\JsonApiAssert\Asserts\Structure\AssertStructure;
+use VGirol\JsonApiStructure\Exception\CanThrowInvalidArgumentException;
+use VGirol\JsonApiStructure\Exception\ValidationException;
+use VGirol\JsonApiStructure\ValidateService;
 
 /**
  * This trait provide a set of assertions to test documents using the JSON:API specification.
  */
 trait HasJsonApiAssert
 {
+    use CanThrowInvalidArgumentException;
+
     // Structure
     use AssertArrays;
     use AssertAttributesObject;
@@ -53,19 +60,45 @@ trait HasJsonApiAssert
     use AssertInclude;
 
     /**
-     * Throws an InvalidArgumentException because of an invalid argument passed to a method.
+     * Undocumented variable
      *
-     * @param integer $argument
-     * @param string  $type
-     * @param mixed   $value
-     *
-     * @return void
-     * @throws \VGirol\JsonApiAssert\InvalidArgumentException
-     *
-     * @SuppressWarnings(PHPMD.StaticAccess)
+     * @var ValidateService
      */
-    protected static function invalidArgument(int $argument, string $type, $value = null): void
+    private static $service;
+
+    /**
+     * Undocumented function
+     *
+     * @return ValidateService
+     */
+    protected static function getServiceInstance(): ValidateService
     {
-        throw InvalidArgumentHelper::factory($argument, $type, $value);
+        if (static::$service === null) {
+            static::$service = new ValidateService();
+        }
+
+        return static::$service;
+    }
+
+    protected static function askService(string $method, ...$args): void
+    {
+        try {
+            static::proxyService($method, ...$args);
+            static::succeed();
+        } catch (ValidationException $e) {
+            throw new ExpectationFailedException($e->getMessage(), null, $e);
+        }
+    }
+
+    protected static function proxyService(string $method, ...$args)
+    {
+        $service = static::getServiceInstance();
+
+        return \call_user_func([$service, $method], ...$args);
+    }
+
+    protected static function succeed(string $message = ''): void
+    {
+        PHPUnit::assertTrue(true, $message);
     }
 }

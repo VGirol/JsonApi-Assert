@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
-use PHPUnit\Framework\Assert as PHPUnit;
-use VGirol\JsonApiConstant\Members;
-
 /**
  * Assertions relating to the relationships object
  */
@@ -28,12 +25,7 @@ trait AssertRelationshipsObject
      */
     public static function assertIsValidRelationshipsObject($json, bool $strict): void
     {
-        static::assertIsNotArrayOfObjects($json);
-
-        foreach ($json as $key => $relationship) {
-            static::assertIsValidMemberName($key, $strict);
-            static::assertIsValidRelationshipObject($relationship, $strict);
-        }
+        static::askService('validateRelationshipsObject', $json, $strict);
     }
 
     /**
@@ -56,31 +48,7 @@ trait AssertRelationshipsObject
      */
     public static function assertIsValidRelationshipObject($json, bool $strict): void
     {
-        PHPUnit::assertIsArray($json);
-
-        static::assertContainsAtLeastOneMember(
-            [
-                Members::LINKS,
-                Members::DATA,
-                Members::META
-            ],
-            $json
-        );
-
-        if (isset($json[Members::DATA])) {
-            $data = $json[Members::DATA];
-            static::assertIsValidResourceLinkage($data, $strict);
-        }
-
-        if (isset($json[Members::LINKS])) {
-            $links = $json[Members::LINKS];
-            $withPagination = isset($json[Members::DATA]) && static::isArrayOfObjects($json[Members::DATA]);
-            static::assertIsValidRelationshipLinksObject($links, $withPagination, $strict);
-        }
-
-        if (isset($json[Members::META])) {
-            static::assertIsValidMetaObject($json[Members::META], $strict);
-        }
+        static::askService('validateRelationshipObject', $json, $strict);
     }
 
     /**
@@ -100,21 +68,6 @@ trait AssertRelationshipsObject
      */
     public static function assertIsValidRelationshipLinksObject($json, bool $withPagination, bool $strict): void
     {
-        $allowed = [
-            Members::LINK_SELF,
-            Members::LINK_RELATED
-        ];
-        if ($withPagination) {
-            $allowed = array_merge(
-                $allowed,
-                [
-                    Members::LINK_PAGINATION_FIRST,
-                    Members::LINK_PAGINATION_LAST,
-                    Members::LINK_PAGINATION_NEXT,
-                    Members::LINK_PAGINATION_PREV
-                ]
-            );
-        }
-        static::assertIsValidLinksObject($json, $allowed, $strict);
+        static::askService('validateRelationshipLinksObject', $json, $withPagination, $strict);
     }
 }

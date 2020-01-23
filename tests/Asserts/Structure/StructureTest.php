@@ -216,19 +216,20 @@ class StructureTest extends TestCase
         $links = [
             Members::LINK_SELF => 'url'
         ];
+        $withPagination = false;
         $strict = false;
 
-        JsonApiAssert::assertIsValidTopLevelLinksMember($links, $strict);
+        JsonApiAssert::assertIsValidTopLevelLinksMember($links, $withPagination, $strict);
     }
 
     /**
      * @test
      * @dataProvider notValidTopLevelLinksObjectProvider
      */
-    public function topLevelLinksObjectIsNotValid($json, $strict, $failureMessage)
+    public function topLevelLinksObjectIsNotValid($json, $withPagination, $strict, $failureMessage)
     {
         $this->setFailure($failureMessage);
-        JsonApiAssert::assertIsValidTopLevelLinksMember($json, $strict);
+        JsonApiAssert::assertIsValidTopLevelLinksMember($json, $withPagination, $strict);
     }
 
     public function notValidTopLevelLinksObjectProvider()
@@ -238,6 +239,7 @@ class StructureTest extends TestCase
                 [
                     'anything' => 'not allowed'
                 ],
+                true,
                 false,
                 Messages::ONLY_ALLOWED_MEMBERS
             ]

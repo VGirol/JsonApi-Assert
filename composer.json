@@ -20,9 +20,10 @@
     ],
     "require": {
         "php": "~7.2.9|^7.3",
-        "vgirol/jsonapi-constant": "dev-master",
+        "dms/phpunit-arraysubset-asserts": "^0.1.0",
         "phpunit/phpunit": "^8.0",
-        "dms/phpunit-arraysubset-asserts": "^0.1.0"
+        "vgirol/jsonapi-constant": "dev-master",
+        "vgirol/jsonapi-structure": "dev-master"
     },
     "require-dev": {
         "infection/infection": "^0.14|^0.15"
@@ -31,6 +32,13 @@
         {
             "type": "path",
             "url": "../JsonApi-Constant",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../JsonApi-Structure",
             "options": {
                 "symlink": true
             }

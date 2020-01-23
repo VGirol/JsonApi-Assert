@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
-use PHPUnit\Framework\Assert as PHPUnit;
-use VGirol\JsonApiConstant\Members;
-use VGirol\JsonApiAssert\Messages;
-
 /**
  * Assertions relating to the attributes object
  */
@@ -29,16 +25,7 @@ trait AssertAttributesObject
      */
     public static function assertIsValidAttributesObject($json, bool $strict): void
     {
-        static::assertIsNotArrayOfObjects(
-            $json,
-            Messages::ATTRIBUTES_OBJECT_IS_NOT_ARRAY
-        );
-
-        static::assertFieldHasNoForbiddenMemberName($json);
-
-        foreach (array_keys($json) as $key) {
-            static::assertIsValidMemberName($key, $strict);
-        }
+        static::askService('validateAttributesObject', $json, $strict);
     }
 
     /**
@@ -58,18 +45,7 @@ trait AssertAttributesObject
      */
     public static function assertFieldHasNoForbiddenMemberName($field): void
     {
-        if (!is_array($field)) {
-            return;
-        }
-
-        foreach ($field as $key => $value) {
-            // For objects, $key is a string
-            // For arrays of objects, $key is an integer
-            if (is_string($key)) {
-                static::assertIsNotForbiddenMemberName($key);
-            }
-            static::assertFieldHasNoForbiddenMemberName($value);
-        }
+        static::askService('fieldHasNoForbiddenMemberName', $field);
     }
 
     /**
@@ -82,18 +58,6 @@ trait AssertAttributesObject
      */
     public static function assertIsNotForbiddenMemberName($name): void
     {
-        if (!\is_string($name)) {
-            static::invalidArgument(1, 'string', $name);
-        }
-
-        $forbidden = [
-            Members::RELATIONSHIPS,
-            Members::LINKS
-        ];
-        PHPUnit::assertNotContains(
-            $name,
-            $forbidden,
-            Messages::MEMBER_NAME_NOT_ALLOWED
-        );
+        static::askService('isNotForbiddenMemberName', $name);
     }
 }

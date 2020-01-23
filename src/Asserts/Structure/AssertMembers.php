@@ -7,7 +7,6 @@ namespace VGirol\JsonApiAssert\Asserts\Structure;
 use PHPUnit\Framework\Assert as PHPUnit;
 use VGirol\JsonApiAssert\Constraint\ContainsAtLeastOneConstraint;
 use VGirol\JsonApiAssert\Constraint\ContainsOnlyAllowedMembersConstraint;
-use VGirol\JsonApiConstant\Members;
 use VGirol\JsonApiAssert\Messages;
 
 /**
@@ -27,13 +26,7 @@ trait AssertMembers
      */
     public static function assertHasMember($expected, $json): void
     {
-        if (!\is_string($expected)) {
-            static::invalidArgument(1, 'string', $expected);
-        }
-        if (!\is_array($json)) {
-            static::invalidArgument(2, 'array', $json);
-        }
-        PHPUnit::assertArrayHasKey($expected, $json, sprintf(Messages::HAS_MEMBER, $expected));
+        static::askService('hasMember', $expected, $json);
     }
 
     /**
@@ -48,15 +41,7 @@ trait AssertMembers
      */
     public static function assertHasMembers($expected, $json): void
     {
-        if (!\is_array($expected)) {
-            static::invalidArgument(1, 'array', $expected);
-        }
-        if (!\is_array($json)) {
-            static::invalidArgument(2, 'array', $json);
-        }
-        foreach ($expected as $key) {
-            PHPUnit::assertArrayHasKey($key, $json, sprintf(Messages::HAS_MEMBER, $key));
-        }
+        static::askService('hasMembers', $expected, $json);
     }
 
     /**
@@ -71,18 +56,7 @@ trait AssertMembers
      */
     public static function assertHasOnlyMembers($expected, $json): void
     {
-        if (!\is_array($expected)) {
-            static::invalidArgument(1, 'array', $expected);
-        }
-        if (!\is_array($json)) {
-            static::invalidArgument(2, 'array', $json);
-        }
-
-        PHPUnit::assertEquals(
-            $expected,
-            array_keys($json),
-            sprintf(Messages::HAS_ONLY_MEMBERS, implode(', ', $expected))
-        );
+        static::askService('hasOnlyMembers', $expected, $json);
     }
 
     /**
@@ -97,13 +71,7 @@ trait AssertMembers
      */
     public static function assertNotHasMember($expected, $json): void
     {
-        if (!\is_string($expected)) {
-            static::invalidArgument(1, 'string', $expected);
-        }
-        if (!\is_array($json)) {
-            static::invalidArgument(2, 'array', $json);
-        }
-        PHPUnit::assertArrayNotHasKey($expected, $json, sprintf(Messages::NOT_HAS_MEMBER, $expected));
+        static::askService('notHasMember', $expected, $json);
     }
 
     /**
@@ -118,13 +86,7 @@ trait AssertMembers
      */
     public static function assertNotHasMembers($expected, $json): void
     {
-        if (!\is_array($expected)) {
-            static::invalidArgument(1, 'array', $expected);
-        }
-
-        foreach ($expected as $key) {
-            static::assertNotHasMember($key, $json);
-        }
+        static::askService('notHasMembers', $expected, $json);
     }
 
     /**
@@ -139,7 +101,7 @@ trait AssertMembers
      */
     public static function assertHasData($json): void
     {
-        static::assertHasMember(Members::DATA, $json);
+        static::askService('hasData', $json);
     }
 
     /**
@@ -154,7 +116,7 @@ trait AssertMembers
      */
     public static function assertHasAttributes($json): void
     {
-        static::assertHasMember(Members::ATTRIBUTES, $json);
+        static::askService('hasAttributes', $json);
     }
 
     /**
@@ -169,7 +131,7 @@ trait AssertMembers
      */
     public static function assertHasLinks($json): void
     {
-        static::assertHasMember(Members::LINKS, $json);
+        static::askService('hasLinks', $json);
     }
 
     /**
@@ -184,7 +146,7 @@ trait AssertMembers
      */
     public static function assertHasMeta($json): void
     {
-        static::assertHasMember(Members::META, $json);
+        static::askService('hasMeta', $json);
     }
 
     /**
@@ -199,7 +161,7 @@ trait AssertMembers
      */
     public static function assertHasIncluded($json): void
     {
-        static::assertHasMember(Members::INCLUDED, $json);
+        static::askService('hasIncluded', $json);
     }
 
     /**
@@ -214,7 +176,7 @@ trait AssertMembers
      */
     public static function assertHasRelationships($json): void
     {
-        static::assertHasMember(Members::RELATIONSHIPS, $json);
+        static::askService('hasRelationships', $json);
     }
 
     /**
@@ -229,7 +191,7 @@ trait AssertMembers
      */
     public static function assertHasErrors($json): void
     {
-        static::assertHasMember(Members::ERRORS, $json);
+        static::askService('hasErrors', $json);
     }
 
     /**
@@ -244,7 +206,7 @@ trait AssertMembers
      */
     public static function assertHasJsonapi($json): void
     {
-        static::assertHasMember(Members::JSONAPI, $json);
+        static::askService('hasJsonapi', $json);
     }
 
     /**

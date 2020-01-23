@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
-use PHPUnit\Framework\Assert as PHPUnit;
-use VGirol\JsonApiConstant\Members;
-use VGirol\JsonApiAssert\Messages;
-
 /**
  * Assertions relating to the errors object
  */
@@ -28,14 +24,7 @@ trait AssertErrorsObject
      */
     public static function assertIsValidErrorsObject($json, bool $strict): void
     {
-        static::assertIsArrayOfObjects(
-            $json,
-            Messages::ERRORS_OBJECT_NOT_ARRAY
-        );
-
-        foreach ($json as $error) {
-            static::assertIsValidErrorObject($error, $strict);
-        }
+        static::askService('validateErrorsObject', $json, $strict);
     }
 
     /**
@@ -63,52 +52,7 @@ trait AssertErrorsObject
      */
     public static function assertIsValidErrorObject($json, bool $strict): void
     {
-        PHPUnit::assertIsArray(
-            $json,
-            Messages::ERROR_OBJECT_NOT_ARRAY
-        );
-
-        PHPUnit::assertNotEmpty(
-            $json,
-            Messages::ERROR_OBJECT_NOT_EMPTY
-        );
-
-        $allowed = [
-            Members::ID,
-            Members::LINKS,
-            Members::ERROR_STATUS,
-            Members::ERROR_CODE,
-            Members::ERROR_TITLE,
-            Members::ERROR_DETAILS,
-            Members::ERROR_SOURCE,
-            Members::META
-        ];
-        static::assertContainsOnlyAllowedMembers($allowed, $json);
-
-        $checks = [
-            Members::ERROR_STATUS => Messages::ERROR_STATUS_IS_NOT_STRING,
-            Members::ERROR_CODE => Messages::ERROR_CODE_IS_NOT_STRING,
-            Members::ERROR_TITLE => Messages::ERROR_TITLE_IS_NOT_STRING,
-            Members::ERROR_DETAILS => Messages::ERROR_DETAILS_IS_NOT_STRING
-        ];
-
-        foreach ($checks as $member => $failureMsg) {
-            if (isset($json[$member])) {
-                PHPUnit::assertIsString($json[$member], $failureMsg);
-            }
-        }
-
-        if (isset($json[Members::ERROR_SOURCE])) {
-            static::assertIsValidErrorSourceObject($json[Members::ERROR_SOURCE]);
-        }
-
-        if (isset($json[Members::LINKS])) {
-            static::assertIsValidErrorLinksObject($json[Members::LINKS], $strict);
-        }
-
-        if (isset($json[Members::META])) {
-            static::assertIsValidMetaObject($json[Members::META], $strict);
-        }
+        static::askService('validateErrorObject', $json, $strict);
     }
 
     /**
@@ -125,8 +69,7 @@ trait AssertErrorsObject
      */
     public static function assertIsValidErrorLinksObject($json, bool $strict): void
     {
-        $allowed = [Members::LINK_ABOUT];
-        static::assertIsValidLinksObject($json, $allowed, $strict);
+        static::askService('validateErrorLinksObject', $json, $strict);
     }
 
     /**
@@ -143,28 +86,6 @@ trait AssertErrorsObject
      */
     public static function assertIsValidErrorSourceObject($json): void
     {
-        PHPUnit::assertIsArray(
-            $json,
-            Messages::ERROR_SOURCE_OBJECT_NOT_ARRAY
-        );
-
-        if (isset($json[Members::ERROR_POINTER])) {
-            PHPUnit::assertIsString(
-                $json[Members::ERROR_POINTER],
-                Messages::ERROR_SOURCE_POINTER_IS_NOT_STRING
-            );
-            PHPUnit::assertStringStartsWith(
-                '/',
-                $json[Members::ERROR_POINTER],
-                Messages::ERROR_SOURCE_POINTER_START
-            );
-        }
-
-        if (isset($json[Members::ERROR_PARAMETER])) {
-            PHPUnit::assertIsString(
-                $json[Members::ERROR_PARAMETER],
-                Messages::ERROR_SOURCE_PARAMETER_IS_NOT_STRING
-            );
-        }
+        static::askService('validateErrorSourceObject', $json);
     }
 }

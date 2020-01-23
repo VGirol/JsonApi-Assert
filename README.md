@@ -67,8 +67,8 @@ class MyTest extends TestCase
 
 ```php
 use VGirol\JsonApiAssert\Assert as JsonApiAssert;
-use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\SetExceptionsTrait;
+use VGirol\JsonApiStructure\Messages;
 
 class MyTest extends TestCase
 {

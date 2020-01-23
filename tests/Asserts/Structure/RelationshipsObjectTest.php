@@ -147,6 +147,18 @@ class RelationshipsObjectTest extends TestCase
 
     /**
      * @test
+     */
+    public function assertIsValidRelationshipObjectInvalidArgument()
+    {
+        $json = 'not valid';
+        $strict = false;
+
+        $this->setInvalidArgumentException(1, 'array', $json);
+        JsonApiAssert::assertIsValidRelationshipObject($json, $strict);
+    }
+
+    /**
+     * @test
      * @dataProvider notValidRelationshipObjectProvider
      */
     public function relationshipObjectIsNotValid($data, $strict, $failureMessage)
@@ -158,11 +170,6 @@ class RelationshipsObjectTest extends TestCase
     public function notValidRelationshipObjectProvider()
     {
         return [
-            'not an array' => [
-                'not valid',
-                false,
-                sprintf('\'%s\' is of type "array".', 'not valid')
-            ],
             'mandatory member miss' => [
                 [
                     'anything' => [

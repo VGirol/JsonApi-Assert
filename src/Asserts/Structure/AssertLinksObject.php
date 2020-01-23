@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
-use PHPUnit\Framework\Assert as PHPUnit;
-use VGirol\JsonApiConstant\Members;
-use VGirol\JsonApiAssert\Messages;
-
 /**
  * Assertions relating to the links object
  */
@@ -29,19 +25,7 @@ trait AssertLinksObject
      */
     public static function assertIsValidLinksObject($json, array $allowedMembers, bool $strict): void
     {
-        PHPUnit::assertIsArray(
-            $json,
-            Messages::LINKS_OBJECT_NOT_ARRAY
-        );
-
-        static::assertContainsOnlyAllowedMembers(
-            $allowedMembers,
-            $json
-        );
-
-        foreach ($json as $link) {
-            static::assertIsValidLinkObject($link, $strict);
-        }
+        static::askService('validateLinksObject', $json, $allowedMembers, $strict);
     }
 
     /**
@@ -63,36 +47,6 @@ trait AssertLinksObject
      */
     public static function assertIsValidLinkObject($json, bool $strict): void
     {
-        if ($json === null) {
-            PHPUnit::assertNull($json);
-            return;
-        }
-
-        if (!\is_array($json)) {
-            PHPUnit::assertIsString(
-                $json,
-                Messages::LINK_OBJECT_IS_NOT_ARRAY
-            );
-            return;
-        }
-
-        PHPUnit::assertArrayHasKey(
-            Members::LINK_HREF,
-            $json,
-            Messages::LINK_OBJECT_MISS_HREF_MEMBER
-        );
-
-        $allowed = [
-            Members::LINK_HREF,
-            Members::META
-        ];
-        static::assertContainsOnlyAllowedMembers(
-            $allowed,
-            $json
-        );
-
-        if (isset($json[Members::META])) {
-            static::assertIsValidMetaObject($json[Members::META], $strict);
-        }
+        static::askService('validateLinkObject', $json, $strict);
     }
 }

@@ -84,6 +84,7 @@ class ResourceObjectTest extends TestCase
      */
     public function resourceHasValidTopLevelStructure()
     {
+        $strict = true;
         $data = [
             Members::ID => '1',
             Members::TYPE => 'articles',
@@ -110,17 +111,17 @@ class ResourceObjectTest extends TestCase
             ]
         ];
 
-        JsonApiAssert::assertResourceObjectHasValidTopLevelStructure($data);
+        JsonApiAssert::assertResourceObjectHasValidTopLevelStructure($data, $strict);
     }
 
     /**
      * @test
      * @dataProvider hasNotValidTopLevelStructureProvider
      */
-    public function resourceHasNotValidTopLevelStructure($json, $failureMessage)
+    public function resourceHasNotValidTopLevelStructure($json, $strict, $failureMessage)
     {
         $this->setFailure($failureMessage);
-        JsonApiAssert::assertResourceObjectHasValidTopLevelStructure($json);
+        JsonApiAssert::assertResourceObjectHasValidTopLevelStructure($json, $strict);
     }
 
     public function hasNotValidTopLevelStructureProvider()
@@ -128,6 +129,7 @@ class ResourceObjectTest extends TestCase
         return [
             'not an array' => [
                 'failed',
+                true,
                 Messages::RESOURCE_IS_NOT_ARRAY
             ],
             'id is missing' => [
@@ -137,6 +139,7 @@ class ResourceObjectTest extends TestCase
                         'attr' => 'value'
                     ]
                 ],
+                true,
                 Messages::RESOURCE_ID_MEMBER_IS_ABSENT
             ],
             'type is missing' => [
@@ -146,6 +149,7 @@ class ResourceObjectTest extends TestCase
                         'attr' => 'value'
                     ]
                 ],
+                true,
                 Messages::RESOURCE_TYPE_MEMBER_IS_ABSENT
             ],
             'missing mandatory member' => [
@@ -153,6 +157,7 @@ class ResourceObjectTest extends TestCase
                     Members::ID => '1',
                     Members::TYPE => 'test'
                 ],
+                true,
                 sprintf(
                     Messages::CONTAINS_AT_LEAST_ONE,
                     implode(', ', [Members::ATTRIBUTES, Members::RELATIONSHIPS, Members::LINKS, Members::META])
@@ -167,6 +172,7 @@ class ResourceObjectTest extends TestCase
                     ],
                     'wrong' => 'wrong'
                 ],
+                true,
                 Messages::ONLY_ALLOWED_MEMBERS
             ]
         ];
