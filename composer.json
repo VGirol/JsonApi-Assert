@@ -22,8 +22,8 @@
         "php": "~7.2.9|^7.3",
         "dms/phpunit-arraysubset-asserts": "^0.1.0",
         "phpunit/phpunit": "^8.0",
-        "vgirol/jsonapi-constant": "^1.0",
-        "vgirol/jsonapi-structure": "^1.0"
+        "vgirol/jsonapi-constant": "dev-master",
+        "vgirol/jsonapi-structure": "dev-master"
     },
     "require-dev": {
         "infection/infection": "^0.14|^0.15"
