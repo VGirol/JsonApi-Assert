@@ -27,11 +27,11 @@ trait HaveValidationService
      */
     protected static function getServiceInstance(): ValidateService
     {
-        if (static::$service === null) {
-            static::$service = static::createServiceInstance();
+        if (self::$service === null) {
+            self::$service = static::createServiceInstance();
         }
 
-        return static::$service;
+        return self::$service;
     }
 
     /**

@@ -47,3 +47,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 - Use of vgirol/jsonapi-structure package
 - Changed exception thrown by all assertion methods (\PHPUnit\Framework\AssertionFailedError)
+
+## 2.0.1 - 2020-01-27
+
+### Added
+
+- Minor fix
