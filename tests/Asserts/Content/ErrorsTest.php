@@ -81,7 +81,7 @@ class ErrorsTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::ERROR_STATUS_IS_NOT_STRING
+                Messages::ERROR_OBJECT_STATUS_MEMBER_MUST_BE_STRING
             ],
             'not enough errors' => [
                 [

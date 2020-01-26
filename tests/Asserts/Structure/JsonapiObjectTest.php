@@ -48,7 +48,7 @@ class JsonapiObjectTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::OBJECT_NOT_ARRAY
+                Messages::MUST_NOT_BE_ARRAY_OF_OBJECTS
             ],
             'not allowed member' => [
                 [
@@ -63,7 +63,7 @@ class JsonapiObjectTest extends TestCase
                     Members::JSONAPI_VERSION => 123
                 ],
                 false,
-                Messages::JSONAPI_VERSION_IS_NOT_STRING
+                Messages::JSONAPI_OBJECT_VERSION_MEMBER_MUST_BE_STRING
             ],
             'meta not valid' => [
                 [
@@ -73,7 +73,7 @@ class JsonapiObjectTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'meta with not safe member' => [
                 [
@@ -83,7 +83,7 @@ class JsonapiObjectTest extends TestCase
                     ]
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }

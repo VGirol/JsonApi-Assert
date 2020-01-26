@@ -5,79 +5,33 @@ namespace VGirol\JsonApiAssert\Tests\Asserts\Content;
 use VGirol\JsonApiAssert\Assert;
 use VGirol\JsonApiAssert\Messages;
 use VGirol\JsonApiAssert\Tests\TestCase;
+use VGirol\JsonApiConstant\Members;
 
 class LinksTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider linkObjectEqualsProvider
      */
-    public function linkObjectEquals($expected, $link)
+    public function linkObjectEquals()
     {
-        Assert::assertLinkObjectEquals($expected, $link);
-    }
-
-    public function linkObjectEqualsProvider()
-    {
-        return [
-            'null' => [
-                null,
-                null
-            ],
-            'string' => [
-                'url',
-                'url'
-            ],
-            'with query string' => [
-                'url?query1=test&query2=anything',
-                'url?query1=test&query2=anything'
-            ]
+        $expected = 'url';
+        $link = [
+            Members::LINK_HREF => 'url'
         ];
+        Assert::assertLinkObjectEquals($expected, $link);
     }
 
     /**
      * @test
-     * @dataProvider linkObjectEqualsFailedProvider
      */
-    public function linkObjectEqualsFailed($expected, $link)
+    public function linkObjectEqualsFailed()
     {
+        $expected = null;
+        $link = 'not null';
+
         $this->setFailure($this->formatAsRegex('Failed asserting that %s equals %s.'));
 
         Assert::assertLinkObjectEquals($expected, $link);
-    }
-
-    public function linkObjectEqualsFailedProvider()
-    {
-        return [
-            'must be null' => [
-                null,
-                'not null'
-            ],
-            'must not be null' => [
-                'url',
-                null
-            ],
-            'must have query string' => [
-                'url?query=test',
-                'url'
-            ],
-            'must not have query string' => [
-                'url',
-                'url?query=test'
-            ],
-            'not same url' => [
-                'url1',
-                'url2'
-            ],
-            'not same count of query strings' => [
-                'url?query1=test',
-                'url?query1=test&query2=anything'
-            ],
-            'not same query strings' => [
-                'url?query1=test',
-                'url?query1=anything'
-            ]
-        ];
     }
 
     /**

@@ -6,9 +6,9 @@ namespace VGirol\JsonApiAssert\Constraint;
 use PHPUnit\Framework\Constraint\Constraint;
 
 /**
- * A constraint class to assert that a json object contains at least one member from the provided list.
+ * Abstract constraint class
  */
-abstract class AbstractConstraint extends Constraint
+abstract class AbstractConstraint extends Constraint implements ConstraintContract
 {
     /**
      * The JsonApi-Structure constraint used to make the tests
@@ -19,6 +19,8 @@ abstract class AbstractConstraint extends Constraint
 
     /**
      * Returns a string representation of the constraint.
+     *
+     * @return string
      */
     public function toString(): string
     {
@@ -26,10 +28,10 @@ abstract class AbstractConstraint extends Constraint
     }
 
     /**
-     * Evaluates the constraint for parameter $other. Returns true if the
-     * constraint is met, false otherwise.
+     * Evaluates the constraint for parameter $other. Returns true if the constraint is met, false otherwise.
      *
      * @param mixed $other value or object to evaluate
+     *
      * @return boolean
      */
     public function check($other): bool
@@ -38,16 +40,24 @@ abstract class AbstractConstraint extends Constraint
     }
 
     /**
-     * Evaluates the constraint for parameter $other. Returns true if the
-     * constraint is met, false otherwise.
+     * Evaluates the constraint for parameter $other. Returns true if the constraint is met, false otherwise.
      *
      * @param mixed $other value or object to evaluate
+     *
+     * @return bool
      */
     protected function matches($other): bool
     {
-        return $this->constraint->evaluate($other, '', true);
+        return $this->constraint->handle($other);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param \VGirol\JsonApiStructure\Constraint\Constraint $constraint
+     *
+     * @return void
+     */
     protected function setConstraint($constraint): void
     {
         $this->constraint = $constraint;

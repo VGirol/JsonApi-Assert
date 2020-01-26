@@ -37,7 +37,7 @@ trait AssertPagination
      * @param array $links A links object to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasPaginationLinks($links): void
     {
@@ -55,7 +55,7 @@ trait AssertPagination
      * @param array $links A links object to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasNoPaginationLinks($links): void
     {
@@ -73,7 +73,7 @@ trait AssertPagination
      * @param array $json     The links object to test
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertPaginationLinksEquals($expected, $json): void
     {
@@ -92,7 +92,7 @@ trait AssertPagination
      * @param array $meta The meta object to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasPaginationMeta($meta): void
     {
@@ -107,7 +107,7 @@ trait AssertPagination
      * @param array $meta The meta object to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasNoPaginationMeta($meta): void
     {
@@ -123,7 +123,7 @@ trait AssertPagination
      * @param array $json     The meta object to test
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertPaginationMetaEquals($expected, $json): void
     {

@@ -84,7 +84,7 @@ class MyTest extends TestCase
                 'error' => 'not an array of error objects'
             ]
         ];
-        $failureMessage = Messages::ERRORS_OBJECT_NOT_ARRAY;
+        $failureMessage = Messages::ERRORS_OBJECT_MUST_BE_ARRAY;
 
         $this->setFailureException($failureMessage);
 

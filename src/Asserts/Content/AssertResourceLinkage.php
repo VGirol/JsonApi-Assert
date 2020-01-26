@@ -22,7 +22,7 @@ trait AssertResourceLinkage
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceIdentifierEquals($expected, $json)
     {
@@ -49,7 +49,7 @@ trait AssertResourceLinkage
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceIdentifierCollectionEquals($expected, $json)
     {
@@ -94,7 +94,7 @@ trait AssertResourceLinkage
      * @param boolean    $strict   If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceLinkageEquals($expected, $json, $strict)
     {
@@ -110,8 +110,6 @@ trait AssertResourceLinkage
         }
 
         PHPUnit::assertNotNull($json, Messages::RESOURCE_LINKAGE_MUST_NOT_BE_NULL);
-
-        /** @var array $json */
 
         if (!static::isArrayOfObjects($expected)) {
             static::assertIsNotArrayOfObjects($json);

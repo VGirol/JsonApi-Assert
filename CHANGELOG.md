@@ -40,3 +40,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 - Added some failure messages
 - Added new methods for testing (VGirol\JsonApiAssert\SetExceptionsTrait::setFailure and VGirol\JsonApiAssert\SetExceptionsTrait::formatAsRegex)
+
+## 2.0.0 - 2020-01-27
+
+### Added
+
+- Use of vgirol/jsonapi-structure package
+- Changed exception thrown by all assertion methods (\PHPUnit\Framework\AssertionFailedError)

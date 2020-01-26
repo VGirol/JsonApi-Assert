@@ -26,7 +26,7 @@ trait AssertMemberName
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidMemberName($name, bool $strict): void
     {

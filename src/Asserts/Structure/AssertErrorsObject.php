@@ -20,7 +20,7 @@ trait AssertErrorsObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidErrorsObject($json, bool $strict): void
     {
@@ -48,7 +48,7 @@ trait AssertErrorsObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidErrorObject($json, bool $strict): void
     {
@@ -65,7 +65,7 @@ trait AssertErrorsObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidErrorLinksObject($json, bool $strict): void
     {
@@ -82,7 +82,7 @@ trait AssertErrorsObject
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidErrorSourceObject($json): void
     {

@@ -26,7 +26,7 @@ trait AssertLinks
      * @param array $links    A links object to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertLinksObjectEquals($expected, $links): void
     {
@@ -57,7 +57,7 @@ trait AssertLinks
      * @param array             $links    The links object to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertLinksObjectContains($name, $expected, $links): void
     {
@@ -74,7 +74,7 @@ trait AssertLinks
      * @param array|string|null $link     The link to test
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertLinkObjectEquals($expected, $link): void
     {

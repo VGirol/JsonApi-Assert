@@ -21,7 +21,7 @@ trait AssertResourceObject
      * @param boolean    $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidResourceObjectCollection($json, bool $strict): void
     {
@@ -48,7 +48,7 @@ trait AssertResourceObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidResourceObject($json, bool $strict): void
     {
@@ -70,7 +70,7 @@ trait AssertResourceObject
      * @param boolean $strict   If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceObjectHasValidTopLevelStructure($resource, bool $strict): void
     {
@@ -87,7 +87,7 @@ trait AssertResourceObject
      * @param array $resource
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceIdMember($resource): void
     {
@@ -106,7 +106,7 @@ trait AssertResourceObject
      * @param boolean $strict   If true, excludes not safe characters when checking members name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceTypeMember($resource, bool $strict): void
     {
@@ -123,7 +123,7 @@ trait AssertResourceObject
      * @param boolean $strict If true, excludes not safe characters when checking members name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidResourceLinksObject($json, bool $strict): void
     {
@@ -140,7 +140,7 @@ trait AssertResourceObject
      * @param array $resource
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasValidFields($resource): void
     {
@@ -153,7 +153,7 @@ trait AssertResourceObject
      * @param string $name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsNotForbiddenResourceFieldName(string $name): void
     {

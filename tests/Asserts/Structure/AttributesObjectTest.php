@@ -143,14 +143,14 @@ class AttributesObjectTest extends TestCase
                     'key+' => 'value'
                 ],
                 false,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'key is not safe' => [
                 [
                     'not safe' => 'value'
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'field has forbidden member' => [
                 [

@@ -27,7 +27,7 @@ trait AssertStructure
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasValidStructure($json, bool $strict): void
     {
@@ -49,7 +49,7 @@ trait AssertStructure
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasValidTopLevelMembers($json): void
     {
@@ -68,7 +68,7 @@ trait AssertStructure
      * @param boolean $strict         If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidTopLevelLinksMember($json, bool $withPagination, bool $strict): void
     {
@@ -87,7 +87,7 @@ trait AssertStructure
      * @param boolean    $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidPrimaryData($json, bool $strict): void
     {
@@ -102,7 +102,7 @@ trait AssertStructure
     //  * @param boolean $strict    If true, excludes not safe characters when checking members name
     //  *
     //  * @return void
-    //  * @throws \PHPUnit\Framework\ExpectationFailedException
+    //  * @throws \PHPUnit\Framework\AssertionFailedError
     //  */
     // private static function assertIsValidPrimaryCollection($list, bool $checkType, bool $strict): void
     // {
@@ -134,7 +134,7 @@ trait AssertStructure
     //  * @param boolean $strict   If true, excludes not safe characters when checking members name
     //  *
     //  * @return void
-    //  * @throws \PHPUnit\Framework\ExpectationFailedException
+    //  * @throws \PHPUnit\Framework\AssertionFailedError
     //  */
     // private static function assertIsValidPrimarySingle($resource, bool $strict): void
     // {
@@ -162,7 +162,7 @@ trait AssertStructure
      * @param boolean $strict   If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidIncludedCollection($included, $data, bool $strict): void
     {

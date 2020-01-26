@@ -21,7 +21,7 @@ trait AssertResource
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceObjectEquals($expected, $json)
     {
@@ -47,7 +47,7 @@ trait AssertResource
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceCollectionEquals($expected, $json)
     {
@@ -75,7 +75,7 @@ trait AssertResource
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceCollectionContains($expected, $json)
     {

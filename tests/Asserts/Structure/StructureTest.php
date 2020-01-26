@@ -129,7 +129,7 @@ class StructureTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::RESOURCE_ID_MEMBER_IS_NOT_STRING
+                Messages::RESOURCE_ID_MEMBER_MUST_BE_STRING
             ],
             'no valid errors object' => [
                 [
@@ -138,7 +138,7 @@ class StructureTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::ERRORS_OBJECT_NOT_ARRAY
+                Messages::ERRORS_OBJECT_MUST_BE_ARRAY
             ],
             'no valid meta' => [
                 [
@@ -154,7 +154,7 @@ class StructureTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'no valid jsonapi' => [
                 [
@@ -170,7 +170,7 @@ class StructureTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::JSONAPI_VERSION_IS_NOT_STRING
+                Messages::JSONAPI_OBJECT_VERSION_MEMBER_MUST_BE_STRING
             ],
             'no valid included' => [
                 [

@@ -42,7 +42,7 @@ class MetaObjectTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::META_OBJECT_IS_NOT_ARRAY
+                Messages::META_OBJECT_MUST_BE_ARRAY
             ],
             'array of objects' => [
                 [
@@ -50,21 +50,21 @@ class MetaObjectTest extends TestCase
                     [ 'key2' => 'element' ]
                 ],
                 false,
-                Messages::META_OBJECT_IS_NOT_ARRAY
+                Messages::META_OBJECT_MUST_BE_ARRAY
             ],
             'key is not valid' => [
                 [
                     'key+' => 'value'
                 ],
                 false,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'key is not safe' => [
                 [
                     'not valid' => 'due to the blank character'
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }

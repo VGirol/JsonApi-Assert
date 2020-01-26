@@ -21,7 +21,7 @@ trait AssertAttributesObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidAttributesObject($json, bool $strict): void
     {
@@ -41,7 +41,7 @@ trait AssertAttributesObject
      * @param mixed $field
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertFieldHasNoForbiddenMemberName($field): void
     {
@@ -54,7 +54,7 @@ trait AssertAttributesObject
      * @param string $name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsNotForbiddenMemberName($name): void
     {

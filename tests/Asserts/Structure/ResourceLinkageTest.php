@@ -68,7 +68,7 @@ class ResourceLinkageTest extends TestCase
             'not an array' => [
                 'not valid',
                 false,
-                Messages::RESOURCE_LINKAGE_NOT_ARRAY
+                Messages::RESOURCE_LINKAGE_BAD_TYPE
             ],
             'not valid single resource identifier object' => [
                 [
@@ -103,7 +103,7 @@ class ResourceLinkageTest extends TestCase
                     ]
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }
@@ -141,7 +141,7 @@ class ResourceLinkageTest extends TestCase
             'not an array' => [
                 'failed',
                 false,
-                Messages::RESOURCE_IDENTIFIER_IS_NOT_ARRAY
+                Messages::RESOURCE_IDENTIFIER_MUST_BE_ARRAY
             ],
             'id is missing' => [
                 [
@@ -156,7 +156,7 @@ class ResourceLinkageTest extends TestCase
                     Members::TYPE => 'test'
                 ],
                 false,
-                Messages::RESOURCE_ID_MEMBER_IS_NOT_STRING
+                Messages::RESOURCE_ID_MEMBER_MUST_BE_STRING
             ],
             'type is missing' => [
                 [
@@ -171,7 +171,7 @@ class ResourceLinkageTest extends TestCase
                     Members::TYPE => 404
                 ],
                 false,
-                Messages::RESOURCE_TYPE_MEMBER_IS_NOT_STRING
+                Messages::RESOURCE_TYPE_MEMBER_MUST_BE_STRING
             ],
             'member not allowed' => [
                 [
@@ -191,7 +191,7 @@ class ResourceLinkageTest extends TestCase
                     ]
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }

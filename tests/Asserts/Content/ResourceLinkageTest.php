@@ -242,7 +242,7 @@ class ResourceLinkageTest extends TestCase
                 null,
                 'notValid',
                 true,
-                Messages::RESOURCE_LINKAGE_NOT_ARRAY
+                Messages::RESOURCE_LINKAGE_BAD_TYPE
             ],
             'is not null as expected' => [
                 null,

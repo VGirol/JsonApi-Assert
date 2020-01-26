@@ -21,7 +21,7 @@ trait AssertMembers
      * @param array  $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \PHPUnit\Framework\Exception
      */
     public static function assertHasMember($expected, $json): void
@@ -36,7 +36,7 @@ trait AssertMembers
      * @param array         $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \PHPUnit\Framework\Exception
      */
     public static function assertHasMembers($expected, $json): void
@@ -51,7 +51,7 @@ trait AssertMembers
      * @param array         $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \PHPUnit\Framework\Exception
      */
     public static function assertHasOnlyMembers($expected, $json): void
@@ -66,7 +66,7 @@ trait AssertMembers
      * @param array  $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \PHPUnit\Framework\Exception
      */
     public static function assertNotHasMember($expected, $json): void
@@ -81,7 +81,7 @@ trait AssertMembers
      * @param array         $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \PHPUnit\Framework\Exception
      */
     public static function assertNotHasMembers($expected, $json): void
@@ -97,7 +97,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasData($json): void
     {
@@ -112,7 +112,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasAttributes($json): void
     {
@@ -127,7 +127,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasLinks($json): void
     {
@@ -142,7 +142,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasMeta($json): void
     {
@@ -157,7 +157,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasIncluded($json): void
     {
@@ -172,7 +172,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasRelationships($json): void
     {
@@ -187,7 +187,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasErrors($json): void
     {
@@ -202,7 +202,7 @@ trait AssertMembers
      * @param array $json
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasJsonapi($json): void
     {
@@ -217,7 +217,7 @@ trait AssertMembers
      * @param string        $message  An optional message to explain why the test failed
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertContainsAtLeastOneMember($expected, $json, string $message = ''): void
     {
@@ -259,7 +259,7 @@ trait AssertMembers
      * @param string        $message  An optional message to explain why the test failed
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertContainsOnlyAllowedMembers($expected, $json, string $message = ''): void
     {

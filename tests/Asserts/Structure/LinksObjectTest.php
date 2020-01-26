@@ -57,7 +57,7 @@ class LinksObjectTest extends TestCase
             'not an array' => [
                 666,
                 false,
-                Messages::LINK_OBJECT_IS_NOT_ARRAY
+                Messages::LINK_OBJECT_BAD_TYPE
             ],
             'no "href" member' => [
                 [
@@ -83,7 +83,7 @@ class LinksObjectTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'meta not safe' => [
                 [
@@ -93,7 +93,7 @@ class LinksObjectTest extends TestCase
                     ]
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }
@@ -148,7 +148,7 @@ class LinksObjectTest extends TestCase
                 ],
                 [Members::LINK_SELF, Members::LINK_RELATED],
                 false,
-                Messages::LINK_OBJECT_IS_NOT_ARRAY
+                Messages::LINK_OBJECT_BAD_TYPE
             ],
             'link has not safe meta member' => [
                 [
@@ -161,7 +161,7 @@ class LinksObjectTest extends TestCase
                 ],
                 [Members::LINK_SELF, Members::LINK_RELATED],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }

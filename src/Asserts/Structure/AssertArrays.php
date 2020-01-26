@@ -16,11 +16,11 @@ trait AssertArrays
      * @param string $message An optional message to explain why the test failed
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsArrayOfObjects($json, $message = ''): void
     {
-        static::askService('isArrayOfObjects', $json, false, $message);
+        static::askService('mustBeArrayOfObjects', $json, $message);
     }
 
     /**
@@ -30,11 +30,11 @@ trait AssertArrays
      * @param string $message An optional message to explain why the test failed
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsNotArrayOfObjects($json, $message = ''): void
     {
-        static::askService('isNotArrayOfObjects', $json, false, $message);
+        static::askService('mustNotBeArrayOfObjects', $json, $message);
     }
 
     /**
@@ -46,6 +46,6 @@ trait AssertArrays
      */
     protected static function isArrayOfObjects(array $arr): bool
     {
-        return static::proxyService('isArrayOfObjects', $arr, true);
+        return static::proxyService('isArrayOfObjects', $arr);
     }
 }

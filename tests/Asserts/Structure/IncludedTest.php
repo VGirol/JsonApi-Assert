@@ -163,7 +163,7 @@ class IncludedTest extends TestCase
                     ]
                 ],
                 false,
-                Messages::COMPOUND_DOCUMENT_ONLY_ONE_RESOURCE
+                Messages::DOCUMENT_NO_DUPLICATE_RESOURCE
             ],
             'an included resource is not valid' => [
                 [

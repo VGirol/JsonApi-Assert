@@ -21,7 +21,7 @@ trait AssertLinksObject
      * @param boolean       $strict         If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidLinksObject($json, array $allowedMembers, bool $strict): void
     {
@@ -43,7 +43,7 @@ trait AssertLinksObject
      * @param boolean           $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidLinkObject($json, bool $strict): void
     {

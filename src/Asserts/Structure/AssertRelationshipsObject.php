@@ -21,7 +21,7 @@ trait AssertRelationshipsObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidRelationshipsObject($json, bool $strict): void
     {
@@ -44,7 +44,7 @@ trait AssertRelationshipsObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidRelationshipObject($json, bool $strict): void
     {
@@ -64,7 +64,7 @@ trait AssertRelationshipsObject
      * @param boolean $strict         If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidRelationshipLinksObject($json, bool $withPagination, bool $strict): void
     {
