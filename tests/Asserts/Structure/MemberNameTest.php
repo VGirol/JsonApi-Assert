@@ -50,7 +50,7 @@ class MemberNameTest extends TestCase
             'not a string' => [
                 123,
                 false,
-                Messages::MEMBER_NAME_IS_NOT_STRING
+                Messages::MEMBER_NAME_MUST_BE_STRING
             ],
             'too short' => [
                 '',
@@ -60,22 +60,22 @@ class MemberNameTest extends TestCase
             'strict mode' => [
                 'not valid',
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'reserved characters' => [
                 'az-F%3_t',
                 false,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ],
             'start with not globally allowed character' => [
                 '_az',
                 false,
-                Messages::MEMBER_NAME_START_AND_END_WITH_ALLOWED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_START_AND_END_WITH_ALLOWED_CHARACTERS
             ],
             'end with not globally allowed character' => [
                 'az_',
                 false,
-                Messages::MEMBER_NAME_START_AND_END_WITH_ALLOWED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_START_AND_END_WITH_ALLOWED_CHARACTERS
             ]
         ];
     }

@@ -96,7 +96,7 @@ class PrimaryDataTest extends TestCase
             'not an array' => [
                 'bad',
                 false,
-                Messages::PRIMARY_DATA_NOT_ARRAY
+                sprintf(Messages::REQUEST_ERROR_DATA_MEMBER_NOT_ARRAY, gettype('bad'))
             ],
             'collection with different type of resource objects' => [
                 [
@@ -142,7 +142,7 @@ class PrimaryDataTest extends TestCase
                     ]
                 ],
                 true,
-                Messages::MEMBER_NAME_HAVE_RESERVED_CHARACTERS
+                Messages::MEMBER_NAME_MUST_NOT_HAVE_RESERVED_CHARACTERS
             ]
         ];
     }

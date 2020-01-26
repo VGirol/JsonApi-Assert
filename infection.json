@@ -26,6 +26,15 @@
                 "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasErrors",
                 "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertMembers::assertHasJsonapi"
             ]
+        },
+        "ProtectedVisibility": {
+            "ignore": [
+                "VGirol\\JsonApiAssert\\Asserts\\Structure\\AssertArrays::isArrayOfObjects",
+                "VGirol\\JsonApiAssert\\HaveValidationService::getServiceInstance",
+                "VGirol\\JsonApiAssert\\HaveValidationService::askService",
+                "VGirol\\JsonApiAssert\\HaveValidationService::proxyService",
+                "VGirol\\JsonApiAssert\\HaveValidationService::succeed"
+            ]
         }
     },
     "testFramework":"phpunit",

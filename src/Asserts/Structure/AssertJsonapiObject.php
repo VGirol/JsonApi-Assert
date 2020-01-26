@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
-use PHPUnit\Framework\Assert as PHPUnit;
-use VGirol\JsonApiConstant\Members;
-use VGirol\JsonApiAssert\Messages;
-
 /**
  * Assertions relating to the jsonapi object
  */
@@ -29,33 +25,10 @@ trait AssertJsonapiObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidJsonapiObject($json, bool $strict): void
     {
-        static::assertIsNotArrayOfObjects(
-            $json,
-            Messages::OBJECT_NOT_ARRAY
-        );
-
-        $allowed = [
-            Members::JSONAPI_VERSION,
-            Members::META
-        ];
-        static::assertContainsOnlyAllowedMembers(
-            $allowed,
-            $json
-        );
-
-        if (isset($json[Members::JSONAPI_VERSION])) {
-            PHPUnit::assertIsString(
-                $json[Members::JSONAPI_VERSION],
-                Messages::JSONAPI_VERSION_IS_NOT_STRING
-            );
-        }
-
-        if (isset($json[Members::META])) {
-            static::assertIsValidMetaObject($json[Members::META], $strict);
-        }
+        static::askService('validateJsonapiObject', $json, $strict);
     }
 }

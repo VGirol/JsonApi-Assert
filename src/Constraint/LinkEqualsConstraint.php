@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Constraint;
 
-use PHPUnit\Framework\Constraint\Constraint;
 use VGirol\JsonApiConstant\Members;
 
 /**
  * A constraint class to assert that a link object equals an expected value.
  */
-class LinkEqualsConstraint extends Constraint
+class LinkEqualsConstraint extends AbstractConstraint
 {
     /**
+     * Undocumented variable
+     *
      * @var array|string|null
      */
     private $expected;
@@ -21,6 +22,8 @@ class LinkEqualsConstraint extends Constraint
      * Class constructor.
      *
      * @param array|string|null $expected
+     *
+     * @return void
      */
     public function __construct($expected)
     {
@@ -29,6 +32,8 @@ class LinkEqualsConstraint extends Constraint
 
     /**
      * Returns a string representation of the constraint.
+     *
+     * @return string
      */
     public function toString(): string
     {
@@ -43,6 +48,8 @@ class LinkEqualsConstraint extends Constraint
      * constraint is met, false otherwise.
      *
      * @param array|string|null $other value or object to evaluate
+     *
+     * @return bool
      */
     protected function matches($other): bool
     {
@@ -86,17 +93,5 @@ class LinkEqualsConstraint extends Constraint
         $diff = array_diff($expectedQuery, $linkQuery);
 
         return count($diff) === 0;
-    }
-
-    /**
-     * Evaluates the constraint for parameter $other. Returns true if the
-     * constraint is met, false otherwise.
-     *
-     * @param mixed $other value or object to evaluate
-     * @return boolean
-     */
-    public function check($other): bool
-    {
-        return $this->matches($other);
     }
 }

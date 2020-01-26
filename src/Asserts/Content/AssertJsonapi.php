@@ -21,7 +21,7 @@ trait AssertJsonapi
      * @param array $json     The jsonapi object to test
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertJsonapiObjectEquals($expected, $json): void
     {

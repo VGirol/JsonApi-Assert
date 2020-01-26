@@ -4,7 +4,7 @@ namespace VGirol\JsonApiAssert\Asserts\Content;
 
 use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
 use PHPUnit\Framework\Assert as PHPUnit;
-use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\AssertionFailedError;
 use VGirol\JsonApiAssert\Messages;
 
 /**
@@ -27,13 +27,13 @@ trait AssertErrors
      * @param boolean $strict   If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertErrorsContains($expected, $errors, $strict)
     {
         try {
             static::assertIsValidErrorsObject($expected, $strict);
-        } catch (ExpectationFailedException $e) {
+        } catch (AssertionFailedError $e) {
             static::invalidArgument(1, 'errors object', $expected);
         }
 

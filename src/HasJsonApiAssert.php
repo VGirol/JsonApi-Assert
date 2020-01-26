@@ -23,12 +23,16 @@ use VGirol\JsonApiAssert\Asserts\Structure\AssertRelationshipsObject;
 use VGirol\JsonApiAssert\Asserts\Structure\AssertResourceLinkage;
 use VGirol\JsonApiAssert\Asserts\Structure\AssertResourceObject;
 use VGirol\JsonApiAssert\Asserts\Structure\AssertStructure;
+use VGirol\JsonApiStructure\Exception\CanThrowInvalidArgumentException;
 
 /**
  * This trait provide a set of assertions to test documents using the JSON:API specification.
  */
 trait HasJsonApiAssert
 {
+    use CanThrowInvalidArgumentException;
+    use HaveValidationService;
+
     // Structure
     use AssertArrays;
     use AssertAttributesObject;
@@ -51,21 +55,4 @@ trait HasJsonApiAssert
     use AssertLinkage;
     use AssertErrors;
     use AssertInclude;
-
-    /**
-     * Throws an InvalidArgumentException because of an invalid argument passed to a method.
-     *
-     * @param integer $argument
-     * @param string  $type
-     * @param mixed   $value
-     *
-     * @return void
-     * @throws \VGirol\JsonApiAssert\InvalidArgumentException
-     *
-     * @SuppressWarnings(PHPMD.StaticAccess)
-     */
-    protected static function invalidArgument(int $argument, string $type, $value = null): void
-    {
-        throw InvalidArgumentHelper::factory($argument, $type, $value);
-    }
 }

@@ -20,7 +20,7 @@ trait AssertInclude
      * @param array $json     The array of included resource objects to inspect
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIncludeObjectContains($expected, $json)
     {
@@ -42,7 +42,7 @@ trait AssertInclude
      * @param array $json     The JSON document to be tested
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertDocumentContainsInclude($expected, $json)
     {

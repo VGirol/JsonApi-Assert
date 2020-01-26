@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Asserts\Structure;
 
-use PHPUnit\Framework\Assert as PHPUnit;
-use VGirol\JsonApiConstant\Members;
-use VGirol\JsonApiAssert\Messages;
-
 /**
  * Assertions relating to the resource object
  */
@@ -25,24 +21,11 @@ trait AssertResourceObject
      * @param boolean    $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidResourceObjectCollection($json, bool $strict): void
     {
-        PHPUnit::assertIsArray(
-            $json,
-            Messages::RESOURCE_COLLECTION_NOT_ARRAY
-        );
-
-        if (empty($json)) {
-            return;
-        }
-
-        static::assertIsArrayOfObjects($json);
-
-        foreach ($json as $resource) {
-            static::assertIsValidResourceObject($resource, $strict);
-        }
+        static::askService('validateResourceObjectCollection', $json, $strict);
     }
 
     /**
@@ -65,31 +48,11 @@ trait AssertResourceObject
      * @param boolean $strict If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidResourceObject($json, bool $strict): void
     {
-        static::assertResourceObjectHasValidTopLevelStructure($json);
-        static::assertResourceIdMember($json);
-        static::assertResourceTypeMember($json, $strict);
-
-        if (isset($json[Members::ATTRIBUTES])) {
-            static::assertIsValidAttributesObject($json[Members::ATTRIBUTES], $strict);
-        }
-
-        if (isset($json[Members::RELATIONSHIPS])) {
-            static::assertIsValidRelationshipsObject($json[Members::RELATIONSHIPS], $strict);
-        }
-
-        if (isset($json[Members::LINKS])) {
-            static::assertIsValidResourceLinksObject($json[Members::LINKS], $strict);
-        }
-
-        if (isset($json[Members::META])) {
-            static::assertIsValidMetaObject($json[Members::META], $strict);
-        }
-
-        static::assertHasValidFields($json);
+        static::askService('validateResourceObject', $json, $strict);
     }
 
     /**
@@ -104,50 +67,14 @@ trait AssertResourceObject
      * "id", "type", "meta", "attributes", "links", "relationships" (@see assertContainsOnlyAllowedMembers).
      *
      * @param array $resource
+     * @param boolean $strict   If true, unsafe characters are not allowed when checking members name.
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
-    public static function assertResourceObjectHasValidTopLevelStructure($resource): void
+    public static function assertResourceObjectHasValidTopLevelStructure($resource, bool $strict): void
     {
-        PHPUnit::assertIsArray(
-            $resource,
-            Messages::RESOURCE_IS_NOT_ARRAY
-        );
-
-        PHPUnit::assertArrayHasKey(
-            Members::ID,
-            $resource,
-            Messages::RESOURCE_ID_MEMBER_IS_ABSENT
-        );
-
-        PHPUnit::assertArrayHasKey(
-            Members::TYPE,
-            $resource,
-            Messages::RESOURCE_TYPE_MEMBER_IS_ABSENT
-        );
-
-        static::assertContainsAtLeastOneMember(
-            [
-                Members::ATTRIBUTES,
-                Members::RELATIONSHIPS,
-                Members::LINKS,
-                Members::META
-            ],
-            $resource
-        );
-
-        static::assertContainsOnlyAllowedMembers(
-            [
-                Members::ID,
-                Members::TYPE,
-                Members::META,
-                Members::ATTRIBUTES,
-                Members::LINKS,
-                Members::RELATIONSHIPS
-            ],
-            $resource
-        );
+        static::askService('validateResourceObjectTopLevelStructure', $resource, $strict);
     }
 
     /**
@@ -160,20 +87,11 @@ trait AssertResourceObject
      * @param array $resource
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceIdMember($resource): void
     {
-        PHPUnit::assertIsString(
-            $resource[Members::ID],
-            Messages::RESOURCE_ID_MEMBER_IS_NOT_STRING
-        );
-
-        PHPUnit::assertNotEmpty(
-            // PHP treats 0 and '0' as empty.
-            str_replace('0', 'zero', $resource[Members::ID]),
-            Messages::RESOURCE_ID_MEMBER_IS_EMPTY
-        );
+        static::askService('validateResourceIdMember', $resource);
     }
 
     /**
@@ -188,24 +106,11 @@ trait AssertResourceObject
      * @param boolean $strict   If true, excludes not safe characters when checking members name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertResourceTypeMember($resource, bool $strict): void
     {
-        PHPUnit::assertNotEmpty(
-            $resource[Members::TYPE],
-            Messages::RESOURCE_TYPE_MEMBER_IS_EMPTY
-        );
-
-        PHPUnit::assertIsString(
-            $resource[Members::TYPE],
-            Messages::RESOURCE_TYPE_MEMBER_IS_NOT_STRING
-        );
-
-        static::assertIsValidMemberName(
-            $resource[Members::TYPE],
-            $strict
-        );
+        static::askService('validateResourceTypeMember', $resource, $strict);
     }
 
     /**
@@ -218,17 +123,11 @@ trait AssertResourceObject
      * @param boolean $strict If true, excludes not safe characters when checking members name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsValidResourceLinksObject($json, bool $strict): void
     {
-        static::assertIsValidLinksObject(
-            $json,
-            [
-                Members::LINK_SELF
-            ],
-            $strict
-        );
+        static::askService('validateResourceLinksObject', $json, $strict);
     }
 
     /**
@@ -241,29 +140,11 @@ trait AssertResourceObject
      * @param array $resource
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertHasValidFields($resource): void
     {
-        if (isset($resource[Members::ATTRIBUTES])) {
-            foreach (array_keys($resource[Members::ATTRIBUTES]) as $name) {
-                static::assertIsNotForbiddenResourceFieldName($name);
-            }
-        }
-
-        if (isset($resource[Members::RELATIONSHIPS])) {
-            foreach (array_keys($resource[Members::RELATIONSHIPS]) as $name) {
-                static::assertIsNotForbiddenResourceFieldName($name);
-
-                if (isset($resource[Members::ATTRIBUTES])) {
-                    PHPUnit::assertArrayNotHasKey(
-                        $name,
-                        $resource[Members::ATTRIBUTES],
-                        Messages::FIELDS_HAVE_SAME_NAME
-                    );
-                }
-            }
-        }
+        static::askService('validateFields', $resource);
     }
 
     /**
@@ -272,17 +153,10 @@ trait AssertResourceObject
      * @param string $name
      *
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\AssertionFailedError
      */
     public static function assertIsNotForbiddenResourceFieldName(string $name): void
     {
-        PHPUnit::assertNotContains(
-            $name,
-            [
-                Members::TYPE,
-                Members::ID
-            ],
-            Messages::FIELDS_NAME_NOT_ALLOWED
-        );
+        static::askService('isNotForbiddenResourceFieldName', $name);
     }
 }

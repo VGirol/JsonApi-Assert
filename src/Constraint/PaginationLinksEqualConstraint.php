@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace VGirol\JsonApiAssert\Constraint;
 
-use PHPUnit\Framework\Constraint\Constraint;
-use VGirol\JsonApiAssert\Constraint\LinkEqualsConstraint;
-
 /**
  * A constraint class to assert that a link object equals an expected value.
  */
-class PaginationLinksEqualConstraint extends Constraint
+class PaginationLinksEqualConstraint extends AbstractConstraint
 {
     /**
+     * Undocumented variable
+     *
      * @var array
      */
     private $expected;
@@ -28,6 +27,9 @@ class PaginationLinksEqualConstraint extends Constraint
      * Class constructor.
      *
      * @param array $expected
+     * @param array $allowedMembers
+     *
+     * @return void
      */
     public function __construct($expected, $allowedMembers)
     {
@@ -37,6 +39,8 @@ class PaginationLinksEqualConstraint extends Constraint
 
     /**
      * Returns a string representation of the constraint.
+     *
+     * @return string
      */
     public function toString(): string
     {
@@ -51,6 +55,8 @@ class PaginationLinksEqualConstraint extends Constraint
      * constraint is met, false otherwise.
      *
      * @param mixed $other value or object to evaluate
+     *
+     * @return bool
      */
     protected function matches($other): bool
     {
@@ -69,6 +75,11 @@ class PaginationLinksEqualConstraint extends Constraint
         $notExpectedMembers = array_keys(
             array_filter(
                 $cleanExpected,
+                /**
+                 * @param mixed $value
+                 *
+                 * @return bool
+                 */
                 function ($value) {
                     return $value === false;
                 }
@@ -81,6 +92,11 @@ class PaginationLinksEqualConstraint extends Constraint
         // Extracts expected members
         $expectedMembers = array_filter(
             $cleanExpected,
+            /**
+             * @param mixed $value
+             *
+             * @return bool
+             */
             function ($value) {
                 return $value !== false;
             }
@@ -92,6 +108,11 @@ class PaginationLinksEqualConstraint extends Constraint
         // Extracts members whose value have to be tested
         $expectedValues = array_filter(
             $expectedMembers,
+            /**
+             * @param mixed $value
+             *
+             * @return bool
+             */
             function ($value) {
                 return $value !== true;
             }

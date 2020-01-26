@@ -100,10 +100,15 @@ class PaginationTest extends TestCase
 
     /**
      * @test
-     * @dataProvider paginationLinksEqualsFailedProvider
      */
-    public function paginationLinksEqualsFailed($expected, $failureMsg)
+    public function paginationLinksEqualsFailed()
     {
+        $expected = [
+            Members::LINK_PAGINATION_FIRST => 'urlFirst',
+            Members::LINK_PAGINATION_NEXT => false,
+            Members::LINK_PAGINATION_PREV => false,
+            Members::LINK_PAGINATION_LAST => 'urlLast'
+        ];
         $json = [
             Members::LINK_SELF => 'url',
             Members::LINK_PAGINATION_FIRST => 'urlFirst',
@@ -111,41 +116,117 @@ class PaginationTest extends TestCase
             Members::LINK_PAGINATION_LAST => 'urlLast'
         ];
 
-        $this->setFailure($failureMsg);
+        $this->setFailure(Messages::PAGINATION_LINKS_NOT_EQUAL);
 
         Assert::assertPaginationLinksEquals($expected, $json);
     }
 
-    public function paginationLinksEqualsFailedProvider()
+    /**
+     * @test
+     */
+    public function hasPaginationMeta()
     {
-        return [
-            'has too many members' => [
-                [
-                    Members::LINK_PAGINATION_FIRST => 'urlFirst',
-                    Members::LINK_PAGINATION_NEXT => false,
-                    Members::LINK_PAGINATION_PREV => false,
-                    Members::LINK_PAGINATION_LAST => 'urlLast'
-                ],
-                Messages::PAGINATION_LINKS_NOT_EQUAL
-            ],
-            'has not all expected member' => [
-                [
-                    Members::LINK_PAGINATION_FIRST => 'urlFirst',
-                    Members::LINK_PAGINATION_NEXT => 'urlNext',
-                    Members::LINK_PAGINATION_PREV => 'urlPrev',
-                    Members::LINK_PAGINATION_LAST => 'urlLast'
-                ],
-                Messages::PAGINATION_LINKS_NOT_EQUAL
-            ],
-            'not same value' => [
-                [
-                    Members::LINK_PAGINATION_FIRST => 'urlFirstError',
-                    Members::LINK_PAGINATION_NEXT => 'urlNext',
-                    Members::LINK_PAGINATION_PREV => false,
-                    Members::LINK_PAGINATION_LAST => 'urlLast'
-                ],
-                Messages::PAGINATION_LINKS_NOT_EQUAL
+        $json = [
+            'key' => 'value',
+            Members::META_PAGINATION => [
+                'key' => 'value'
             ]
         ];
+
+        Assert::assertHasPaginationMeta($json);
+    }
+
+    /**
+     * @test
+     */
+    public function hasPaginationMetaFailed()
+    {
+        $json = [
+            'key' => 'value'
+        ];
+
+        $this->setFailure(
+            sprintf(
+                Messages::HAS_MEMBER,
+                Members::META_PAGINATION
+            )
+        );
+
+        Assert::assertHasPaginationMeta($json);
+    }
+
+    /**
+     * @test
+     */
+    public function hasNoPaginationMeta()
+    {
+        $json = [
+            'key' => 'value'
+        ];
+
+        Assert::assertHasNoPaginationMeta($json);
+    }
+
+    /**
+     * @test
+     */
+    public function hasNoPaginationMetaFailed()
+    {
+        $json = [
+            'key' => 'value',
+            Members::META_PAGINATION => [
+                'key' => 'value'
+            ]
+        ];
+
+        $this->setFailure(
+            sprintf(Messages::NOT_HAS_MEMBER, Members::META_PAGINATION)
+        );
+
+        Assert::assertHasNoPaginationMEta($json);
+    }
+
+    /**
+     * @test
+     */
+    public function paginationMetaEquals()
+    {
+        $expected = [
+            'key' => 'value',
+            Members::META_PAGINATION => [
+                'key' => 'value'
+            ]
+        ];
+        $json = [
+            'key' => 'value',
+            Members::META_PAGINATION => [
+                'key' => 'value'
+            ]
+        ];
+
+        Assert::assertPaginationMetaEquals($expected, $json);
+    }
+
+    /**
+     * @test
+     */
+    public function paginationMetaEqualsFailed()
+    {
+        $expected = [
+            'key' => 'value',
+            Members::META_PAGINATION => [
+                'key' => 'value'
+            ]
+        ];
+        $json = [
+            'key' => 'value',
+            Members::META_PAGINATION => [
+                'key' => 'not equal'
+            ]
+        ];
+
+        $this->setFailure(Messages::PAGINATION_META_NOT_EQUAL);
+
+        Assert::assertPaginationMetaEquals($expected, $json);
     }
 }

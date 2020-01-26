@@ -58,7 +58,10 @@ class TopLevelMembersTest extends TestCase
                         Members::LINK_SELF => 'http://example.com/articles'
                     ]
                 ],
-                sprintf(Messages::TOP_LEVEL_MEMBERS, implode('", "', [Members::DATA, Members::ERRORS, Members::META]))
+                sprintf(
+                    Messages::DOCUMENT_TOP_LEVEL_MEMBERS,
+                    implode('", "', [Members::DATA, Members::ERRORS, Members::META])
+                )
             ],
             'data and error incompatible' => [
                 [
@@ -75,7 +78,7 @@ class TopLevelMembersTest extends TestCase
                         ]
                     ]
                 ],
-                Messages::TOP_LEVEL_DATA_AND_ERROR
+                Messages::DOCUMENT_DOCUMENT_TOP_LEVEL_MEMBERS_DATA_AND_ERROR
             ],
             'only allowed members' => [
                 [
@@ -105,7 +108,7 @@ class TopLevelMembersTest extends TestCase
                         'anything' => 'ok'
                     ]
                 ],
-                Messages::TOP_LEVEL_DATA_AND_INCLUDED
+                Messages::DOCUMENT_DOCUMENT_TOP_LEVEL_MEMBERS_DATA_AND_INCLUDED
             ]
         ];
     }
