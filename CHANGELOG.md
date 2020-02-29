@@ -53,3 +53,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 
 - Minor fix
+
+## 2.1.0 - 2020-02-29
+
+### Removed
+
+- Removed testings tools (use of vgirol/phpunit-exception)

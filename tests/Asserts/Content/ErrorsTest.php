@@ -57,7 +57,7 @@ class ErrorsTest extends TestCase
      */
     public function errorsContainsFailed($expectedErrors, $errors, $strict, $failureMsg)
     {
-        $this->setFailure($failureMsg);
+        $this->setAssertionFailure($failureMsg);
 
         Assert::assertErrorsContains($expectedErrors, $errors, $strict);
     }

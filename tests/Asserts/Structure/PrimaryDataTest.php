@@ -86,7 +86,7 @@ class PrimaryDataTest extends TestCase
      */
     public function primaryDataIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidPrimaryData($data, $strict);
     }
 

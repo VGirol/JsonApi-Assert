@@ -69,7 +69,7 @@ class IncludeTest extends TestCase
             ]
         ];
 
-        $this->setFailure();
+        $this->setAssertionFailure();
 
         Assert::assertIncludeObjectContains($expected, $json);
     }

@@ -47,7 +47,7 @@ class LinksObjectTest extends TestCase
      */
     public function linkObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidLinkObject($data, $strict);
     }
 
@@ -119,7 +119,7 @@ class LinksObjectTest extends TestCase
      */
     public function linksObjectIsNotValid($data, $allowed, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidLinksObject($data, $allowed, $strict);
     }
 

@@ -86,7 +86,7 @@ class MyTest extends TestCase
         ];
         $failureMessage = Messages::ERRORS_OBJECT_MUST_BE_ARRAY;
 
-        $this->setFailureException($failureMessage);
+        $this->setAssertionFailure($failureMessage);
 
         JsonApiAssert::assertHasValidStructure($json);
     }

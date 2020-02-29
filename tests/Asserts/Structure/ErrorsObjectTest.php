@@ -27,7 +27,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorLinksObjectIsNotValid($json, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorLinksObject($json, $strict);
     }
 
@@ -77,7 +77,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorSourceObjectIsNotValid($data, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorSourceObject($data);
     }
 
@@ -145,7 +145,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorObject($data, $strict);
     }
 
@@ -289,7 +289,7 @@ class ErrorsObjectTest extends TestCase
      */
     public function errorsObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidErrorsObject($data, $strict);
     }
 

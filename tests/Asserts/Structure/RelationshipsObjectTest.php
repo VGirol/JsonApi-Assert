@@ -48,7 +48,7 @@ class RelationshipsObjectTest extends TestCase
      */
     public function relationshipLinksObjectIsNotValid($json, $withPagination, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidRelationshipLinksObject($json, $withPagination, $strict);
     }
 
@@ -163,7 +163,7 @@ class RelationshipsObjectTest extends TestCase
      */
     public function relationshipObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidRelationshipObject($data, $strict);
     }
 
@@ -271,7 +271,7 @@ class RelationshipsObjectTest extends TestCase
      */
     public function relationshipsObjectIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidRelationshipsObject($data, $strict);
     }
 

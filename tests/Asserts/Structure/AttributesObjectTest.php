@@ -24,7 +24,7 @@ class AttributesObjectTest extends TestCase
      */
     public function memberNameIsForbidden($data, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsNotForbiddenMemberName($data);
     }
 
@@ -72,7 +72,7 @@ class AttributesObjectTest extends TestCase
      */
     public function fieldHasForbiddenMemberName($data, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertFieldHasNoForbiddenMemberName($data);
     }
 
@@ -131,7 +131,7 @@ class AttributesObjectTest extends TestCase
      */
     public function attributesObjectIsNotValid($json, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidAttributesObject($json, $strict);
     }
 

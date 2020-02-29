@@ -91,7 +91,7 @@ class StructureTest extends TestCase
      */
     public function documentHasNotValidStructure($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertHasValidStructure($data, $strict);
     }
 
@@ -228,7 +228,7 @@ class StructureTest extends TestCase
      */
     public function topLevelLinksObjectIsNotValid($json, $withPagination, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidTopLevelLinksMember($json, $withPagination, $strict);
     }
 
