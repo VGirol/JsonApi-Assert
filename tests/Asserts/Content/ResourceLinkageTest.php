@@ -40,7 +40,7 @@ class ResourceLinkageTest extends TestCase
             Members::TYPE => 'test'
         ];
 
-        $this->setFailure();
+        $this->setAssertionFailure();
 
         Assert::assertResourceIdentifierEquals($expected, $json);
     }
@@ -80,7 +80,7 @@ class ResourceLinkageTest extends TestCase
      */
     public function resourceIdentifierCollectionEqualsFailed($expected, $json, $failureMsg)
     {
-        $this->setFailure($failureMsg);
+        $this->setAssertionFailure($failureMsg);
 
         Assert::assertResourceIdentifierCollectionEquals($expected, $json);
     }
@@ -230,7 +230,7 @@ class ResourceLinkageTest extends TestCase
      */
     public function resourceLinkageEqualsFailed($expected, $json, $strict, $failureMsg)
     {
-        $this->setFailure($failureMsg);
+        $this->setAssertionFailure($failureMsg);
 
         Assert::assertResourceLinkageEquals($expected, $json, $strict);
     }

@@ -40,7 +40,7 @@ class MemberNameTest extends TestCase
      */
     public function memberNameIsNotValid($data, $strict, $failureMessage)
     {
-        $this->setFailure($failureMessage);
+        $this->setAssertionFailure($failureMessage);
         JsonApiAssert::assertIsValidMemberName($data, $strict);
     }
 

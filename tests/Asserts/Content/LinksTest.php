@@ -29,7 +29,7 @@ class LinksTest extends TestCase
         $expected = null;
         $link = 'not null';
 
-        $this->setFailure($this->formatAsRegex('Failed asserting that %s equals %s.'));
+        $this->setAssertionFailure($this->formatAsRegex('Failed asserting that %s equals %s.'));
 
         Assert::assertLinkObjectEquals($expected, $link);
     }
@@ -54,7 +54,7 @@ class LinksTest extends TestCase
      */
     public function linksObjectContainsFailed($name, $expected, $links, $failureMsg)
     {
-        $this->setFailure($failureMsg);
+        $this->setAssertionFailure($failureMsg);
 
         Assert::assertLinksObjectContains($name, $expected, $links);
     }
@@ -101,7 +101,7 @@ class LinksTest extends TestCase
      */
     public function linksObjectEqualsFailed($expected, $links, $failureMsg)
     {
-        $this->setFailure($failureMsg);
+        $this->setAssertionFailure($failureMsg);
 
         Assert::assertLinksObjectEquals($expected, $links);
     }

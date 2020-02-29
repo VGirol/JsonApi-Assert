@@ -32,7 +32,7 @@ class PaginationTest extends TestCase
             Members::LINK_SELF => 'url'
         ];
 
-        $this->setFailure(
+        $this->setAssertionFailure(
             sprintf(
                 Messages::CONTAINS_AT_LEAST_ONE,
                 implode(
@@ -72,7 +72,7 @@ class PaginationTest extends TestCase
             Members::LINK_PAGINATION_FIRST => 'urlFirst'
         ];
 
-        $this->setFailure(
+        $this->setAssertionFailure(
             sprintf(Messages::NOT_HAS_MEMBER, Members::LINK_PAGINATION_FIRST)
         );
 
@@ -116,7 +116,7 @@ class PaginationTest extends TestCase
             Members::LINK_PAGINATION_LAST => 'urlLast'
         ];
 
-        $this->setFailure(Messages::PAGINATION_LINKS_NOT_EQUAL);
+        $this->setAssertionFailure(Messages::PAGINATION_LINKS_NOT_EQUAL);
 
         Assert::assertPaginationLinksEquals($expected, $json);
     }
@@ -145,7 +145,7 @@ class PaginationTest extends TestCase
             'key' => 'value'
         ];
 
-        $this->setFailure(
+        $this->setAssertionFailure(
             sprintf(
                 Messages::HAS_MEMBER,
                 Members::META_PAGINATION
@@ -179,7 +179,7 @@ class PaginationTest extends TestCase
             ]
         ];
 
-        $this->setFailure(
+        $this->setAssertionFailure(
             sprintf(Messages::NOT_HAS_MEMBER, Members::META_PAGINATION)
         );
 
@@ -225,7 +225,7 @@ class PaginationTest extends TestCase
             ]
         ];
 
-        $this->setFailure(Messages::PAGINATION_META_NOT_EQUAL);
+        $this->setAssertionFailure(Messages::PAGINATION_META_NOT_EQUAL);
 
         Assert::assertPaginationMetaEquals($expected, $json);
     }

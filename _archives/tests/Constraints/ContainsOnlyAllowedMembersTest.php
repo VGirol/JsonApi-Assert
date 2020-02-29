@@ -63,7 +63,7 @@ class ContainsOnlyAllowedMembersTest extends TestCase
 
         $constraint = new ContainsOnlyAllowedMembersConstraint($allowed);
 
-        $this->setFailure(
+        $this->setAssertionFailure(
             sprintf(
                 '/Failed asserting that [\S\s]* %s\./',
                 $constraint->toString()

@@ -52,7 +52,7 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailure(
+        $this->setAssertionFailure(
             sprintf(Messages::RESOURCE_IS_NOT_EQUAL, var_export($json, true), var_export($expected, true))
         );
 
@@ -147,7 +147,7 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailure();
+        $this->setAssertionFailure();
 
         Assert::assertResourceCollectionContains($expected, $json);
     }
@@ -202,7 +202,7 @@ class ResourceTest extends TestCase
             ]
         ];
 
-        $this->setFailure($failureMsg);
+        $this->setAssertionFailure($failureMsg);
 
         Assert::assertResourceCollectionEquals($expected, $json);
     }

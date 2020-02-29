@@ -38,7 +38,7 @@ class JsonapiTest extends TestCase
             ]
         ];
 
-        $this->setFailure($this->formatAsRegex(Messages::JSONAPI_OBJECT_NOT_EQUAL));
+        $this->setAssertionFailure($this->formatAsRegex(Messages::JSONAPI_OBJECT_NOT_EQUAL));
 
         Assert::assertJsonapiObjectEquals($expected, $json);
     }
