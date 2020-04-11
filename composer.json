@@ -19,14 +19,14 @@
         }
     ],
     "require": {
-        "php": "~7.2.9|^7.3",
+        "php": "^7.2",
         "dms/phpunit-arraysubset-asserts": "~0.1.1|^0.2",
-        "phpunit/phpunit": "~8.5.2|^9.0",
+        "phpunit/phpunit": "^8.5|^9.0",
         "vgirol/jsonapi-constant": "^1.1",
         "vgirol/jsonapi-structure": "dev-master"
     },
     "require-dev": {
-        "infection/infection": "^0.14|^0.15",
+        "infection/infection": "~0.14",
         "vgirol/phpunit-exception": "~1.0.0|dev-master"
     },
     "minimum-stability": "stable",
