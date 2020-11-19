@@ -66,8 +66,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 - Updated branch alias in composer.json
 
-## 2.1.2 - 2020-11-19
+## 2.2.0 - 2020-11-19
 
 ### Added
 
-- Updated phpunit and travis config
+- Update phpunit and travis config
+- Remove support for php 7.2
+- Bump phpunit version
