@@ -12,8 +12,8 @@ This package provides a set of assertions to test documents using the [JSON:API 
 
 ## Technologies
 
-- PHP 7.2+
-- PHPUnit 8.0+
+- PHP 7.3+
+- PHPUnit 9.0+
 
 ## Installation
 
