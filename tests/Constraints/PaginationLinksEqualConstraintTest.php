@@ -26,7 +26,7 @@ class PaginationLinksEqualConstraintTest extends TestCase
         $obj = new PaginationLinksEqualConstraint($expected, $allowed);
 
         $string = $obj->toString();
-        PHPUnit::assertRegExp(
+        PHPUnit::assertMatchesRegularExpression(
             '/equals .*/',
             $string
         );

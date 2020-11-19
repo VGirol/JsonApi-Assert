@@ -65,3 +65,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 
 - Updated branch alias in composer.json
+
+## 2.1.2 - 2020-11-19
+
+### Added
+
+- Updated phpunit and travis config
