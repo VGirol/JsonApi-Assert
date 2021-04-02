@@ -20,9 +20,6 @@
     <testsuite name="Constraints">
       <directory suffix="Test.php">./tests/Constraints</directory>
     </testsuite>
-    <testsuite name="Exceptions">
-      <directory suffix="Test.php">./tests/Exceptions</directory>
-    </testsuite>
   </testsuites>
   <logging>
     <junit outputFile="./build/coverage/junit.xml"/>
