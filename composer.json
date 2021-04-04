@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "dms/phpunit-arraysubset-asserts": "^0.2",
         "phpunit/phpunit": "^9.0",
         "vgirol/jsonapi-constant": "^1.1",
@@ -57,7 +57,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.1-dev"
+            "dev-master": "2.2-dev"
         }
     },
     "config": {

@@ -80,3 +80,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 - Change infection configuration
 - Change phpunit configuration
+
+## 2.2.2 - 2021-04-04
+
+### Added
+
+- Add support for PHP 8
